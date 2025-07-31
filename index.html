@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HMDT Tel-U</title>
+  <link rel="icon" type="image/x-icon" href="img/logo-hmdt.png">
+  <link rel="stylesheet" href="style.css">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#b56d00',
+            secondary: '#d88a1e',
+            dark: '#1e293b',
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- AOS Styles -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+</head>
+<body class="overflow-x-hidden font-sans text-gray-800 bg-gray-50">
+
+  <!-- Preloader -->
+  <div id="preloader" class="fixed inset-0 z-50 flex items-center justify-center bg-white transition-opacity duration-500">
+    <div class="flex flex-col items-center">
+      <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-[var(--hmdt-orange)]"></div>
+      <div class="mt-4 text-[var(--hmdt-orange)] font-semibold">HMDT</div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header id="navbar" class="bg-white/90 backdrop-blur-sm shadow-md border-b border-gray-200 sticky top-0 z-40 transition-transform duration-300 ease-in-out">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex justify-between items-center">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <img src="img/logo-hmdt.png" alt="Logo HMDT" class="w-12 h-12 rounded-full object-cover border-2 border-[var(--hmdt-orange)]" />
+          <div class="flex flex-col leading-tight">
+            <span class="text-xl font-bold text-[var(--hmdt-orange)]">Himpunan Mahasiswa</span>
+            <p class="text-sm text-gray-600 -mt-1">D3 Teknologi Telekomunikasi</p>
+          </div>
+        </div>
+
+        <!-- Hamburger -->
+        <button id="toggleMenu" class="md:hidden text-[var(--hmdt-orange)] focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+
+        <!-- Menu Desktop -->
+        <nav class="hidden md:flex space-x-7 items-center">
+          <a href="#home" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)]">
+            Beranda
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="#about" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)]">
+            Tentang
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="#visi-misi" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)]">
+            Visi & Misi
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="#features" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)] ">
+            Sumber Daya
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="#aspirasi" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)] ">
+            Aspirasi
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="#pengurus" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)]">
+            BPH
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="#kontak" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)] ">
+            Kontak
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="faq.html" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)] ">
+            FAQ
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Menu Mobile -->
+      <div id="mobileMenu" class="transition-all duration-300 ease-in-out md:hidden hidden mt-4 flex flex-col gap-1 bg-white rounded-lg shadow-lg p-4">
+        <a href="#home" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Beranda</a>
+        <a href="#about" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Tentang</a>
+        <a href="#visi-misi" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Visi & Misi</a>
+        <a href="#features" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Sumber Daya</a>
+        <a href="#aspirasi" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Aspirasi</a>
+        <a href="#pengurus" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">BPH</a>
+        <a href="#kontak" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Kontak</a>
+        <a href="faq.html" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">FAQ</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="relative min-h-[80vh] flex items-center bg-cover bg-center bg-no-repeat text-white overflow-hidden">
+    <div class="absolute inset-0 bg-[url('img/backgrounds/bg.jpg')] bg-cover bg-center"></div>
+    <div class="absolute inset-0 overlay-gradient"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 py-24 w-full">
+      <div class="grid md:grid-cols-2 items-center gap-12">
+
+        <!-- Teks -->
+        <div class="text-left space-y-6">
+          <h1 data-aos="fade-up" data-aos-delay="100" class="text-3xl md:text-5xl font-bold leading-tight">
+            Himpunan Mahasiswa <br> <span class="text-[var(--hmdt-orange)]">D3 Teknologi Telekomunikasi</span>
+          </h1>
+          <p data-aos="fade-up" data-aos-delay="200" class="text-lg max-w-lg text-gray-200 leading-relaxed">
+            Organisasi, suara mahasiswa, dan pengembangan minat mahasiswa D3 Teknologi Telekomunikasi di Telkom University untuk mewujudkan mahasiswa yang berkarakter, kompeten, dan berdaya saing profesional.
+          </p>
+          <div data-aos="fade-up" data-aos-delay="300" class="flex flex-wrap gap-4 mt-6">
+            <a href="#about" class="btn-primary">
+              Pelajari Lebih Lanjut
+            </a>
+            <a href="#aspirasi" class="bg-white text-[var(--hmdt-orange)] px-6 py-3 rounded-full font-medium shadow-md hover:bg-gray-100 transition-all duration-300">
+              Kirim Aspirasi
+            </a>
+          </div>
+        </div>
+
+        <!-- Foto -->
+        <div data-aos="zoom-in" data-aos-delay="400" class="hidden md:flex justify-center">
+          <div class="relative">
+            <div class="absolute -inset-4 bg-[var(--hmdt-orange)] rounded-2xl rotate-6 opacity-30"></div>
+            <div class="absolute -inset-2 bg-[var(--hmdt-orange)] rounded-2xl -rotate-3 opacity-20"></div>
+            <img src="img/logo-hmdt.png" style="height: 200px;" alt="Kegiatan HMDT" class="relative w-full max-w-md h-auto rounded-2xl shadow-xl object-cover border-4 border-white">
+          </div>
+        </div>
+
+      </div>
+    </div>
+    
+    <!-- Shape Divider -->
+    <!-- <div class="absolute bottom-0 left-0 w-full overflow-hidden">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" class="fill-current text-gray-50">
+        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+        <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+        <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+      </svg>
+    </div> -->
+  </section>
+
+  <!-- Tentang Kami -->
+  <section id="about" class="py-20 px-4 md:px-8 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="section-title text-3xl font-bold text-center">Tentang Kami</h2>
+      
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div data-aos="fade-right">
+          <h3 class="text-2xl font-bold mb-4 text-[var(--hmdt-orange)]">Himpunan Mahasiswa D3 Teknologi Telekomunikasi</h3>
+          <p class="text-gray-600 mb-4 leading-relaxed">
+            HMDT merupakan organisasi mahasiswa yang berada di bawah naungan <a href="https://dte.telkomuniversity.ac.id/" target="_blank" style="color: #b56d00; text-decoration: none;">Program Studi D3 Teknologi Telekomunikasi</a>, Fakultas Ilmu Terapan, Telkom University. Kami hadir sebagai wadah pengembangan minat dan potensi mahasiswa untuk mewujudkan mahasiswa yang berkarakter, kompeten, dan berdaya saing profesional.
+          </p>
+          <p class="text-gray-600 leading-relaxed">
+            Dengan semangat kekeluargaan dan profesionalisme, kami berkomitmen untuk meningkatkan kualitas akademik, mengembangkan potensi non-akademik, serta memperkuat jejaring antar mahasiswa dan alumni.
+          </p>
+          
+          <div class="mt-8 grid grid-cols-2 gap-4">
+            <div class="flex items-center">
+              <div class="bg-[var(--hmdt-orange)] text-white p-3 rounded-full mr-3">
+                <i class="fas fa-users fa-lg"></i>
+              </div>
+              <div>
+                <p class="text-2xl font-bold">38</p>
+                <p class="text-gray-600">Fungsionaris</p>
+              </div>
+            </div>
+            <div class="flex items-center">
+              <div class="bg-[var(--hmdt-orange)] text-white p-3 rounded-full mr-3">
+                <i class="fas fa-calendar-alt fa-lg"></i>
+              </div>
+              <div>
+                <p class="text-2xl font-bold">20+</p>
+                <p class="text-gray-600">Kegiatan/Tahun</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div data-aos="fade-left" class="relative">
+          <div class="aspect-w-16 aspect-h-9 rounded-2xl overflow-hidden shadow-xl">
+            <iframe class="w-full h-80 rounded-2xl" src="https://www.youtube.com/embed/lWKk5lg-BAk" title="Profil HMDT" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="absolute -bottom-6 -right-6 bg-[var(--hmdt-orange)] w-32 h-32 rounded-lg -z-10"></div>
+          <div class="absolute -top-6 -left-6 bg-[var(--hmdt-orange-light)] w-24 h-24 rounded-lg -z-10"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visi & Misi -->
+  <section id="visi-misi" class="py-20 px-4 md:px-8 bg-gray-50">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="section-title text-3xl font-bold text-center">Visi & Misi</h2>
+      
+      <div class="grid lg:grid-cols-2 gap-10 max-w-6xl mx-auto items-stretch">
+        <!-- Visi -->
+        <div data-aos="fade-up" class="card">
+          <div class="p-8">
+            <div class="w-16 h-16 rounded-full bg-[var(--hmdt-orange)] flex items-center justify-center mb-6">
+              <i class="fas fa-bullseye text-white text-2xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-[var(--hmdt-orange)] mb-4">Visi</h3>
+            <p class="text-gray-700 leading-relaxed">
+              Terwujudnya peran Himpunan Mahasiswa sebagai wadah aktualisasi dengan aspek tangkas dan adaptif, serta dilandasi dengan ketakwaan terhadap Tuhan, menjadikan HMDT unggul dan memiliki reputasi yang baik di tingkat Fakultas maupun Universitas.
+            </p>
+          </div>
+        </div>
+
+        <!-- Misi -->
+        <div data-aos="fade-up" data-aos-delay="200" class="card">
+          <div class="p-8">
+            <div class="w-16 h-16 rounded-full bg-[var(--hmdt-orange)] flex items-center justify-center mb-6">
+              <i class="fas fa-tasks text-white text-2xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-[var(--hmdt-orange)] mb-4">Misi</h3>
+            <ul class="text-gray-700 space-y-3">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-[var(--hmdt-orange)] mt-1 mr-3"></i>
+                <span>Mewadahi civitas akademika untuk pengembangan potensi</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-[var(--hmdt-orange)] mt-1 mr-3"></i>
+                <span>Membentuk media komunikasi yang tangkas guna mengidentifikasi sebuah masalah</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-[var(--hmdt-orange)] mt-1 mr-3"></i>
+                <span>Menyelenggarakan program kerja yang unggul</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-[var(--hmdt-orange)] mt-1 mr-3"></i>
+                <span>Mewujudkan wadah aspirasi bagi Keluarga mahasiswa D3 Teknologi Telekomunikasi</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Section Baru: Fitur Akses Cepat -->
+  <section id="features" class="py-20 px-4 md:px-8 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="section-title text-3xl font-bold text-center">Sumber Daya</h2>
+      <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">
+        Temukan sumber daya penting yang kami sediakan untuk kemudahan kema D3TT
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Card 1: Social Button -->
+        <div data-aos="fade-up" data-aos-delay="100" class="card feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-hashtag"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-[var(--hmdt-orange)]">Media Sosial</h3>
+          <p class="text-gray-600 mb-5">Ikuti kami di berbagai platform media sosial untuk update terbaru</p>
+          <div class="mt-auto flex justify-center gap-3">
+            <a href="https://instagram.com/infohmdt" class="social-icon">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.tiktok.com/@infohmdt_" class="social-icon">
+              <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="https://www.youtube.com/@hmdtuniversitastelkom3275" class="social-icon">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2: Upload Foto Brown Day -->
+        <div data-aos="fade-up" data-aos-delay="200" class="card feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-camera-retro"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-[var(--hmdt-orange)]">Upload Foto Brown Day</h3>
+          <p class="text-gray-600 mb-5">Bagikan foto-foto kenangan Anda menggunakan jaket himpunan</p>
+          <div class="mt-auto">
+            <a href="https://forms.gle/gNBjriJCA7SRwqri8" class="btn-primary inline-flex items-center">
+              Unggah Sekarang
+              <i class="fas fa-upload ml-2"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 3: Sejaran -->
+        <div data-aos="fade-up" data-aos-delay="400" class="card feature-card">
+          <div class="feature-icon">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-[var(--hmdt-orange)]">Sejarah HMDT</h3>
+          <p class="text-gray-600 mb-5">Tinjau sejarah penciptaan Himpunan Mahasiswa D3 Teknologi Telekomunikasi</p>
+          <div class="mt-auto">
+            <a href="assets/sejarah_hmdt.pdf" class="btn-primary inline-flex items-center">
+              Baca Sejarah
+              <i class="fas fa-book-open ml-2"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 4: Contact Us -->
+        <div data-aos="fade-up" data-aos-delay="300" class="card feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-headset"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-[var(--hmdt-orange)]">Hubungi Kami</h3>
+          <p class="text-gray-600 mb-5">Punya pertanyaan? Kami siap membantu Anda</p>
+          <div class="mt-auto">
+            <a href="#kontak" class="btn-primary inline-flex items-center">
+              Kontak Sekarang
+              <i class="fas fa-phone ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Form Aspirasi -->
+  <section id="aspirasi" class="py-20 px-4 md:px-8 bg-gray-50">
+    <div class="max-w-4xl mx-auto">
+      <div class="card">
+        <div class="grid md:grid-cols-2">
+          <div class="bg-[var(--hmdt-orange)] p-8 text-white md:flex flex-col hidden">
+            <h3 class="text-2xl font-bold mb-4">Kirimkan Aspirasi Anda</h3>
+            <p class="mb-6 opacity-90">
+              Aspirasi dan saran Anda sangat berarti bagi kami untuk terus meningkatkan kualitas pelayanan dan kegiatan HMDT.
+            </p>
+            <div class="mt-auto">
+              <div class="flex items-center mb-4">
+                <i class="fas fa-shield-alt text-2xl mr-3"></i>
+                <span>Setiap aspirasi akan dijaga kerahasiaannya</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-clock text-2xl mr-3"></i>
+                <span>Respon maksimal dalam 3 hari kerja</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="p-8 flex flex-col items-center justify-center">
+            <h3 class="text-2xl font-bold mb-6 text-center">Form Aspirasi</h3>
+            <p class="text-gray-600 mb-8 text-center max-w-md">
+              Klik tombol di bawah untuk mengirimkan aspirasi Anda melalui Google Form
+            </p>
+            
+            <!-- Tombol Google Form -->
+            <a href="https://forms.gle/E4E9C7PeR5Jy6Qta9" 
+              target="_blank"
+              class="btn-primary px-8 py-4 text-lg font-bold flex items-center justify-center gap-3 transition-transform hover:scale-105">
+              <i class="fab fa-google text-xl"></i>
+              Kirim Aspirasi via Google Form
+            </a>
+            
+            <p class="mt-6 text-gray-500 text-sm text-center">
+              <i class="fas fa-external-link-alt mr-2"></i>
+              Anda akan diarahkan ke halaman eksternal
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Struktur Pengurus -->
+  <section id="pengurus" class="py-20 px-4 md:px-8 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="section-title text-3xl font-bold text-center">Badan Pengurus Harian</h2>
+      <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">
+        Berikut adalah tim pengurus inti HMDT periode 2025 yang bertanggung jawab dalam menjalankan roda organisasi
+      </p>
+
+      <div class="swiper pengurus-swiper max-w-6xl mx-auto px-4 pb-12 relative">
+        <div class="swiper-wrapper">
+          <!-- 1 pengurus = 1 slide -->
+          <div class="swiper-slide">
+            <div class="card h-full">
+              <div class="p-5">
+                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
+                  <img src="img/people/inti/kahim.jpeg" alt="Reihan Dwi Pangestu" class="w-full h-full object-cover">
+                </div>
+                <div class="text-center">
+                  <h4 class="font-bold text-xl">Reihan Dwi Pangestu</h4>
+                  <p class="text-[var(--hmdt-orange)] font-medium">Ketua</p>
+                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2023</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="card h-full">
+              <div class="p-5">
+                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
+                  <img src="img/people/inti/wakahim.jpg" alt="Risnanda Candra Abdurrozaq" class="w-full h-full object-cover">
+                </div>
+                <div class="text-center">
+                  <h4 class="font-bold text-xl">Risnanda Candra Abdurrozaq</h4>
+                  <p class="text-[var(--hmdt-orange)] font-medium">Wakil Ketua</p>
+                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2023</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="card h-full">
+              <div class="p-5">
+                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
+                  <img src="img/people/inti/sekre-1.jpg" alt="Arimbi Dwi Syabillah" class="w-full h-full object-cover">
+                </div>
+                <div class="text-center">
+                  <h4 class="font-bold text-xl">Arimbi Dwi Syabillah</h4>
+                  <p class="text-[var(--hmdt-orange)] font-medium">Sekretaris I</p>
+                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2023</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="card h-full">
+              <div class="p-5">
+                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
+                  <img src="img/people/inti/sekre-2.jpg" alt="Karina Aulya Putri Laksana" class="w-full h-full object-cover">
+                </div>
+                <div class="text-center">
+                  <h4 class="font-bold text-xl">Karina Aulya Putri Laksana</h4>
+                  <p class="text-[var(--hmdt-orange)] font-medium">Sekretaris II</p>
+                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2023</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="card h-full">
+              <div class="p-5">
+                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
+                  <img src="img/people/inti/bendahara-1.jpg" alt="Fasya Lavina Attasya" class="w-full h-full object-cover">
+                </div>
+                <div class="text-center">
+                  <h4 class="font-bold text-xl">Fasya Lavina Attasya</h4>
+                  <p class="text-[var(--hmdt-orange)] font-medium">Bendahara I</p>
+                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2023</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="card h-full">
+              <div class="p-5">
+                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
+                  <img src="img/people/inti/bendahara-2.jpg" alt="Najwa Nabila Loka" class="w-full h-full object-cover">
+                </div>
+                <div class="text-center">
+                  <h4 class="font-bold text-xl">Najwa Nabila Loka</h4>
+                  <p class="text-[var(--hmdt-orange)] font-medium">Bendahara II</p>
+                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2023</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tombol Navigasi -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-pagination mt-6"></div>
+      </div>
+
+      <!-- Tombol Lihat Detail -->
+      <div class="mt-10 text-center">
+        <a href="bph.html" class="btn-primary inline-flex items-center">
+          Lihat BPH HMDT
+          <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="kontak" class="bg-[var(--hmdt-dark)] text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <!-- Logo & Deskripsi -->
+      <div class="flex flex-col gap-4">
+        <div class="flex items-center gap-3">
+          <img src="img/logo-hmdt.png" alt="Logo HMDT" class="w-16 h-16 object-cover rounded-full shadow border border-[var(--hmdt-orange)]" />
+          <div class="flex flex-col leading-tight">
+            <span class="text-xl font-bold text-[var(--hmdt-orange)]">HMDT</span>
+            <p class="text-sm text-gray-300 -mt-1">Sanggup Mampu Bisa</p>
+          </div>
+        </div>
+        <p class="text-gray-300 text-sm leading-relaxed">
+          Organisasi mahasiswa di bawah naungan Program Studi D3 Teknologi Telekomunikasi, Fakultas Ilmu Terapan, Telkom University.
+        </p>
+        <div class="flex gap-3 mt-2">
+          <a href="https://instagram.com/infohmdt" class="social-icon">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.tiktok.com/@infohmdt_" class="social-icon">
+            <i class="fab fa-tiktok"></i>
+          </a>
+          <a href="http://lin.ee/uQVzvqT" class="social-icon">
+            <i class="fa-brands fa-line"></i>
+          </a>
+          <a href="https://www.youtube.com/@hmdtuniversitastelkom3275" class="social-icon">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Link Cepat -->
+      <div>
+        <h4 class="text-lg font-bold mb-5 text-[var(--hmdt-orange)]">Link Cepat</h4>
+        <ul class="space-y-3">
+          <li><a href="#home" class="text-gray-300 hover:text-white transition">Beranda</a></li>
+          <li><a href="#about" class="text-gray-300 hover:text-white transition">Tentang Kami</a></li>
+          <li><a href="#visi-misi" class="text-gray-300 hover:text-white transition">Visi & Misi</a></li>
+          <li><a href="#features" class="text-gray-300 hover:text-white transition">Sumber Daya</a></li>
+          <li><a href="#aspirasi" class="text-gray-300 hover:text-white transition">Form Aspirasi</a></li>
+          <li><a href="bph.html" class="text-gray-300 hover:text-white transition">Badan Pengurus Harian</a></li>
+          <li><a href="faq.html" class="text-gray-300 hover:text-white transition">FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- Departemen -->
+      <div>
+        <h4 class="text-lg font-bold mb-5 text-[var(--hmdt-orange)]">Departemen</h4>
+        <ul class="space-y-3">
+          <li><a href="departemen/psdm.html" class="text-gray-300 hover:text-white transition">PSDM</a></li>
+          <li><a href="departemen/eksternal.html" class="text-gray-300 hover:text-white transition">Eksternal</a></li>
+          <li><a href="departemen/kominfo.html" class="text-gray-300 hover:text-white transition">Komunikasi & Informasi</a></li>
+          <li><a href="departemen/ristek.html" class="text-gray-300 hover:text-white transition">Riset & Teknologi</a></li>
+          <li><a href="departemen/sosmas.html" class="text-gray-300 hover:text-white transition">Sosial Masyarakat</a></li>
+          <li><a href="departemen/orsenbud.html" class="text-gray-300 hover:text-white transition">Olahraga, Seni dan Budaya</a></li>
+          <li><a href="departemen/kewirausahaan.html" class="text-gray-300 hover:text-white transition">Kewirausahaan</a></li>
+        </ul>
+      </div>
+
+      <!-- Kontak -->
+      <div>
+        <h4 class="text-lg font-bold mb-5 text-[var(--hmdt-orange)]">Kontak</h4>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3">
+            <i class="fas fa-map-marker-alt text-[var(--hmdt-orange)] mt-1"></i>
+            <span class="text-gray-300">Sekre FIT, Lantai 1, Gedung Selaru Telkom University, Jl. Telekomunikasi Terusan Buah Batu, Bandung</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fab fa-whatsapp text-[var(--hmdt-orange)] mt-1"></i>
+            <span class="text-gray-300"><a href="whatsapp://send?phone=6282125908508&text=">+6282125908508</a> (Eksternal)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fab fa-whatsapp text-[var(--hmdt-orange)] mt-1"></i>
+            <span class="text-gray-300"><a href="whatsapp://send?phone=6282217324307&text=">+6282217324307</a> (Media Partner)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fas fa-envelope text-[var(--hmdt-orange)] mt-1"></i>
+            <span class="text-gray-300">hmdt.telu@gmail.com</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Garis pemisah -->
+    <div class="border-t border-gray-700 mt-10 mb-6 max-w-7xl mx-auto"></div>
+
+    <!-- Copyright -->
+    <div class="text-center text-sm text-gray-400">
+      HMDT © 2025. Dikembangkan oleh Departemen Ristek dan Kominfo.
+    </div>
+  </footer>
+
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <!-- Swiper JS -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Revolusi 5G: Bagaimana Teknologi Ini Mengubah Industri Telekomunikasi | Blog HMDT</title>
+  <link rel="icon" type="image/x-icon" href="img/logo-hmdt.png">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#b56d00',
+            secondary: '#d88a1e',
+            dark: '#1e293b',
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --hmdt-orange: #b56d00;
+      --hmdt-orange-light: #d88a1e;
+      --hmdt-dark: #1e293b;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      background-color: #f8fafc;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+    }
+
+    #navbar {
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .btn-primary {
+      background: var(--hmdt-orange);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-block;
+      box-shadow: 0 4px 6px rgba(181, 109, 0, 0.2);
+    }
+
+    .btn-primary:hover {
+      background: var(--hmdt-orange-light);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(181, 109, 0, 0.3);
+    }
+
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: var(--hmdt-orange);
+      color: white;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    .social-icon:hover {
+      background: var(--hmdt-orange-light);
+      transform: translateY(-3px);
+    }
+    
+    .article-content h2 {
+      font-size: 1.75rem;
+      margin-top: 2.5rem;
+      margin-bottom: 1.25rem;
+      color: var(--hmdt-dark);
+      position: relative;
+      padding-left: 20px;
+    }
+    
+    .article-content h2::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 30px;
+      background: var(--hmdt-orange);
+      border-radius: 4px;
+    }
+    
+    .article-content p {
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      color: #4b5563;
+    }
+    
+    .article-content img {
+      border-radius: 12px;
+      margin: 2rem 0;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .article-content blockquote {
+      border-left: 4px solid var(--hmdt-orange);
+      padding: 1rem 1.5rem;
+      margin: 2rem 0;
+      background: #f9fafb;
+      border-radius: 0 8px 8px 0;
+      font-style: italic;
+      color: #4b5563;
+    }
+    
+    .article-content ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+      margin: 1.5rem 0;
+      color: #4b5563;
+    }
+    
+    .article-content ul li {
+      margin-bottom: 0.75rem;
+      line-height: 1.7;
+    }
+    
+    .tag {
+      display: inline-block;
+      background: rgba(181, 109, 0, 0.1);
+      color: var(--hmdt-orange);
+      font-size: 0.85rem;
+      padding: 0.35rem 1rem;
+      border-radius: 50px;
+      transition: all 0.3s;
+    }
+    
+    .tag:hover {
+      background: var(--hmdt-orange);
+      color: white;
+    }
+    
+    .author-card {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+    
+    .related-article {
+      display: flex;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    
+    .related-article:last-child {
+      border-bottom: none;
+    }
+    
+    .related-article-img {
+      width: 120px;
+      height: 100px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+    
+    .related-article-title {
+      font-weight: 600;
+      margin-bottom: 5px;
+      transition: color 0.3s;
+    }
+    
+    .related-article-title:hover {
+      color: var(--hmdt-orange);
+    }
+    
+    .related-article-date {
+      font-size: 0.85rem;
+      color: #64748b;
+    }
+    
+    .comment-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+  </style>
+  <!-- AOS Styles -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+<body class="overflow-x-hidden font-sans text-gray-800 bg-gray-50">
+
+  <!-- Preloader -->
+  <div id="preloader" class="fixed inset-0 z-50 flex items-center justify-center bg-white transition-opacity duration-500">
+    <div class="flex flex-col items-center">
+      <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-[var(--hmdt-orange)]"></div>
+      <div class="mt-4 text-[var(--hmdt-orange)] font-semibold">HMDT</div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header id="navbar" class="bg-white/90 backdrop-blur-sm shadow-md border-b border-gray-200 sticky top-0 z-40 transition-transform duration-300 ease-in-out">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex justify-between items-center">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <img src="../img/logo-hmdt.png" alt="Logo HMDT" class="w-12 h-12 rounded-full object-cover border-2 border-[var(--hmdt-orange)]" />
+          <div class="flex flex-col leading-tight">
+            <span class="text-xl font-bold text-[var(--hmdt-orange)]">Himpunan Mahasiswa</span>
+            <p class="text-sm text-gray-600 -mt-1">D3 Teknologi Telekomunikasi</p>
+          </div>
+        </div>
+
+        <!-- Hamburger -->
+        <button id="toggleMenu" class="md:hidden text-[var(--hmdt-orange)] focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+
+        <!-- Menu Desktop -->
+        <nav class="hidden md:flex space-x-7 items-center">
+          <a href="../index.html" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)]">
+            Beranda
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="blog.html" class="font-semibold relative group transition duration-200 text-[var(--hmdt-orange)] ">
+            Blog
+            <span class="absolute left-0 -bottom-1 w-full h-[2px] bg-[var(--hmdt-orange)]"></span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Menu Mobile -->
+      <div id="mobileMenu" class="transition-all duration-300 ease-in-out md:hidden hidden mt-4 flex flex-col gap-1 bg-white rounded-lg shadow-lg p-4">
+        <a href="../index.html" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Beranda</a>
+        <a href="blog.html" class="block py-3 px-4 rounded bg-gray-100 text-[var(--hmdt-orange)] transition font-medium">Blog</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section untuk Artikel -->
+  <section class="relative py-20 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <div class="inline-block bg-[var(--hmdt-orange)] text-white text-sm font-semibold px-4 py-1 rounded-full mb-5">
+        Teknologi
+      </div>
+      <h1 data-aos="fade-up" class="text-3xl md:text-4xl font-bold mb-6">
+        Revolusi 5G: Bagaimana Teknologi Ini Mengubah Industri Telekomunikasi
+      </h1>
+      <div data-aos="fade-up" data-aos-delay="100" class="flex flex-wrap items-center justify-center gap-6 text-gray-600 mb-8">
+        <div class="flex items-center">
+          <img src="img/author.jpg" alt="Penulis" class="w-10 h-10 rounded-full mr-3 object-cover border-2 border-[var(--hmdt-orange)]">
+          <span>Admin HMDT</span>
+        </div>
+        <div class="flex items-center">
+          <i class="fas fa-calendar text-[var(--hmdt-orange)] mr-2"></i>
+          <span>30 Juli 2025</span>
+        </div>
+        <div class="flex items-center">
+          <i class="fas fa-clock text-[var(--hmdt-orange)] mr-2"></i>
+          <span>8 min read</span>
+        </div>
+      </div>
+      <div data-aos="zoom-in" class="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden shadow-xl">
+        <img src="img/blog-1.jpg" alt="Revolusi 5G" class="w-full h-auto object-cover">
+      </div>
+    </div>
+  </section>
+
+  <!-- Konten Artikel -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <!-- Konten Utama -->
+        <div class="lg:col-span-2">
+          <div class="article-content">
+            <p class="text-lg font-medium text-gray-700 mb-8">
+              Teknologi 5G bukan sekadar peningkatan kecepatan internet. Ini adalah revolusi yang mengubah cara kita berkomunikasi, bekerja, dan hidup. Sebagai mahasiswa teknologi telekomunikasi, memahami dampak 5G sangat penting untuk mempersiapkan karir di industri yang terus berkembang ini.
+            </p>
+            
+            <h2>Apa Itu 5G dan Mengapa Penting?</h2>
+            <p>
+              5G adalah generasi kelima dari teknologi jaringan seluler yang menawarkan kecepatan data hingga 100 kali lebih cepat dari 4G, latensi sangat rendah, dan kapasitas yang jauh lebih besar. Teknologi ini memungkinkan koneksi yang lebih stabil untuk lebih banyak perangkat secara bersamaan.
+            </p>
+            
+            <img src="img/5g-tech.jpg" alt="Teknologi 5G" class="w-full h-auto">
+            <p class="text-center text-sm text-gray-500 mt-2">Infrastruktur 5G membutuhkan jaringan yang lebih padat dengan banyak menara kecil</p>
+            
+            <h2>Dampak 5G pada Berbagai Sektor</h2>
+            <p>
+              Implementasi 5G membawa transformasi besar di berbagai industri:
+            </p>
+            
+            <h3>1. Kesehatan</h3>
+            <p>
+              Dengan latensi rendah 5G, prosedur bedah jarak jauh menjadi mungkin. Dokter dapat mengoperasi pasien dari lokasi yang berbeda, membuka akses layanan kesehatan spesialis ke daerah terpencil.
+            </p>
+            
+            <h3>2. Transportasi</h3>
+            <p>
+              Kendaraan otonom membutuhkan komunikasi real-time dengan infrastruktur sekitar. 5G memungkinkan kendaraan berkomunikasi dengan lampu lalu lintas, kendaraan lain, dan pusat kontrol dengan latensi hampir nol.
+            </p>
+            
+            <img src="img/autonomous-vehicle.jpg" alt="Kendaraan Otonom" class="w-full h-auto">
+            <p class="text-center text-sm text-gray-500 mt-2">Kendaraan otonom mengandalkan jaringan 5G untuk komunikasi real-time</p>
+            
+            <h3>3. Manufaktur</h3>
+            <p>
+              Pabrik pintar menggunakan 5G untuk menghubungkan ribuan sensor dan perangkat IoT. Data real-time ini memungkinkan pemeliharaan prediktif, mengurangi downtime, dan meningkatkan efisiensi produksi.
+            </p>
+            
+            <blockquote>
+              "5G bukan hanya tentang kecepatan yang lebih cepat. Ini tentang menciptakan jaringan yang dapat mendukung transformasi digital di semua sektor industri." - Dr. Anisa Rahman, Pakar Telekomunikasi Telkom University
+            </blockquote>
+            
+            <h2>Peluang Karir di Era 5G</h2>
+            <p>
+              Sebagai mahasiswa D3 Teknologi Telekomunikasi, revolusi 5G membuka banyak peluang karir baru:
+            </p>
+            <ul>
+              <li><strong>Network Engineer 5G</strong> - Merancang, mengimplementasikan, dan memelihara jaringan 5G</li>
+              <li><strong>IoT Solution Architect</strong> - Mengembangkan solusi berbasis Internet of Things yang memanfaatkan jaringan 5G</li>
+              <li><strong>Cybersecurity Specialist</strong> - Mengamankan infrastruktur 5G yang rentan terhadap serangan baru</li>
+              <li><strong>Edge Computing Engineer</strong> - Mengoptimalkan komputasi di tepi jaringan untuk aplikasi latensi rendah</li>
+              <li><strong>5G Application Developer</strong> - Membuat aplikasi yang memanfaatkan kemampuan unik 5G</li>
+            </ul>
+            
+            <h2>Tantangan Implementasi 5G di Indonesia</h2>
+            <p>
+              Meskipun potensinya besar, implementasi 5G di Indonesia menghadapi beberapa tantangan:
+            </p>
+            <ul>
+              <li>Ketersediaan spektrum frekuensi yang sesuai</li>
+              <li>Infrastruktur yang masih terbatas, terutama di daerah pedesaan</li>
+              <li>Biaya implementasi yang tinggi</li>
+              <li>Kekurangan tenaga ahli yang terampil di bidang 5G</li>
+              <li>Kekhawatiran masyarakat tentang dampak kesehatan</li>
+            </ul>
+            
+            <img src="img/5g-indonesia.jpg" alt="5G di Indonesia" class="w-full h-auto">
+            <p class="text-center text-sm text-gray-500 mt-2">Implementasi 5G di Indonesia masih dalam tahap pengembangan</p>
+            
+            <h2>Kesimpulan</h2>
+            <p>
+              5G lebih dari sekadar teknologi jaringan generasi berikutnya. Ini adalah fondasi untuk transformasi digital di semua sektor. Sebagai mahasiswa telekomunikasi, ini adalah waktu yang tepat untuk mempelajari teknologi ini dan mengembangkan keterampilan yang relevan.
+            </p>
+            <p>
+              HMDT akan mengadakan workshop "Dasar-dasar Jaringan 5G" pada bulan depan. Daftarkan diri Anda melalui portal kegiatan kami untuk mempelajari lebih lanjut tentang teknologi ini langsung dari para ahli industri.
+            </p>
+          </div>
+          
+          <!-- Tags & Share -->
+          <div class="flex flex-wrap justify-between items-center py-8 border-t border-b border-gray-200 my-12">
+            <div>
+              <span class="font-semibold mr-3">Tags:</span>
+              <a href="#" class="tag">5G</a>
+              <a href="#" class="tag">Telekomunikasi</a>
+              <a href="#" class="tag">Teknologi</a>
+              <a href="#" class="tag">Jaringan</a>
+              <a href="#" class="tag">IoT</a>
+            </div>
+            <div class="flex space-x-3 mt-4 md:mt-0">
+              <span class="font-semibold">Bagikan:</span>
+              <a href="#" class="social-icon">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-whatsapp"></i>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Penulis -->
+          <div class="author-card mb-12">
+            <div class="flex flex-col md:flex-row items-center gap-6">
+              <img src="img/author.jpg" alt="Penulis" class="w-24 h-24 rounded-full object-cover border-2 border-[var(--hmdt-orange)]">
+              <div class="text-center md:text-left">
+                <h3 class="text-xl font-bold">Admin HMDT</h3>
+                <p class="text-gray-600 mb-3">Tim Konten Himpunan Mahasiswa D3 Teknologi Telekomunikasi</p>
+                <p class="text-gray-700">
+                  Tim konten HMDT terdiri dari mahasiswa aktif yang berfokus pada pengembangan konten edukatif seputar teknologi telekomunikasi. Kami berkomitmen untuk memberikan informasi terkini dan relevan bagi mahasiswa D3 Teknologi Telekomunikasi.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Komentar -->
+          <div class="mb-16">
+            <h3 class="text-2xl font-bold mb-6">Komentar (3)</h3>
+            
+            <div class="comment-card">
+              <div class="flex items-center mb-4">
+                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&h=100&q=80" alt="User" class="w-10 h-10 rounded-full mr-3">
+                <div>
+                  <h4 class="font-bold">Rizky Pratama</h4>
+                  <p class="text-gray-500 text-sm">Mahasiswa D3TT Angkatan 2024</p>
+                </div>
+              </div>
+              <p class="text-gray-700 mb-3">
+                Artikel yang sangat informatif! Saya baru menyadari betapa besar dampak 5G untuk industri kesehatan. Apakah HMDT berencana mengadakan workshop khusus tentang aplikasi 5G di sektor kesehatan?
+              </p>
+              <div class="text-sm text-gray-500 flex items-center">
+                <i class="far fa-clock mr-1"></i>
+                <span>2 jam yang lalu</span>
+                <button class="ml-4 text-[var(--hmdt-orange)] hover:text-[var(--hmdt-orange-light)]">
+                  <i class="far fa-reply mr-1"></i> Balas
+                </button>
+              </div>
+            </div>
+            
+            <div class="comment-card">
+              <div class="flex items-center mb-4">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&h=100&q=80" alt="User" class="w-10 h-10 rounded-full mr-3">
+                <div>
+                  <h4 class="font-bold">Siti Rahayu</h4>
+                  <p class="text-gray-500 text-sm">Alumni D3TT 2023</p>
+                </div>
+              </div>
+              <p class="text-gray-700 mb-3">
+                Sebagai alumni yang sekarang bekerja di operator telekomunikasi, saya bisa konfirmasi bahwa permintaan untuk ahli 5G sangat tinggi. Untuk adik-adik mahasiswa, saya sarankan fokus pada sertifikasi jaringan dan IoT.
+              </p>
+              <div class="text-sm text-gray-500 flex items-center">
+                <i class="far fa-clock mr-1"></i>
+                <span>1 hari yang lalu</span>
+                <button class="ml-4 text-[var(--hmdt-orange)] hover:text-[var(--hmdt-orange-light)]">
+                  <i class="far fa-reply mr-1"></i> Balas
+                </button>
+              </div>
+            </div>
+            
+            <div class="comment-card">
+              <div class="flex items-center mb-4">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&h=100&q=80" alt="User" class="w-10 h-10 rounded-full mr-3">
+                <div>
+                  <h4 class="font-bold">Dito Nugroho</h4>
+                  <p class="text-gray-500 text-sm">Mahasiswa D3TT Angkatan 2025</p>
+                </div>
+              </div>
+              <p class="text-gray-700 mb-3">
+                Terima kasih untuk artikelnya! Bisa direkomendasikan buku atau sumber belajar untuk pemula yang ingin mempelajari dasar-dasar 5G?
+              </p>
+              <div class="text-sm text-gray-500 flex items-center">
+                <i class="far fa-clock mr-1"></i>
+                <span>3 hari yang lalu</span>
+                <button class="ml-4 text-[var(--hmdt-orange)] hover:text-[var(--hmdt-orange-light)]">
+                  <i class="far fa-reply mr-1"></i> Balas
+                </button>
+              </div>
+            </div>
+            
+            <!-- Form Komentar -->
+            <h4 class="text-xl font-bold mt-12 mb-6">Tinggalkan Komentar</h4>
+            <form class="space-y-4">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-gray-700 mb-2 font-medium" for="name">Nama Lengkap</label>
+                  <input type="text" id="name" name="name" required class="w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--hmdt-orange)]">
+                </div>
+                <div>
+                  <label class="block text-gray-700 mb-2 font-medium" for="email">Email</label>
+                  <input type="email" id="email" name="email" required class="w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--hmdt-orange)]">
+                </div>
+              </div>
+              <div>
+                <label class="block text-gray-700 mb-2 font-medium" for="comment">Komentar</label>
+                <textarea id="comment" name="comment" rows="5" required class="w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--hmdt-orange)]"></textarea>
+              </div>
+              <button type="submit" class="btn-primary">
+                Kirim Komentar
+              </button>
+            </form>
+          </div>
+        </div>
+        
+        <!-- Sidebar -->
+        <div>
+          <!-- Widget Artikel Terkait -->
+          <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+            <h3 class="text-xl font-bold mb-6 pb-3 border-b border-gray-200">Artikel Terkait</h3>
+            <div class="space-y-1">
+              <div class="related-article">
+                <a href="#"><img src="img/blog-2-thumb.jpg" alt="Campus Event" class="related-article-img"></a>
+                <div>
+                  <a href="#" class="related-article-title">Sukses Besar! Brown Day 2025 Menyatukan Mahasiswa Teknologi Telekomunikasi</a>
+                  <div class="related-article-date"><i class="fas fa-calendar mr-1"></i> 10 Mei 2025</div>
+                </div>
+              </div>
+              <div class="related-article">
+                <a href="#"><img src="img/blog-3-thumb.jpg" alt="Career Tips" class="related-article-img"></a>
+                <div>
+                  <a href="#" class="related-article-title">5 Skill Wajib untuk Mahasiswa Telekomunikasi di Era Digital</a>
+                  <div class="related-article-date"><i class="fas fa-calendar mr-1"></i> 5 Mei 2025</div>
+                </div>
+              </div>
+              <div class="related-article">
+                <a href="#"><img src="img/blog-4-thumb.jpg" alt="IoT" class="related-article-img"></a>
+                <div>
+                  <a href="#" class="related-article-title">Internet of Things: Masa Depan yang Terhubung dan Dampaknya pada Telekomunikasi</a>
+                  <div class="related-article-date"><i class="fas fa-calendar mr-1"></i> 28 April 2025</div>
+                </div>
+              </div>
+              <div class="related-article">
+                <a href="#"><img src="img/blog-5-thumb.jpg" alt="Workshop" class="related-article-img"></a>
+                <div>
+                  <a href="#" class="related-article-title">Workshop Jaringan 5G: Persiapan Mahasiswa Menyongsong Era Baru Telekomunikasi</a>
+                  <div class="related-article-date"><i class="fas fa-calendar mr-1"></i> 20 April 2025</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Widget Kategori -->
+          <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+            <h3 class="text-xl font-bold mb-6 pb-3 border-b border-gray-200">Kategori</h3>
+            <ul class="space-y-3">
+              <li><a href="#" class="flex justify-between items-center text-gray-700 hover:text-[var(--hmdt-orange)] transition"><span>Teknologi</span> <span class="bg-gray-100 px-2 py-1 rounded text-sm">12</span></a></li>
+              <li><a href="#" class="flex justify-between items-center text-gray-700 hover:text-[var(--hmdt-orange)] transition"><span>Kegiatan Kampus</span> <span class="bg-gray-100 px-2 py-1 rounded text-sm">8</span></a></li>
+              <li><a href="#" class="flex justify-between items-center text-gray-700 hover:text-[var(--hmdt-orange)] transition"><span>Pengembangan Diri</span> <span class="bg-gray-100 px-2 py-1 rounded text-sm">6</span></a></li>
+              <li><a href="#" class="flex justify-between items-center text-gray-700 hover:text-[var(--hmdt-orange)] transition"><span>Karir</span> <span class="bg-gray-100 px-2 py-1 rounded text-sm">5</span></a></li>
+              <li><a href="#" class="flex justify-between items-center text-gray-700 hover:text-[var(--hmdt-orange)] transition"><span>Beasiswa</span> <span class="bg-gray-100 px-2 py-1 rounded text-sm">3</span></a></li>
+              <li><a href="#" class="flex justify-between items-center text-gray-700 hover:text-[var(--hmdt-orange)] transition"><span>Event</span> <span class="bg-gray-100 px-2 py-1 rounded text-sm">7</span></a></li>
+            </ul>
+          </div>
+          
+          <!-- Widget Newsletter -->
+          <div class="bg-[var(--hmdt-orange)] text-white p-6 rounded-xl">
+            <h3 class="text-xl font-bold mb-4">Berlangganan Artikel</h3>
+            <p class="mb-4">Dapatkan update artikel terbaru seputar teknologi telekomunikasi langsung ke email Anda</p>
+            <form class="space-y-3">
+              <input type="text" placeholder="Nama Lengkap" class="w-full px-4 py-3 rounded-lg focus:outline-none">
+              <input type="email" placeholder="Email Anda" class="w-full px-4 py-3 rounded-lg focus:outline-none">
+              <button type="submit" class="btn-primary w-full bg-white text-[var(--hmdt-orange)] hover:bg-gray-100">
+                Berlangganan Sekarang
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="kontak" class="bg-[var(--hmdt-dark)] text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <!-- Logo & Deskripsi -->
+      <div class="flex flex-col gap-4">
+        <div class="flex items-center gap-3">
+          <img src="../img/logo-hmdt.png" alt="Logo HMDT" class="w-16 h-16 object-cover rounded-full shadow border border-[var(--hmdt-orange)]" />
+          <div class="flex flex-col leading-tight">
+            <span class="text-xl font-bold text-[var(--hmdt-orange)]">HMDT</span>
+            <p class="text-sm text-gray-300 -mt-1">Sanggup Mampu Bisa</p>
+          </div>
+        </div>
+        <p class="text-gray-300 text-sm leading-relaxed">
+          Organisasi mahasiswa di bawah naungan Program Studi D3 Teknologi Telekomunikasi, Fakultas Ilmu Terapan, Telkom University.
+        </p>
+        <div class="flex gap-3 mt-2">
+          <a href="https://instagram.com/infohmdt" class="social-icon">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.tiktok.com/@infohmdt_" class="social-icon">
+            <i class="fab fa-tiktok"></i>
+          </a>
+          <a href="http://lin.ee/uQVzvqT" class="social-icon">
+            <i class="fa-brands fa-line"></i>
+          </a>
+          <a href="https://www.youtube.com/@hmdtuniversitastelkom3275" class="social-icon">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Link Cepat -->
+      <div>
+        <h4 class="text-lg font-bold mb-5 text-[var(--hmdt-orange)]">Link Cepat</h4>
+        <ul class="space-y-3">
+          <li><a href="../index.html#home" class="text-gray-300 hover:text-white transition">Beranda</a></li>
+          <li><a href="../index.html#about" class="text-gray-300 hover:text-white transition">Tentang Kami</a></li>
+          <li><a href="../index.html#visi-misi" class="text-gray-300 hover:text-white transition">Visi & Misi</a></li>
+          <li><a href="../index.html#features" class="text-gray-300 hover:text-white transition">Sumber Daya</a></li>
+          <li><a href="../index.html#aspirasi" class="text-gray-300 hover:text-white transition">Form Aspirasi</a></li>
+          <li><a href="../bph.html" class="text-gray-300 hover:text-white transition">Badan Pengurus Harian</a></li>
+          <li><a href="../faq.html" class="text-gray-300 hover:text-white transition">FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- Departemen -->
+      <div>
+        <h4 class="text-lg font-bold mb-5 text-[var(--hmdt-orange)]">Departemen</h4>
+        <ul class="space-y-3">
+          <li><a href="#" class="text-gray-300 hover:text-white transition">PSDM</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-white transition">Eksternal</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-white transition">Komunikasi & Informasi</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-white transition">Riset & Teknologi</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-white transition">Sosial Masyarakat</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-white transition">Olahraga, Seni dan Budaya</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-white transition">Kewirausahaan</a></li>
+        </ul>
+      </div>
+
+      <!-- Kontak -->
+      <div>
+        <h4 class="text-lg font-bold mb-5 text-[var(--hmdt-orange)]">Kontak</h4>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3">
+            <i class="fas fa-map-marker-alt text-[var(--hmdt-orange)] mt-1"></i>
+            <span class="text-gray-300">Sekre FIT, Lantai 1, Gedung Selaru Telkom University, Jl. Telekomunikasi Terusan Buah Batu, Bandung</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fab fa-whatsapp text-[var(--hmdt-orange)] mt-1"></i>
+            <span class="text-gray-300"><a href="whatsapp://send?phone=6282125908508&text=">+6282125908508</a> (Eksternal)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fab fa-whatsapp text-[var(--hmdt-orange)] mt-1"></i>
+            <span class="text-gray-300"><a href="whatsapp://send?phone=6282217324307&text=">+6282217324307</a> (Media Partner)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fas fa-envelope text-[var(--hmdt-orange)] mt-1"></i>
+            <span class="text-gray-300">hmdt.telu@gmail.com</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Garis pemisah -->
+    <div class="border-t border-gray-700 mt-10 mb-6 max-w-7xl mx-auto"></div>
+
+    <!-- Copyright -->
+    <div class="text-center text-sm text-gray-400">
+      HMDT © 2025. Dikembangkan oleh Departemen Ristek dan Kominfo.
+    </div>
+  </footer>
+
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  
+  <script>
+    // Inisialisasi AOS
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
+
+    // Preloader
+    window.addEventListener('load', function() {
+      const preloader = document.getElementById('preloader');
+      setTimeout(() => {
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+          preloader.style.display = 'none';
+        }, 500);
+      }, 800);
+    });
+
+    // Navbar Mobile Toggle
+    const toggleBtn = document.getElementById('toggleMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const navbar = document.getElementById('navbar');
+
+    toggleBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Navbar Hide on Scroll
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 80) {
+        navbar.style.transform = 'translateY(-100%)';
+      } else {
+        navbar.style.transform = 'translateY(0)';
+      }
+
+      lastScrollY = currentScrollY;
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  </script>
+</body>
+</html>

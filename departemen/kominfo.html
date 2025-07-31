@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Departemen Komunikasi & Informasi | HMDT Tel-U</title>
+  <link rel="icon" type="image/x-icon" href="../img/logo-hmdt.png">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#b56d00',
+            secondary: '#d88a1e',
+            dark: '#1e293b',
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --hmdt-orange: #b56d00;
+      --hmdt-orange-light: #d88a1e;
+      --hmdt-dark: #1e293b;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      background-color: #f8fafc;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+    }
+
+    #navbar {
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .section-title {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 2.5rem;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70px;
+      height: 4px;
+      background: var(--hmdt-orange);
+      border-radius: 2px;
+    }
+
+    .btn-primary {
+      background: var(--hmdt-orange);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-block;
+      box-shadow: 0 4px 6px rgba(181, 109, 0, 0.2);
+    }
+
+    .btn-primary:hover {
+      background: var(--hmdt-orange-light);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(181, 109, 0, 0.3);
+    }
+
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: var(--hmdt-orange);
+      color: white;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    .social-icon:hover {
+      background: var(--hmdt-orange-light);
+      transform: translateY(-3px);
+    }
+    
+    .dept-hero {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(30, 41, 59, 0.8) 100%), url('../img/logo-kabinet.jpeg') center/cover;
+    }
+    
+    .dept-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .dept-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+    
+    .member-card {
+      height: 100%;
+      text-align: center;
+      padding: 25px;
+      transition: all 0.3s;
+    }
+    
+    .member-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .member-img {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 15px;
+      border-radius: 50%;
+      border: 4px solid var(--hmdt-orange);
+      overflow: hidden;
+    }
+    
+    .responsibility-item {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      border-left: 4px solid var(--hmdt-orange);
+      transition: all 0.3s;
+    }
+    
+    .responsibility-item:hover {
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      transform: translateY(-3px);
+    }
+    
+    .program-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s;
+    }
+    
+    .program-card:hover {
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+      transform: translateY(-5px);
+    }
+    
+    .program-img {
+      height: 200px;
+      width: 100%;
+      object-fit: cover;
+    }
+    
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 4px;
+      background: var(--hmdt-orange);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -2px;
+    }
+    
+    .timeline-item {
+      position: relative;
+      width: 50%;
+      padding: 20px 30px;
+      box-sizing: border-box;
+    }
+    
+    .timeline-item:nth-child(odd) {
+      left: 0;
+    }
+    
+    .timeline-item:nth-child(even) {
+      left: 50%;
+    }
+    
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: var(--hmdt-orange);
+      border: 4px solid white;
+      top: 30px;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    
+    .timeline-item:nth-child(odd)::after {
+      right: -12px;
+    }
+    
+    .timeline-item:nth-child(even)::after {
+      left: -12px;
+    }
+    
+    .timeline-content {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-content {
+      margin-right: 30px;
+    }
+    
+    .timeline-item:nth-child(even) .timeline-content {
+      margin-left: 30px;
+    }
+    
+    @media (max-width: 768px) {
+      .timeline::after {
+        left: 31px;
+      }
+      
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 0;
+      }
+      
+      .timeline-item:nth-child(even) {
+        left: 0;
+      }
+      
+      .timeline-item::after {
+        left: 21px;
+      }
+      
+      .timeline-item:nth-child(odd) .timeline-content,
+      .timeline-item:nth-child(even) .timeline-content {
+        margin: 0 0 20px 0;
+      }
+    }
+  </style>
+  <!-- AOS Styles -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+<body class="overflow-x-hidden font-sans text-gray-800 bg-gray-50">
+
+  <!-- Preloader -->
+  <div id="preloader" class="fixed inset-0 z-50 flex items-center justify-center bg-white transition-opacity duration-500">
+    <div class="flex flex-col items-center">
+      <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-[var(--hmdt-orange)]"></div>
+      <div class="mt-4 text-[var(--hmdt-orange)] font-semibold">HMDT</div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header id="navbar" class="bg-white/90 backdrop-blur-sm shadow-md border-b border-gray-200 sticky top-0 z-40 transition-transform duration-300 ease-in-out">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex justify-between items-center">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <img src="../img/logo-hmdt.png" alt="Logo HMDT" class="w-12 h-12 rounded-full object-cover border-2 border-[var(--hmdt-orange)]" />
+          <div class="flex flex-col leading-tight">
+            <span class="text-xl font-bold text-[var(--hmdt-orange)]">Himpunan Mahasiswa</span>
+            <p class="text-sm text-gray-600 -mt-1">D3 Teknologi Telekomunikasi</p>
+          </div>
+        </div>
+
+        <!-- Hamburger -->
+        <button id="toggleMenu" class="md:hidden text-[var(--hmdt-orange)] focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+
+        <!-- Menu Desktop -->
+        <nav class="hidden md:flex space-x-7 items-center">
+          <a href="../index.html" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)]">
+            Beranda
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="../index.html#features" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)]">
+            Sumber Daya
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="../bph.html" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)]">
+            BPH
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="#kontak" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)]">
+            Kontak
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="../faq.html" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)]">
+            FAQ
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Menu Mobile -->
+      <div id="mobileMenu" class="transition-all duration-300 ease-in-out md:hidden hidden mt-4 flex flex-col gap-1 bg-white rounded-lg shadow-lg p-4">
+        <a href="../index.html" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Beranda</a>
+        <a href="../index.html#features" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Sumber Daya</a>
+        <a href="../bph.html" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">BPH</a>
+        <a href="#kontak" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Kontak</a>
+        <a href="../faq.html" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">FAQ</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="dept-hero min-h-[70vh] flex items-center text-white">
+    <div class="max-w-7xl mx-auto px-6 py-20 w-full">
+      <div class="grid md:grid-cols-2 items-center gap-12">
+        <div class="text-center md:text-left">
+          <div class="inline-block bg-[var(--hmdt-orange)] text-white px-4 py-1 rounded-full mb-5 text-sm font-semibold">
+            Departemen
+          </div>
+          <h1 data-aos="fade-up" class="text-3xl md:text-5xl font-bold mb-6">
+            Komunikasi & Informasi
+          </h1>
+          <!-- <p data-aos="fade-up" data-aos-delay="100" class="text-lg max-w-xl md:max-w-none">
+            Bertugas untuk memfasilitasi hubungan antara pengurus himpunan dan anggota kema D3TT dan juga menciptakan kader yang unggul untuk melanjutkan tongkat estafet organisasi.
+          </p> -->
+        </div>
+        
+        <div data-aos="fade-left" class="flex justify-center">
+          <div class="dept-card max-w-md">
+            <div class="p-8">
+              <div class="text-center mb-6">
+                <div class="w-20 h-20 mx-auto bg-[var(--hmdt-orange)] rounded-full flex items-center justify-center mb-4">
+                  <i class="fa-solid fa-bullhorn text-white text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-[var(--hmdt-orange)]">Visi Kominfo</h3>
+              </div>
+              <p class="text-gray-700 text-center">
+                "Menyediakan informasi yang kreatif, inovatif, dan relevan dengan kebutuhan terkini mengenai program studi serta isu-isu umum kepada pihak internal dan eksternal."
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pengenalan Departemen -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="section-title text-3xl font-bold">Pengenalan Departemen</h2>
+        <p>
+          (<i>informasi pada situs web ini sedang dalam tahap pengembangan</i>)
+        </p>
+      </div>
+      
+      <!-- <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div data-aos="fade-right">
+          <div class="dept-card p-8">
+            <h3 class="text-2xl font-bold mb-4 text-[var(--hmdt-orange)]">Tentang PSDM</h3>
+            <p class="text-gray-700 mb-4 leading-relaxed">
+              Departemen Pengembangan Sumber Daya Mahasiswa (PSDM) merupakan salah satu pilar penting dalam Himpunan Mahasiswa D3 Teknologi Telekomunikasi. Kami berfokus pada pengembangan potensi mahasiswa di bidang soft skills, kepemimpinan, dan kesiapan karir.
+            </p>
+            <p class="text-gray-700 leading-relaxed">
+              Dengan berbagai program unggulan, kami bertujuan membekali mahasiswa dengan keterampilan yang diperlukan untuk sukses di dunia kerja dan masyarakat. Kami percaya bahwa pengembangan diri adalah investasi jangka panjang untuk kesuksesan karir di bidang telekomunikasi.
+            </p>
+          </div>
+        </div>
+        
+        <div data-aos="fade-left" class="grid grid-cols-2 gap-6">
+          <div class="dept-card p-6 text-center">
+            <div class="w-16 h-16 mx-auto bg-[var(--hmdt-orange)] rounded-full flex items-center justify-center mb-4">
+              <i class="fas fa-rocket text-white text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Misi Kami</h3>
+            <p class="text-gray-600 text-sm">
+              Mengembangkan potensi mahasiswa melalui program pelatihan dan mentoring yang berkelanjutan
+            </p>
+          </div>
+          
+          <div class="dept-card p-6 text-center">
+            <div class="w-16 h-16 mx-auto bg-[var(--hmdt-orange)] rounded-full flex items-center justify-center mb-4">
+              <i class="fas fa-handshake text-white text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Kolaborasi</h3>
+            <p class="text-gray-600 text-sm">
+              Membangun jejaring dengan industri dan alumni untuk pengembangan karir mahasiswa
+            </p>
+          </div>
+          
+          <div class="dept-card p-6 text-center">
+            <div class="w-16 h-16 mx-auto bg-[var(--hmdt-orange)] rounded-full flex items-center justify-center mb-4">
+              <i class="fas fa-chart-line text-white text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Pengembangan</h3>
+            <p class="text-gray-600 text-sm">
+              Menciptakan program yang relevan dengan kebutuhan industri telekomunikasi terkini
+            </p>
+          </div>
+          
+          <div class="dept-card p-6 text-center">
+            <div class="w-16 h-16 mx-auto bg-[var(--hmdt-orange)] rounded-full flex items-center justify-center mb-4">
+              <i class="fas fa-heart text-white text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Dukungan</h3>
+            <p class="text-gray-600 text-sm">
+              Memberikan dukungan dan pendampingan dalam pengembangan diri mahasiswa
+            </p>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </section>
+
+  <!-- Tanggung Jawab -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="section-title text-3xl font-bold">Tanggung Jawab</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Ruang lingkup kerja dan tanggung jawab Departemen Kominfo
+        </p><br>
+        <p>
+          (<i>informasi pada situs web ini sedang dalam tahap pengembangan</i>)
+        </p>
+      </div>
+      
+      <!-- <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div data-aos="fade-right">
+          <div class="responsibility-item">
+            <div class="flex items-start gap-4">
+              <div class="bg-[var(--hmdt-orange)] text-white p-3 rounded-full">
+                <i class="fas fa-user-graduate text-xl"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Pengembangan Kompetensi Mahasiswa</h3>
+                <p class="text-gray-600">
+                  Merancang dan melaksanakan program pengembangan soft skills, kepemimpinan, dan keterampilan profesional untuk mahasiswa D3 Teknologi Telekomunikasi.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="responsibility-item">
+            <div class="flex items-start gap-4">
+              <div class="bg-[var(--hmdt-orange)] text-white p-3 rounded-full">
+                <i class="fas fa-handshake text-xl"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Kemitraan dengan Industri</h3>
+                <p class="text-gray-600">
+                  Membangun dan memelihara hubungan dengan perusahaan di industri telekomunikasi untuk menciptakan peluang magang, kunjungan industri, dan rekrutmen.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="responsibility-item">
+            <div class="flex items-start gap-4">
+              <div class="bg-[var(--hmdt-orange)] text-white p-3 rounded-full">
+                <i class="fas fa-chalkboard-user text-xl"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Program Mentoring</h3>
+                <p class="text-gray-600">
+                  Mengembangkan sistem mentoring yang menghubungkan mahasiswa dengan alumni dan profesional industri untuk bimbingan karir dan pengembangan diri.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div data-aos="fade-left">
+          <div class="responsibility-item">
+            <div class="flex items-start gap-4">
+              <div class="bg-[var(--hmdt-orange)] text-white p-3 rounded-full">
+                <i class="fas fa-briefcase text-xl"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Persiapan Karir</h3>
+                <p class="text-gray-600">
+                  Menyelenggarakan workshop pembuatan CV, simulasi wawancara kerja, dan pelatihan kesiapan kerja untuk meningkatkan kompetitifitas lulusan di dunia kerja.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="responsibility-item">
+            <div class="flex items-start gap-4">
+              <div class="bg-[var(--hmdt-orange)] text-white p-3 rounded-full">
+                <i class="fas fa-network-wired text-xl"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Pengembangan Jejaring Alumni</h3>
+                <p class="text-gray-600">
+                  Membangun dan memelihara database alumni serta menciptakan platform komunikasi antara mahasiswa aktif dengan alumni di dunia industri.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="responsibility-item">
+            <div class="flex items-start gap-4">
+              <div class="bg-[var(--hmdt-orange)] text-white p-3 rounded-full">
+                <i class="fas fa-chart-pie text-xl"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Evaluasi dan Pengembangan Program</h3>
+                <p class="text-gray-600">
+                  Melakukan evaluasi berkala terhadap program-program yang telah dilaksanakan dan mengembangkan inisiatif baru berdasarkan kebutuhan mahasiswa dan perkembangan industri.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </section>
+
+  <!-- Program Kerja -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="section-title text-3xl font-bold">Program Kerja</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Inisiatif dan program unggulan Departemen Kominfo tahun 2025
+        </p><br>
+        <p>
+          (<i>informasi pada situs web ini sedang dalam tahap pengembangan</i>)
+        </p>
+      </div>
+      
+      <!-- Timeline Program Kerja -->
+      <div class="timeline">
+        <!-- Program 1 -->
+        <!-- <div class="timeline-item" data-aos="fade-up">
+          <div class="timeline-content">
+            <div class="program-card">
+              <img src="img/psdm-program1.jpg" alt="Leadership Camp" class="program-img">
+              <div class="p-6">
+                <div class="inline-block bg-[var(--hmdt-orange)] text-white text-sm px-3 py-1 rounded-full mb-3">
+                  Januari - Februari 2025
+                </div>
+                <h3 class="text-xl font-bold mb-2">Leadership Camp</h3>
+                <p class="text-gray-600 mb-4">
+                  Pelatihan kepemimpinan intensif selama 3 hari yang meliputi manajemen tim, komunikasi efektif, dan pemecahan masalah kreatif.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Pelatihan</span>
+                  <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Kepemimpinan</span>
+                  <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Outbound</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        
+        <!-- Program 2 -->
+        <!-- <div class="timeline-item" data-aos="fade-up">
+          <div class="timeline-content">
+            <div class="program-card">
+              <img src="img/psdm-program2.jpg" alt="Career Preparation Workshop" class="program-img">
+              <div class="p-6">
+                <div class="inline-block bg-[var(--hmdt-orange)] text-white text-sm px-3 py-1 rounded-full mb-3">
+                  Maret - April 2025
+                </div>
+                <h3 class="text-xl font-bold mb-2">Career Preparation Series</h3>
+                <p class="text-gray-600 mb-4">
+                  Serangkaian workshop persiapan karir meliputi pembuatan CV profesional, simulasi wawancara, dan strategi mencari kerja di industri telekomunikasi.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Karir</span>
+                  <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Workshop</span>
+                  <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">CV</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        
+        <!-- Program 3 -->
+        <!-- <div class="timeline-item" data-aos="fade-up">
+          <div class="timeline-content">
+            <div class="program-card">
+              <img src="img/psdm-program3.jpg" alt="Industry Visit" class="program-img">
+              <div class="p-6">
+                <div class="inline-block bg-[var(--hmdt-orange)] text-white text-sm px-3 py-1 rounded-full mb-3">
+                  Mei 2025
+                </div>
+                <h3 class="text-xl font-bold mb-2">Industry Visit Program</h3>
+                <p class="text-gray-600 mb-4">
+                  Kunjungan ke perusahaan telekomunikasi terkemuka untuk memberikan pengalaman langsung tentang lingkungan kerja dan tren industri terkini.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Kunjungan</span>
+                  <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Industri</span>
+                  <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Networking</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        
+        <!-- Program 4 -->
+        <!-- <div class="timeline-item" data-aos="fade-up">
+          <div class="timeline-content">
+            <div class="program-card">
+              <img src="img/psdm-program4.jpg" alt="Alumni Mentoring" class="program-img">
+              <div class="p-6">
+                <div class="inline-block bg-[var(--hmdt-orange)] text-white text-sm px-3 py-1 rounded-full mb-3">
+                  Juni - Agustus 2025
+                </div>
+                <h3 class="text-xl font-bold mb-2">Alumni Mentoring Program</h3>
+                <p class="text-gray-600 mb-4">
+                  Program pendampingan yang menghubungkan mahasiswa dengan alumni sukses di industri telekomunikasi untuk bimbingan karir dan pengembangan diri.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Mentoring</span>
+                  <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Alumni</span>
+                  <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Karir</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        
+        <!-- Program 5 -->
+        <!-- <div class="timeline-item" data-aos="fade-up">
+          <div class="timeline-content">
+            <div class="program-card">
+              <img src="img/psdm-program5.jpg" alt="Soft Skills Bootcamp" class="program-img">
+              <div class="p-6">
+                <div class="inline-block bg-[var(--hmdt-orange)] text-white text-sm px-3 py-1 rounded-full mb-3">
+                  September - Oktober 2025
+                </div>
+                <h3 class="text-xl font-bold mb-2">Soft Skills Bootcamp</h3>
+                <p class="text-gray-600 mb-4">
+                  Pelatihan intensif selama 2 minggu untuk mengembangkan keterampilan komunikasi, presentasi, manajemen waktu, dan kerja tim.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Pelatihan</span>
+                  <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Soft Skills</span>
+                  <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Pengembangan</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-16 bg-[var(--hmdt-orange)]">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <h2 data-aos="fade-up" class="text-2xl md:text-3xl font-bold text-white mb-6">
+        Tertarik Bergabung dengan Departemen Komunikasi & Informasi?
+      </h2>
+      <p data-aos="fade-up" data-aos-delay="100" class="text-xl text-white/90 max-w-2xl mx-auto mb-8">
+        Dapatkan pengalaman berharga dalam mengembangkan potensi diri dan rekan mahasiswa lainnya
+      </p>
+      <div data-aos="fade-up" data-aos-delay="200" class="flex flex-wrap justify-center gap-4">
+        <a href="https://instagram.com/infohmdt" class="btn-primary bg-white text-[var(--hmdt-orange)] hover:bg-gray-100">
+          Daftar Sekarang
+        </a>
+        <a href="../faq.html" class="bg-transparent border-2 border-white text-white px-6 py-2 rounded-full font-medium hover:bg-white/10 transition">
+          Pelajari Syarat Pendaftaran
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="kontak" class="bg-[var(--hmdt-dark)] text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <!-- Logo & Deskripsi -->
+      <div class="flex flex-col gap-4">
+        <div class="flex items-center gap-3">
+          <img src="../img/logo-hmdt.png" alt="Logo HMDT" class="w-16 h-16 object-cover rounded-full shadow border border-[var(--hmdt-orange)]" />
+          <div class="flex flex-col leading-tight">
+            <span class="text-xl font-bold text-[var(--hmdt-orange)]">HMDT</span>
+            <p class="text-sm text-gray-300 -mt-1">Sanggup Mampu Bisa</p>
+          </div>
+        </div>
+        <p class="text-gray-300 text-sm leading-relaxed">
+          Organisasi mahasiswa di bawah naungan Program Studi D3 Teknologi Telekomunikasi, Fakultas Ilmu Terapan, Telkom University.
+        </p>
+        <div class="flex gap-3 mt-2">
+          <a href="https://instagram.com/infohmdt" class="social-icon">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.tiktok.com/@infohmdt_" class="social-icon">
+            <i class="fab fa-tiktok"></i>
+          </a>
+          <a href="http://lin.ee/uQVzvqT" class="social-icon">
+            <i class="fa-brands fa-line"></i>
+          </a>
+          <a href="https://www.youtube.com/@hmdtuniversitastelkom3275" class="social-icon">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Link Cepat -->
+      <div>
+        <h4 class="text-lg font-bold mb-5 text-[var(--hmdt-orange)]">Link Cepat</h4>
+        <ul class="space-y-3">
+          <li><a href="../index.html#home" class="text-gray-300 hover:text-white transition">Beranda</a></li>
+          <li><a href="../index.html#about" class="text-gray-300 hover:text-white transition">Tentang Kami</a></li>
+          <li><a href="../index.html#visi-misi" class="text-gray-300 hover:text-white transition">Visi & Misi</a></li>
+          <li><a href="../index.html#features" class="text-gray-300 hover:text-white transition">Sumber Daya</a></li>
+          <li><a href="../index.html#aspirasi" class="text-gray-300 hover:text-white transition">Form Aspirasi</a></li>
+          <li><a href="../bph.html" class="text-gray-300 hover:text-white transition">Badan Pengurus Harian</a></li>
+          <li><a href="../faq.html" class="text-gray-300 hover:text-white transition">FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- Departemen -->
+      <div>
+        <h4 class="text-lg font-bold mb-5 text-[var(--hmdt-orange)]">Departemen</h4>
+        <ul class="space-y-3">
+          <li><a href="psdm.html" class="text-gray-300 hover:text-white transition">PSDM</a></li>
+          <li><a href="eksternal.html" class="text-gray-300 hover:text-white transition">Eksternal</a></li>
+          <li><a href="kominfo.html" class="text-gray-300 hover:text-white transition">Komunikasi & Informasi</a></li>
+          <li><a href="ristek.html" class="text-gray-300 hover:text-white transition">Riset & Teknologi</a></li>
+          <li><a href="sosmas.html" class="text-gray-300 hover:text-white transition">Sosial Masyarakat</a></li>
+          <li><a href="orsenbud.html" class="text-gray-300 hover:text-white transition">Olahraga, Seni dan Budaya</a></li>
+          <li><a href="kewirausahaan.html" class="text-gray-300 hover:text-white transition">Kewirausahaan</a></li>
+        </ul>
+      </div>
+
+      <!-- Kontak -->
+      <div>
+        <h4 class="text-lg font-bold mb-5 text-[var(--hmdt-orange)]">Kontak</h4>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3">
+            <i class="fas fa-map-marker-alt text-[var(--hmdt-orange)] mt-1"></i>
+            <span class="text-gray-300">Sekre FIT, Lantai 1, Gedung Selaru Telkom University, Jl. Telekomunikasi Terusan Buah Batu, Bandung</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fab fa-whatsapp text-[var(--hmdt-orange)] mt-1"></i>
+            <span class="text-gray-300"><a href="whatsapp://send?phone=6282125908508&text=">+6282125908508</a> (Eksternal)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fab fa-whatsapp text-[var(--hmdt-orange)] mt-1"></i>
+            <span class="text-gray-300"><a href="whatsapp://send?phone=6282217324307&text=">+6282217324307</a> (Media Partner)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fas fa-envelope text-[var(--hmdt-orange)] mt-1"></i>
+            <span class="text-gray-300">hmdt.telu@gmail.com</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Garis pemisah -->
+    <div class="border-t border-gray-700 mt-10 mb-6 max-w-7xl mx-auto"></div>
+
+    <!-- Copyright -->
+    <div class="text-center text-sm text-gray-400">
+      HMDT © 2025. Dikembangkan oleh Departemen Ristek dan Kominfo.
+    </div>
+  </footer>
+
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  
+  <script>
+    // Inisialisasi AOS
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
+
+    // Preloader
+    window.addEventListener('load', function() {
+      const preloader = document.getElementById('preloader');
+      setTimeout(() => {
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+          preloader.style.display = 'none';
+        }, 500);
+      }, 800);
+    });
+
+    // Navbar Mobile Toggle
+    const toggleBtn = document.getElementById('toggleMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const navbar = document.getElementById('navbar');
+
+    toggleBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Navbar Hide on Scroll
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 80) {
+        navbar.style.transform = 'translateY(-100%)';
+      } else {
+        navbar.style.transform = 'translateY(0)';
+      }
+
+      lastScrollY = currentScrollY;
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  </script>
+</body>
+</html>

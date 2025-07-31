@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ | HMDT Tel-U</title>
+  <link rel="icon" type="image/x-icon" href="img/logo-hmdt.png">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#b56d00',
+            secondary: '#d88a1e',
+            dark: '#1e293b',
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --hmdt-orange: #b56d00;
+      --hmdt-orange-light: #d88a1e;
+      --hmdt-dark: #1e293b;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      background-color: #f8fafc;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+    }
+
+    #navbar {
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .section-title {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 2.5rem;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70px;
+      height: 4px;
+      background: var(--hmdt-orange);
+      border-radius: 2px;
+    }
+
+    .btn-primary {
+      background: var(--hmdt-orange);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-block;
+      box-shadow: 0 4px 6px rgba(181, 109, 0, 0.2);
+    }
+
+    .btn-primary:hover {
+      background: var(--hmdt-orange-light);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(181, 109, 0, 0.3);
+    }
+
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: var(--hmdt-orange);
+      color: white;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    .social-icon:hover {
+      background: var(--hmdt-orange-light);
+      transform: translateY(-3px);
+    }
+    
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .faq-item {
+      background: white;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .faq-item:hover {
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
+    }
+    
+    .faq-question {
+      padding: 20px 25px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fff;
+      border: none;
+      width: 100%;
+      text-align: left;
+      transition: background 0.3s;
+    }
+    
+    .faq-question:hover {
+      background: #f9fafb;
+    }
+    
+    .faq-question::after {
+      content: '\f107';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      transition: transform 0.3s ease;
+    }
+    
+    .faq-question.active::after {
+      transform: rotate(180deg);
+    }
+    
+    .faq-answer {
+      padding: 0 25px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      background: #f9fafb;
+      border-top: 1px solid #e2e8f0;
+    }
+    
+    .faq-question.active + .faq-answer {
+      padding: 20px 25px;
+      max-height: 1000px;
+    }
+    
+    .contact-card {
+      background: linear-gradient(135deg, #b56d00 0%, #d88a1e 100%);
+      border-radius: 16px;
+      padding: 40px;
+      color: white;
+      box-shadow: 0 10px 30px rgba(181, 109, 0, 0.2);
+    }
+    
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 14px 20px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      margin-bottom: 15px;
+      transition: all 0.3s;
+    }
+    
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: white;
+      background: rgba(255, 255, 255, 0.15);
+    }
+    
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .category-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      font-size: 0.8rem;
+      padding: 0.25rem 0.8rem;
+      border-radius: 50px;
+      margin-right: 10px;
+      margin-bottom: 15px;
+    }
+    
+    .feature-card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    }
+    
+    .feature-icon {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 20px;
+      background: rgba(181, 109, 0, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .feature-icon i {
+      font-size: 30px;
+      color: var(--hmdt-orange);
+    }
+  </style>
+  <!-- AOS Styles -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+<body class="overflow-x-hidden font-sans text-gray-800 bg-gray-50">
+
+  <!-- Preloader -->
+  <div id="preloader" class="fixed inset-0 z-50 flex items-center justify-center bg-white transition-opacity duration-500">
+    <div class="flex flex-col items-center">
+      <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-[var(--hmdt-orange)]"></div>
+      <div class="mt-4 text-[var(--hmdt-orange)] font-semibold">HMDT</div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header id="navbar" class="bg-white/90 backdrop-blur-sm shadow-md border-b border-gray-200 sticky top-0 z-40 transition-transform duration-300 ease-in-out">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex justify-between items-center">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <img src="img/logo-hmdt.png" alt="Logo HMDT" class="w-12 h-12 rounded-full object-cover border-2 border-[var(--hmdt-orange)]" />
+          <div class="flex flex-col leading-tight">
+            <span class="text-xl font-bold text-[var(--hmdt-orange)]">Himpunan Mahasiswa</span>
+            <p class="text-sm text-gray-600 -mt-1">D3 Teknologi Telekomunikasi</p>
+          </div>
+        </div>
+
+        <!-- Hamburger -->
+        <button id="toggleMenu" class="md:hidden text-[var(--hmdt-orange)] focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+
+        <!-- Menu Desktop -->
+        <nav class="hidden md:flex space-x-7 items-center">
+          <a href="index.html" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)]">
+            Beranda
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="index.html#features" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)]">
+            Sumber Daya
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="#kontak" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)]">
+            Kontak
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="faq.html" class="font-semibold relative group transition duration-200 text-[var(--hmdt-orange)] ">
+            FAQ
+            <span class="absolute left-0 -bottom-1 w-full h-[2px] bg-[var(--hmdt-orange)]"></span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Menu Mobile -->
+      <div id="mobileMenu" class="transition-all duration-300 ease-in-out md:hidden hidden mt-4 flex flex-col gap-1 bg-white rounded-lg shadow-lg p-4">
+        <a href="index.html" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Beranda</a>
+        <a href="index.html#features" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Sumber Daya</a>
+        <a href="#kontak" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Kontak</a>
+        <a href="faq.html" class="block py-3 px-4 rounded bg-gray-100 text-[var(--hmdt-orange)] transition font-medium">FAQ</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section untuk FAQ -->
+  <section class="relative py-20 bg-cover bg-center" style="background-image: url('img/backgrounds/faq-bg.jpg');">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 text-center">
+      <h1 data-aos="fade-up" class="text-3xl md:text-4xl font-bold text-white mb-6">
+        Pertanyaan yang Sering Diajukan (FAQ)
+      </h1>
+      <p data-aos="fade-up" data-aos-delay="100" class="text-xl text-gray-200 max-w-3xl mx-auto">
+        Temukan jawaban atas pertanyaan umum seputar HMDT, kegiatan, keanggotaan, dan program-program kami
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ Content -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="section-title text-3xl font-bold">Pertanyaan Umum</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Berikut adalah pertanyaan yang paling sering diajukan oleh mahasiswa seputar Himpunan Mahasiswa D3 Teknologi Telekomunikasi
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Kategori Keanggotaan -->
+        <div data-aos="fade-up">
+          <div class="bg-[var(--hmdt-orange)] text-white rounded-t-2xl p-5 text-center">
+            <i class="fas fa-users text-3xl mb-3"></i>
+            <h3 class="text-xl font-bold">Keanggotaan</h3>
+          </div>
+          <div class="faq-container">
+            <div class="faq-item">
+              <button class="faq-question">
+                Bagaimana cara menjadi anggota HMDT?
+              </button>
+              <div class="faq-answer">
+                <p>Semua mahasiswa D3 Teknologi Telekomunikasi otomatis menjadi anggota HMDT jika lulus dalam kegiatan NEAX. Untuk menjadi pengurus, Anda dapat mengikuti proses rekrutmen yang diadakan setiap tahun.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <button class="faq-question">
+                Apa manfaat menjadi anggota HMDT?
+              </button>
+              <div class="faq-answer">
+                <p>Sebagai anggota HMDT, Anda berhak untuk:</p>
+                <ul class="list-disc pl-5 space-y-2 mt-2">
+                  <li>Mengikuti semua kegiatan dan program HMDT</li>
+                  <li>Mengajukan aspirasi melalui saluran resmi</li>
+                  <li>Mendapatkan akses ke sumber daya dan pelatihan</li>
+                  <li>Berpartisipasi dalam forum diskusi anggota</li>
+                  <li>Mendapatkan sertifikat keikutsertaan kegiatan</li>
+                  <li>Mempercantik CV dan portofolio</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <button class="faq-question">
+                Apakah ada biaya keanggotaan?
+              </button>
+              <div class="faq-answer">
+                <p>Tidak ada biaya keanggotaan untuk mahasiswa aktif D3 Teknologi Telekomunikasi. Namun, untuk kegiatan tertentu mungkin ada biaya partisipasi yang sifatnya sukarela.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Kategori Kegiatan -->
+        <div data-aos="fade-up" data-aos-delay="100">
+          <div class="bg-[var(--hmdt-orange)] text-white rounded-t-2xl p-5 text-center">
+            <i class="fas fa-calendar-alt text-3xl mb-3"></i>
+            <h3 class="text-xl font-bold">Kegiatan</h3>
+          </div>
+          <div class="faq-container">
+            <div class="faq-item">
+              <button class="faq-question">
+                Apa saja kegiatan rutin HMDT?
+              </button>
+              <div class="faq-answer">
+                <p>HMDT menyelenggarakan berbagai kegiatan rutin, antara lain:</p>
+                <ul class="list-disc pl-5 space-y-2 mt-2">
+                  <li>Brown Day</li>
+                  <li>Workshop dan pelatihan teknis</li>
+                  <li>Seminar dan talkshow karier</li>
+                  <li>Kegiatan sosial dan pengabdian masyarakat</li>
+                  <li>Pertemuan rutin anggota</li>
+                  <li>Kegiatan olahraga dan rekreasi</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <button class="faq-question">
+                Bagaimana cara mengikuti kegiatan HMDT?
+              </button>
+              <div class="faq-answer">
+                <p>Untuk mengikuti kegiatan HMDT:</p>
+                <ol class="list-decimal pl-5 space-y-2 mt-2">
+                  <li>Pantau pengumuman melalui grup WhatsApp angkatan atau media sosial HMDT</li>
+                  <li>Daftar melalui link pendaftaran yang disediakan</li>
+                  <li>Ikuti instruksi lebih lanjut dari panitia kegiatan</li>
+                  <li>Hadir sesuai jadwal yang ditentukan</li>
+                </ol>
+                <p class="mt-3">Beberapa kegiatan mungkin memerlukan biaya pendaftaran yang terjangkau.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <button class="faq-question">
+                Apakah kegiatan HMDT memberikan sertifikat?
+              </button>
+              <div class="faq-answer">
+                <p>Ya, sebagian besar kegiatan HMDT memberikan sertifikat keikutsertaan, terutama untuk kepanitiaan, workshop, seminar, dan pelatihan. Sertifikat akan dikirimkan melalui email setelah kegiatan selesai.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Kategori Lainnya -->
+        <div data-aos="fade-up" data-aos-delay="200">
+          <div class="bg-[var(--hmdt-orange)] text-white rounded-t-2xl p-5 text-center">
+            <i class="fas fa-question-circle text-3xl mb-3"></i>
+            <h3 class="text-xl font-bold">Lainnya</h3>
+          </div>
+          <div class="faq-container">
+            <div class="faq-item">
+              <button class="faq-question">
+                Bagaimana cara mengajukan proposal kegiatan?
+              </button>
+              <div class="faq-answer">
+                <p>Untuk mengajukan proposal kegiatan:</p>
+                <ol class="list-decimal pl-5 space-y-2 mt-2">
+                  <li>Download template proposal kegiatan dari website HMDT</li>
+                  <li>Isi proposal sesuai dengan panduan yang tersedia</li>
+                  <li>Serahkan proposal ke sekretariat HMDT minimal 1 bulan sebelum pelaksanaan</li>
+                  <li>Proposal akan direview oleh pengurus dalam waktu maksimal 2 minggu</li>
+                  <li>Setelah disetujui oleh Sekretariat HMDT, pengajuan akan diteruskan kepada Pembina. Selanjutnya, dokumen tersebut akan disampaikan kepada Program Studi. Jika diperlukan, pengajuan dapat diajukan kepada pihak Kemahasiswaan atau Dekan.</li>
+                </ol>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <button class="faq-question">
+                Bagaimana jika saya ingin berpartisipasi sebagai relawan?
+              </button>
+              <div class="faq-answer">
+                <p>Kami selalu membuka kesempatan untuk menjadi relawan kegiatan. Cara menjadi relawan:</p>
+                <ul class="list-disc pl-5 space-y-2 mt-2">
+                  <li>Pantau pengumuman open recruitment relawan di media sosial HMDT</li>
+                  <li>Isi formulir pendaftaran relawan yang disediakan</li>
+                  <li>Ikuti proses seleksi jika diperlukan</li>
+                  <li>Hadir dalam briefing relawan sebelum kegiatan</li>
+                </ul>
+                <p class="mt-3">Relawan akan mendapatkan sertifikat dan pengalaman berharga.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- FAQ Tambahan -->
+      <div class="max-w-4xl mx-auto mt-20">
+        <div class="text-center mb-12">
+          <h2 class="section-title text-3xl font-bold">Pertanyaan Lainnya</h2>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Kolom 1 -->
+          <div>
+            <div class="faq-item">
+              <button class="faq-question">
+                Apakah HMDT menyediakan beasiswa?
+              </button>
+              <div class="faq-answer">
+                <p>HMDT tidak secara langsung menyediakan beasiswa, namun kami:</p>
+                <ul class="list-disc pl-5 space-y-2 mt-2">
+                  <li>Menyebarkan informasi beasiswa dari berbagai sumber</li>
+                  <li>Memberikan pendampingan dalam pengajuan beasiswa</li>
+                  <li>Mengadakan workshop penulisan esai beasiswa</li>
+                  <li>Memfasilitasi konsultasi dengan penerima beasiswa sebelumnya</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <button class="faq-question">
+                Bagaimana cara mendapatkan informasi terbaru dari HMDT?
+              </button>
+              <div class="faq-answer">
+                <p>Anda bisa mendapatkan informasi terbaru melalui:</p>
+                <ul class="list-disc pl-5 space-y-2 mt-2">
+                  <li>Grup WhatsApp angkatan</li>
+                  <li>Instagram: @infohmdt</li>
+                  <li>Website resmi HMDT: https://tel-u.ac.id/infohmdt</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Kolom 2 -->
+          <div>
+            <div class="faq-item">
+              <button class="faq-question">
+                Apakah HMDT membantu dalam magang dan karier?
+              </button>
+              <div class="faq-answer">
+                <p>Ya, HMDT menyediakan berbagai program pendukung magang dan karier:</p>
+                <ul class="list-disc pl-5 space-y-2 mt-2">
+                  <li>Workshop pembuatan CV dan portofolio</li>
+                  <li>Simulasi wawancara kerja</li>
+                  <li>Sharing session dengan alumni</li>
+                  <li>Job fair khusus telekomunikasi</li>
+                  <li>Informasi lowongan magang dan kerja</li>
+                  <li>Kemitraan dengan perusahaan telekomunikasi</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <button class="faq-question">
+                Bagaimana cara mengajukan saran atau kritik?
+              </button>
+              <div class="faq-answer">
+                <p>Anda dapat mengajukan saran atau kritik melalui:</p>
+                <ul class="list-disc pl-5 space-y-2 mt-2">
+                  <li>Formulir aspirasi online di website HMDT</li>
+                  <li>Sesi khusus dalam pertemuan rutin anggota</li>
+                  <li>Melalui perwakilan angkatan di HMDT</li>
+                </ul>
+                <p class="mt-3">Semua saran dan kritik akan ditindaklanjuti dalam waktu maksimal 7 hari kerja.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Fitur Pendukung -->
+      <div class="mt-20">
+        <div class="text-center mb-12">
+          <h2 class="section-title text-3xl font-bold">Butuh Bantuan Lebih Lanjut?</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Kami siap membantu Anda melalui berbagai saluran dukungan
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div data-aos="zoom-in" class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-headset"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Live Chat</h3>
+            <p class="text-gray-600 mb-4">Chat langsung dengan tim dukungan kami melalui WhatsApp</p>
+            <a href="whatsapp://send?phone=6282125908508&text=" class="btn-primary">Mulai Chat</a>
+          </div>
+          
+          <div data-aos="zoom-in" data-aos-delay="100" class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Email Support</h3>
+            <p class="text-gray-600 mb-4">Kirim pertanyaan Anda melalui email dan dapatkan balasan dalam 24 jam</p>
+            <a href="mailto:hmdt.telu@gmail.com" class="btn-primary">Kirim Email</a>
+          </div>
+          
+          <div data-aos="zoom-in" data-aos-delay="200" class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-comments"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Forum Diskusi</h3>
+            <p class="text-gray-600 mb-4">Bergabung dalam forum diskusi off-topic untuk berbagi informasi</p>
+            <a href="#" class="btn-primary">Akses Forum</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="kontak" class="bg-[var(--hmdt-dark)] text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <!-- Logo & Deskripsi -->
+      <div class="flex flex-col gap-4">
+        <div class="flex items-center gap-3">
+          <img src="img/logo-hmdt.png" alt="Logo HMDT" class="w-16 h-16 object-cover rounded-full shadow border border-[var(--hmdt-orange)]" />
+          <div class="flex flex-col leading-tight">
+            <span class="text-xl font-bold text-[var(--hmdt-orange)]">HMDT</span>
+            <p class="text-sm text-gray-300 -mt-1">Sanggup Mampu Bisa</p>
+          </div>
+        </div>
+        <p class="text-gray-300 text-sm leading-relaxed">
+          Organisasi mahasiswa di bawah naungan Program Studi D3 Teknologi Telekomunikasi, Fakultas Ilmu Terapan, Telkom University.
+        </p>
+        <div class="flex gap-3 mt-2">
+          <a href="https://instagram.com/infohmdt" class="social-icon">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.tiktok.com/@infohmdt_" class="social-icon">
+            <i class="fab fa-tiktok"></i>
+          </a>
+          <a href="http://lin.ee/uQVzvqT" class="social-icon">
+            <i class="fa-brands fa-line"></i>
+          </a>
+          <a href="https://www.youtube.com/@hmdtuniversitastelkom3275" class="social-icon">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Link Cepat -->
+      <div>
+        <h4 class="text-lg font-bold mb-5 text-[var(--hmdt-orange)]">Link Cepat</h4>
+        <ul class="space-y-3">
+          <li><a href="index.html#home" class="text-gray-300 hover:text-white transition">Beranda</a></li>
+          <li><a href="index.html#about" class="text-gray-300 hover:text-white transition">Tentang Kami</a></li>
+          <li><a href="index.html#visi-misi" class="text-gray-300 hover:text-white transition">Visi & Misi</a></li>
+          <li><a href="index.html#features" class="text-gray-300 hover:text-white transition">Sumber Daya</a></li>
+          <li><a href="index.html#aspirasi" class="text-gray-300 hover:text-white transition">Form Aspirasi</a></li>
+          <li><a href="bph.html" class="text-gray-300 hover:text-white transition">Badan Pengurus Harian</a></li>
+          <li><a href="faq.html" class="text-gray-300 hover:text-white transition">FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- Departemen -->
+      <div>
+        <h4 class="text-lg font-bold mb-5 text-[var(--hmdt-orange)]">Departemen</h4>
+        <ul class="space-y-3">
+          <li><a href="departemen/psdm.html" class="text-gray-300 hover:text-white transition">PSDM</a></li>
+          <li><a href="departemen/eksternal.html" class="text-gray-300 hover:text-white transition">Eksternal</a></li>
+          <li><a href="departemen/kominfo.html" class="text-gray-300 hover:text-white transition">Komunikasi & Informasi</a></li>
+          <li><a href="departemen/ristek.html" class="text-gray-300 hover:text-white transition">Riset & Teknologi</a></li>
+          <li><a href="departemen/sosmas.html" class="text-gray-300 hover:text-white transition">Sosial Masyarakat</a></li>
+          <li><a href="departemen/orsenbud.html" class="text-gray-300 hover:text-white transition">Olahraga, Seni dan Budaya</a></li>
+          <li><a href="departemen/kewirausahaan.html" class="text-gray-300 hover:text-white transition">Kewirausahaan</a></li>
+        </ul>
+      </div>
+
+      <!-- Kontak -->
+      <div>
+        <h4 class="text-lg font-bold mb-5 text-[var(--hmdt-orange)]">Kontak</h4>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3">
+            <i class="fas fa-map-marker-alt text-[var(--hmdt-orange)] mt-1"></i>
+            <span class="text-gray-300">Sekre FIT, Lantai 1, Gedung Selaru Telkom University, Jl. Telekomunikasi Terusan Buah Batu, Bandung</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fab fa-whatsapp text-[var(--hmdt-orange)] mt-1"></i>
+            <span class="text-gray-300"><a href="whatsapp://send?phone=6282125908508&text=">+6282125908508</a> (Eksternal)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fab fa-whatsapp text-[var(--hmdt-orange)] mt-1"></i>
+            <span class="text-gray-300"><a href="whatsapp://send?phone=6282217324307&text=">+6282217324307</a> (Media Partner)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fas fa-envelope text-[var(--hmdt-orange)] mt-1"></i>
+            <span class="text-gray-300">hmdt.telu@gmail.com</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Garis pemisah -->
+    <div class="border-t border-gray-700 mt-10 mb-6 max-w-7xl mx-auto"></div>
+
+    <!-- Copyright -->
+    <div class="text-center text-sm text-gray-400">
+      HMDT © 2025. Dikembangkan oleh Departemen Ristek dan Kominfo.
+    </div>
+  </footer>
+
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  
+  <script>
+    // Inisialisasi AOS
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
+
+    // Preloader
+    window.addEventListener('load', function() {
+      const preloader = document.getElementById('preloader');
+      setTimeout(() => {
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+          preloader.style.display = 'none';
+        }, 500);
+      }, 800);
+    });
+
+    // Navbar Mobile Toggle
+    const toggleBtn = document.getElementById('toggleMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const navbar = document.getElementById('navbar');
+
+    toggleBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Navbar Hide on Scroll
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 80) {
+        navbar.style.transform = 'translateY(-100%)';
+      } else {
+        navbar.style.transform = 'translateY(0)';
+      }
+
+      lastScrollY = currentScrollY;
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // FAQ Accordion Functionality
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        // Toggle active class on the clicked question
+        question.classList.toggle('active');
+        
+        // Close other open answers
+        document.querySelectorAll('.faq-question').forEach(otherQuestion => {
+          if (otherQuestion !== question) {
+            otherQuestion.classList.remove('active');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
