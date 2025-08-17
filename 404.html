@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Halaman Tidak Ditemukan | HMDT Tel-U</title>
+  <link rel="icon" type="image/x-icon" href="img/logo-hmdt.png">
+  <link rel="stylesheet" href="style.css">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#b56d00',
+            secondary: '#d88a1e',
+            dark: '#1e293b',
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- AOS Styles -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    :root {
+      --hmdt-orange: #b56d00;
+      --hmdt-orange-light: #d88a1e;
+      --hmdt-dark: #1e293b;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      background-color: #f8fafc;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+    }
+
+    #navbar {
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .btn-primary {
+      background: var(--hmdt-orange);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-block;
+      box-shadow: 0 4px 6px rgba(181, 109, 0, 0.2);
+    }
+
+    .btn-primary:hover {
+      background: var(--hmdt-orange-light);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(181, 109, 0, 0.3);
+    }
+
+    .not-found-section {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      background: linear-gradient(135deg, #fef3c7 0%, #fffbeb 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .not-found-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d88a1e' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.3;
+      z-index: 0;
+    }
+    
+    .not-found-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      max-width: 800px;
+    }
+    
+    .error-code {
+      font-size: 10rem;
+      font-weight: 800;
+      color: var(--hmdt-orange);
+      margin-bottom: 1rem;
+      line-height: 1;
+      text-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+    }
+    
+    .error-animation {
+      display: inline-block;
+      position: relative;
+      margin: 0 auto 2rem;
+    }
+    
+    .error-animation::before,
+    .error-animation::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 4px solid var(--hmdt-orange);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    
+    .error-animation::after {
+      animation-delay: 1s;
+    }
+    
+    @keyframes pulse {
+      0% {
+        transform: scale(0.8);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1.5);
+        opacity: 0;
+      }
+    }
+    
+    .search-box {
+      max-width: 500px;
+      margin: 2rem auto;
+      position: relative;
+    }
+    
+    .search-input {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 50px;
+      font-size: 1rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+    }
+    
+    .search-input:focus {
+      outline: none;
+      border-color: var(--hmdt-orange);
+      box-shadow: 0 0 0 4px rgba(181, 109, 0, 0.15);
+    }
+    
+    .search-button {
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      background: var(--hmdt-orange);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .search-button:hover {
+      background: var(--hmdt-orange-light);
+      transform: translateY(-2px);
+    }
+    
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .link-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+    
+    .link-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      border-left: 4px solid var(--hmdt-orange);
+    }
+    
+    .link-card i {
+      font-size: 2rem;
+      color: var(--hmdt-orange);
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body class="overflow-x-hidden font-sans text-gray-800 bg-gray-50">
+
+  <!-- Preloader -->
+  <div id="preloader" class="fixed inset-0 z-50 flex items-center justify-center bg-white transition-opacity duration-500">
+    <div class="flex flex-col items-center">
+      <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-[var(--hmdt-orange)]"></div>
+      <div class="mt-4 text-[var(--hmdt-orange)] font-semibold">HMDT</div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header id="navbar" class="bg-white/90 backdrop-blur-sm shadow-md border-b border-gray-200 sticky top-0 z-40 transition-transform duration-300 ease-in-out">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex justify-between items-center">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <img src="img/logo-hmdt.png" alt="Logo HMDT" class="w-12 h-12 rounded-full object-cover border-2 border-[var(--hmdt-orange)]" />
+          <div class="flex flex-col leading-tight">
+            <span class="text-xl font-bold text-[var(--hmdt-orange)]">Himpunan Mahasiswa</span>
+            <p class="text-sm text-gray-600 -mt-1">D3 Teknologi Telekomunikasi</p>
+          </div>
+        </div>
+    </div>
+  </header>
+
+  <!-- 404 Content -->
+  <section class="not-found-section">
+    <div class="not-found-pattern"></div>
+    <div class="not-found-content">
+      <div class="error-animation" data-aos="zoom-in">
+        <div class="error-code">404</div>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold mb-4" data-aos="fade-up">Halaman Tidak Ditemukan</h1>
+      <p class="text-xl text-gray-600 mb-6 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+        Maaf, halaman yang Anda cari tidak ditemukan atau telah dipindahkan.
+      </p>
+      <p class="text-gray-600 mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="150">
+        Anda mungkin salah mengetik URL atau halaman telah dihapus. Silakan periksa kembali.
+      </p>
+      
+      <div data-aos="fade-up" data-aos-delay="250">
+        <a href="https://infohmdt.github.io" class="btn-primary px-8 py-4 text-lg font-bold inline-flex items-center">
+          <i class="fas fa-home mr-2"></i>
+          Kembali ke Beranda
+        </a>
+      </div>
+      
+      <div class="links-grid">
+        
+        <div class="link-card" data-aos="fade-up" data-aos-delay="300">
+          <i class="fas fa-comment-alt"></i>
+          <h3 class="font-bold text-lg mb-2">Kirim Aspirasi</h3>
+          <p class="text-gray-600 mb-3">Sampaikan pendapat Anda</p>
+          <a href="https://infohmdt.github.io/index.html#aspirasi" class="text-[var(--hmdt-orange)] font-medium hover:underline">Kirim &rarr;</a>
+        </div>
+
+        <div class="link-card" data-aos="fade-up" data-aos-delay="350">
+          <i class="fas fa-store"></i>
+          <h3 class="font-bold text-lg mb-2">HMDT Store</h3>
+          <p class="text-gray-600 mb-3">Produk dan merchandise</p>
+          <a href="https://infohmdt.github.io/store.html" class="text-[var(--hmdt-orange)] font-medium hover:underline">Kunjungi &rarr;</a>
+        </div>
+        
+        <div class="link-card" data-aos="fade-up" data-aos-delay="400">
+          <i class="fas fa-question-circle"></i>
+          <h3 class="font-bold text-lg mb-2">FAQ</h3>
+          <p class="text-gray-600 mb-3">Pertanyaan umum</p>
+          <a href="faq.html" class="text-[var(--hmdt-orange)] font-medium hover:underline">Lihat FAQ &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="kontak" class="bg-[var(--hmdt-dark)] text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <!-- Logo & Deskripsi -->
+      <div class="flex flex-col gap-4">
+        <div class="flex items-center gap-3">
+          <img src="img/logo-hmdt.png" alt="Logo HMDT" class="w-16 h-16 object-cover rounded-full shadow border border-[var(--hmdt-orange)]" />
+          <div class="flex flex-col leading-tight">
+            <span class="text-xl font-bold text-[var(--hmdt-orange)]">HMDT</span>
+            <p class="text-sm text-gray-300 -mt-1">Sanggup Mampu Bisa</p>
+          </div>
+        </div>
+        <p class="text-gray-300 text-sm leading-relaxed">
+          Organisasi mahasiswa di bawah naungan Program Studi D3 Teknologi Telekomunikasi, Fakultas Ilmu Terapan, Telkom University.
+        </p>
+        <div class="flex gap-3 mt-2">
+          <a href="https://instagram.com/infohmdt" class="social-icon">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.tiktok.com/@infohmdt_" class="social-icon">
+            <i class="fab fa-tiktok"></i>
+          </a>
+          <a href="http://lin.ee/uQVzvqT" class="social-icon">
+            <i class="fa-brands fa-line"></i>
+          </a>
+          <a href="https://www.youtube.com/@hmdtuniversitastelkom3275" class="social-icon">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Kontak -->
+      <div>
+        <h4 class="text-lg font-bold mb-5 text-[var(--hmdt-orange)]">Kontak</h4>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3">
+            <i class="fas fa-map-marker-alt text-[var(--hmdt-orange)] mt-1"></i>
+            <span class="text-gray-300">Sekre FIT, Lantai 1, Gedung Selaru Telkom University, Jl. Telekomunikasi Terusan Buah Batu, Bandung</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fab fa-whatsapp text-[var(--hmdt-orange)] mt-1"></i>
+            <span class="text-gray-300"><a href="whatsapp://send?phone=6282125908508&text=">+6282125908508</a> (Eksternal)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fab fa-whatsapp text-[var(--hmdt-orange)] mt-1"></i>
+            <span class="text-gray-300"><a href="whatsapp://send?phone=6282217324307&text=">+6282217324307</a> (Media Partner)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fas fa-envelope text-[var(--hmdt-orange)] mt-1"></i>
+            <span class="text-gray-300">hmdt.telu@gmail.com</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Garis pemisah -->
+    <div class="border-t border-gray-700 mt-10 mb-6 max-w-7xl mx-auto"></div>
+
+    <!-- Copyright -->
+    <div class="text-center text-sm text-gray-400">
+      HMDT © 2025. Dikembangkan oleh Departemen Ristek dan Kominfo.
+    </div>
+  </footer>
+
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  
+  <script>
+    // Inisialisasi AOS
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
+
+    // Preloader
+    window.addEventListener('load', function() {
+      const preloader = document.getElementById('preloader');
+      setTimeout(() => {
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+          preloader.style.display = 'none';
+        }, 500);
+      }, 800);
+    });
+
+    // Navbar Mobile Toggle
+    const toggleBtn = document.getElementById('toggleMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const navbar = document.getElementById('navbar');
+
+    toggleBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Navbar Hide on Scroll
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 80) {
+        navbar.style.transform = 'translateY(-100%)';
+      } else {
+        navbar.style.transform = 'translateY(0)';
+      }
+
+      lastScrollY = currentScrollY;
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Search functionality
+    document.querySelector('.search-button').addEventListener('click', function() {
+      const searchTerm = document.querySelector('.search-input').value;
+      if (searchTerm.trim() !== '') {
+        alert(`Pencarian untuk: ${searchTerm}\nFitur pencarian akan diimplementasikan lebih lanjut.`);
+      }
+    });
+    
+    document.querySelector('.search-input').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        const searchTerm = this.value;
+        if (searchTerm.trim() !== '') {
+          alert(`Pencarian untuk: ${searchTerm}\nFitur pencarian akan diimplementasikan lebih lanjut.`);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

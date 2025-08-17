@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sumber Daya | HMDT Tel-U</title>
+  <link rel="icon" type="image/x-icon" href="../img/logo-hmdt.png">
+  <link rel="stylesheet" href="style.css">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#b56d00',
+            secondary: '#d88a1e',
+            dark: '#1e293b',
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- AOS Styles -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    :root {
+      --hmdt-orange: #b56d00;
+      --hmdt-orange-light: #d88a1e;
+      --hmdt-dark: #1e293b;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      background-color: #f8fafc;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+    }
+
+    #navbar {
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .section-title {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 2.5rem;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70px;
+      height: 4px;
+      background: var(--hmdt-orange);
+      border-radius: 2px;
+    }
+
+    .btn-primary {
+      background: var(--hmdt-orange);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-block;
+      box-shadow: 0 4px 6px rgba(181, 109, 0, 0.2);
+    }
+
+    .btn-primary:hover {
+      background: var(--hmdt-orange-light);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(181, 109, 0, 0.3);
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: var(--hmdt-orange);
+      color: white;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    .social-icon:hover {
+      background: var(--hmdt-orange-light);
+      transform: translateY(-3px);
+    }
+    
+    .feature-card {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      padding: 30px 25px;
+      transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      background: linear-gradient(135deg, #b56d00 0%, #d88a1e 100%);
+    }
+    
+    .feature-card:hover * {
+      color: white !important;
+    }
+    
+    .feature-icon {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 20px;
+      background: rgba(181, 109, 0, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover .feature-icon {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.1);
+    }
+    
+    .feature-icon i {
+      font-size: 30px;
+      color: var(--hmdt-orange);
+      transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover .feature-icon i {
+      color: white;
+    }
+    
+    /* Resource Categories */
+    .resource-category {
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    
+    .resource-category:last-child {
+      border-bottom: none;
+    }
+    
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 25px;
+    }
+    
+    .resource-item {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+    }
+    
+    .resource-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    }
+    
+    .resource-header {
+      padding: 25px;
+      background: var(--hmdt-orange);
+      color: white;
+    }
+    
+    .resource-body {
+      padding: 25px;
+    }
+    
+    .resource-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: var(--hmdt-dark);
+    }
+    
+    .resource-description {
+      color: #64748b;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    
+    .resource-link {
+      display: inline-flex;
+      align-items: center;
+      color: var(--hmdt-orange);
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .resource-link:hover {
+      color: var(--hmdt-orange-light);
+      transform: translateX(5px);
+    }
+    
+    .resource-link i {
+      margin-left: 8px;
+      transition: transform 0.3s ease;
+    }
+    
+    .resource-link:hover i {
+      transform: translateX(5px);
+    }
+    
+    .resource-tag {
+      display: inline-block;
+      background: rgba(181, 109, 0, 0.1);
+      color: var(--hmdt-orange);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-top: 15px;
+    }
+    
+    /* Hero for Resources */
+    .resources-hero {
+      background: linear-gradient(135deg, #ffedcc 0%, #fff5e1 100%);
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .resources-hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23b56d00' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.4;
+      z-index: 0;
+    }
+    
+    .resources-hero-content {
+      position: relative;
+      z-index: 10;
+    }
+    
+    /* Filter Section - Improved Design */
+    .filter-section {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      margin-bottom: 40px;
+      transition: all 0.3s ease;
+    }
+    
+    .filter-section:hover {
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    }
+    
+    .filter-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 18px;
+      color: var(--hmdt-dark);
+      position: relative;
+      padding-bottom: 8px;
+    }
+    
+    .filter-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--hmdt-orange);
+      border-radius: 2px;
+    }
+    
+    .filter-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    
+    .filter-button {
+      background: #f1f5f9;
+      color: #64748b;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+    
+    .filter-button i {
+      margin-right: 8px;
+      font-size: 0.9rem;
+    }
+    
+    .filter-button:hover {
+      background: #e2e8f0;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    }
+    
+    .filter-button.active, 
+    .filter-button.active:hover {
+      background: var(--hmdt-orange);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(181, 109, 0, 0.25);
+    }
+    
+    /* Animation for resource items */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .resource-item {
+      animation: fadeIn 0.4s ease forwards;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .resource-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+      }
+      
+      .filter-buttons {
+        gap: 8px;
+      }
+      
+      .filter-button {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body class="overflow-x-hidden font-sans text-gray-800 bg-gray-50">
+
+  <!-- Preloader -->
+  <div id="preloader" class="fixed inset-0 z-50 flex items-center justify-center bg-white transition-opacity duration-500">
+    <div class="flex flex-col items-center">
+      <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-[var(--hmdt-orange)]"></div>
+      <div class="mt-4 text-[var(--hmdt-orange)] font-semibold">HMDT</div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header id="navbar" class="bg-white/90 backdrop-blur-sm shadow-md border-b border-gray-200 sticky top-0 z-40 transition-transform duration-300 ease-in-out">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex justify-between items-center">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <img src="../img/logo-hmdt.png" alt="Logo HMDT" class="w-12 h-12 rounded-full object-cover border-2 border-[var(--hmdt-orange)]" />
+          <div class="flex flex-col leading-tight">
+            <span class="text-xl font-bold text-[var(--hmdt-orange)]">Himpunan Mahasiswa</span>
+            <p class="text-sm text-gray-600 -mt-1">D3 Teknologi Telekomunikasi</p>
+          </div>
+        </div>
+
+        <!-- Hamburger -->
+        <button id="toggleMenu" class="md:hidden text-[var(--hmdt-orange)] focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+
+        <!-- Menu Desktop -->
+        <nav class="hidden md:flex space-x-7 items-center">
+          <a href="../index.html" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)]">
+            Beranda
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="../index.html#about" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)]">
+            Tentang
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="../index.html#visi-misi" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)]">
+            Visi & Misi
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="index.html" class="font-semibold relative group transition duration-200 text-[var(--hmdt-orange)]">
+            Sumber Daya
+            <span class="absolute left-0 -bottom-1 w-full h-[2px] bg-[var(--hmdt-orange)]"></span>
+          </a>
+          <a href="../index.html#aspirasi" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)] ">
+            Aspirasi
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="../index.html#store" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)] ">
+            Store
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="../index.html#pengurus" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)]">
+            BPH
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="../index.html#kontak" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)] ">
+            Kontak
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="../faq.html" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)] ">
+            FAQ
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Menu Mobile -->
+      <div id="mobileMenu" class="transition-all duration-300 ease-in-out md:hidden hidden mt-4 flex flex-col gap-1 bg-white rounded-lg shadow-lg p-4">
+        <a href="../index.html" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Beranda</a>
+        <a href="../index.html#about" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Tentang</a>
+        <a href="../index.html#visi-misi" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Visi & Misi</a>
+        <a href="index.html" class="block py-3 px-4 rounded bg-[var(--hmdt-orange)] text-white transition font-medium">Sumber Daya</a>
+        <a href="../index.html#aspirasi" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Aspirasi</a>
+        <a href="../index.html#store" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Store</a>
+        <a href="../index.html#pengurus" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">BPH</a>
+        <a href="../index.html#kontak" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Kontak</a>
+        <a href="faq.html" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">FAQ</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section for Resources -->
+  <section class="resources-hero">
+    <div class="max-w-7xl mx-auto px-6 py-12 w-full resources-hero-content">
+      <div class="text-center">
+        <h1 data-aos="fade-up" class="text-4xl md:text-5xl font-bold leading-tight text-[var(--hmdt-dark)]">
+          Pusat <span class="text-[var(--hmdt-orange)]">Sumber Daya</span> HMDT
+        </h1>
+        <p data-aos="fade-up" data-aos-delay="100" class="text-lg max-w-2xl mx-auto mt-4 text-gray-600 leading-relaxed">
+          Temukan semua sumber daya penting untuk mahasiswa D3 Teknologi Telekomunikasi. Akses materi akademik, template dokumen, media sosial, dan banyak lagi.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="py-16 px-4 md:px-8 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="filter-section">
+        <h3 class="filter-title">Filter Sumber Daya:</h3>
+        <div class="filter-buttons">
+          <button class="filter-button active" data-filter="all">
+            <i class="fas fa-layer-group"></i>
+            Semua
+          </button>
+          <button class="filter-button" data-filter="akademik">
+            <i class="fas fa-book"></i>
+            Akademik
+          </button>
+          <button class="filter-button" data-filter="organisasi">
+            <i class="fas fa-users"></i>
+            Organisasi
+          </button>
+          <button class="filter-button" data-filter="templat">
+            <i class="fas fa-file-alt"></i>
+            Templat
+          </button>
+          <button class="filter-button" data-filter="media">
+            <i class="fas fa-hashtag"></i>
+            Media Sosial
+          </button>
+          <button class="filter-button" data-filter="lainnya">
+            <i class="fas fa-ellipsis-h"></i>
+            Lainnya
+          </button>
+        </div>
+      </div>
+      
+      <!-- Resource Categories -->
+      <div class="resource-category">
+        <h2 class="section-title text-3xl font-bold">Media Sosial & Komunikasi</h2>
+        <p class="text-gray-600 max-w-3xl">Tetap terhubung dengan HMDT melalui berbagai platform media sosial dan saluran komunikasi resmi</p>
+        
+        <div class="resource-grid">
+          <!-- Instagram -->
+          <div class="resource-item" data-category="media">
+            <div class="resource-header">
+              <i class="fab fa-instagram fa-2x mb-3"></i>
+              <h3 class="text-xl font-bold">Instagram</h3>
+            </div>
+            <div class="resource-body">
+              <p class="resource-description">Ikuti akun Instagram resmi HMDT untuk update kegiatan, informasi akademik, dan konten menarik lainnya.</p>
+              <a href="https://instagram.com/infohmdt" target="_blank" class="resource-link">
+                Kunjungi Instagram
+                <i class="fas fa-arrow-right"></i>
+              </a>
+              <div class="resource-tag">Media Sosial</div>
+            </div>
+          </div>
+          
+          <!-- TikTok -->
+          <div class="resource-item" data-category="media">
+            <div class="resource-header">
+              <i class="fab fa-tiktok fa-2x mb-3"></i>
+              <h3 class="text-xl font-bold">TikTok</h3>
+            </div>
+            <div class="resource-body">
+              <p class="resource-description">Konten kreatif dan edukatif seputar dunia telekomunikasi dan kehidupan kampus di Telkom University.</p>
+              <a href="https://www.tiktok.com/@infohmdt_" target="_blank" class="resource-link">
+                Kunjungi TikTok
+                <i class="fas fa-arrow-right"></i>
+              </a>
+              <div class="resource-tag">Media Sosial</div>
+            </div>
+          </div>
+          
+          <!-- YouTube -->
+          <div class="resource-item" data-category="media">
+            <div class="resource-header">
+              <i class="fab fa-youtube fa-2x mb-3"></i>
+              <h3 class="text-xl font-bold">YouTube</h3>
+            </div>
+            <div class="resource-body">
+              <p class="resource-description">Tonton konten dan podcast melalui akun YouTube HMDT. Subscribe untuk notifikasi terbaru.</p>
+              <a href="https://www.youtube.com/@hmdtuniversitastelkom3275" target="_blank" class="resource-link">
+                Kunjungi YouTube
+                <i class="fas fa-arrow-right"></i>
+              </a>
+              <div class="resource-tag">Media Sosial</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Academic Resources -->
+      <div class="resource-category">
+        <h2 class="section-title text-3xl font-bold">Sumber Daya Akademik</h2>
+        <p class="text-gray-600 max-w-3xl">Materi pembelajaran, modul kuliah, dan panduan untuk mendukung studi Anda</p>
+        
+        <div class="resource-grid">
+          <!-- Modul Kuliah -->
+          <div class="resource-item" data-category="akademik">
+            <div class="resource-header">
+              <i class="fas fa-book fa-2x mb-3"></i>
+              <h3 class="text-xl font-bold">Modul Kuliah</h3>
+            </div>
+            <div class="resource-body">
+              <p class="resource-description">Kumpulan modul dan materi pembelajaran untuk semua mata kuliah di program studi D3 Teknologi Telekomunikasi.</p>
+              <a href="https://ricaldocs.github.io/open-course" class="resource-link">
+                Akses Modul
+                <i class="fas fa-arrow-right"></i>
+              </a>
+              <div class="resource-tag">Akademik</div>
+            </div>
+          </div>
+          
+          <!-- Bank Soal -->
+          <div class="resource-item" data-category="akademik">
+            <div class="resource-header">
+              <i class="fas fa-file-alt fa-2x mb-3"></i>
+              <h3 class="text-xl font-bold">Bank Soal</h3>
+            </div>
+            <div class="resource-body">
+              <p class="resource-description">Koleksi soal ujian tahun-tahun sebelumnya beserta pembahasan untuk membantu persiapan ujian.</p>
+              <a href="bank-soal.html" class="resource-link">
+                Lihat Bank Soal
+                <i class="fas fa-arrow-right"></i>
+              </a>
+              <div class="resource-tag">Akademik</div>
+            </div>
+          </div>
+          
+          <!-- Panduan Skripsi -->
+          <div class="resource-item" data-category="akademik">
+            <div class="resource-header">
+              <i class="fas fa-graduation-cap fa-2x mb-3"></i>
+              <h3 class="text-xl font-bold">Panduan Skripsi</h3>
+            </div>
+            <div class="resource-body">
+              <p class="resource-description">Template dan panduan lengkap untuk penyusunan skripsi, mulai dari proposal hingga ujian akhir.</p>
+              <a href="panduan-skripsi.html" class="resource-link">
+                Download Panduan
+                <i class="fas fa-arrow-right"></i>
+              </a>
+              <div class="resource-tag">Akademik</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Organizational Resources -->
+      <div class="resource-category">
+        <h2 class="section-title text-3xl font-bold">Sumber Daya Organisasi</h2>
+        <p class="text-gray-600 max-w-3xl">Template dokumen, panduan, dan alat untuk kegiatan organisasi</p>
+        
+        <div class="resource-grid">
+          <!-- Template Proposal -->
+          <div class="resource-item" data-category="templat organisasi">
+            <div class="resource-header">
+              <i class="fas fa-file-contract fa-2x mb-3"></i>
+              <h3 class="text-xl font-bold">Template Proposal</h3>
+            </div>
+            <div class="resource-body">
+              <p class="resource-description">Template standar untuk proposal kegiatan organisasi yang sudah disesuaikan dengan format HMDT.</p>
+              <a href="https://drive.google.com/drive/folders/1zgJPhoYBdKIFecyi2oyIb-com0WLdBet?usp=drive_link" class="resource-link">
+                Download Template
+                <i class="fas fa-arrow-right"></i>
+              </a>
+              <div class="resource-tag">Templat</div>
+            </div>
+          </div>
+          
+          <!-- Template LPJ -->
+          <div class="resource-item" data-category="templat organisasi">
+            <div class="resource-header">
+              <i class="fas fa-file-invoice fa-2x mb-3"></i>
+              <h3 class="text-xl font-bold">Template LPJ</h3>
+            </div>
+            <div class="resource-body">
+              <p class="resource-description">Template Laporan Pertanggungjawaban (LPJ) untuk berbagai jenis kegiatan organisasi.</p>
+              <a href="https://drive.google.com/drive/folders/19EMCNg7na0V1jIppfZ6WQaZZ-kyzPfzM?usp=drive_link" class="resource-link">
+                Download Template
+                <i class="fas fa-arrow-right"></i>
+              </a>
+              <div class="resource-tag">Templat</div>
+            </div>
+          </div>
+          
+          <!-- Panduan Organisasi -->
+          <div class="resource-item" data-category="organisasi">
+            <div class="resource-header">
+              <i class="fas fa-users fa-2x mb-3"></i>
+              <h3 class="text-xl font-bold">Panduan Keorganisasian</h3>
+            </div>
+            <div class="resource-body">
+              <p class="resource-description">Panduan lengkap tentang tata kelola organisasi, struktur kepengurusan, dan SOP HMDT.</p>
+              <a href="panduan-organisasi.html" class="resource-link">
+                Baca Panduan
+                <i class="fas fa-arrow-right"></i>
+              </a>
+              <div class="resource-tag">Organisasi</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Other Resources -->
+      <div class="resource-category">
+        <h2 class="section-title text-3xl font-bold">Sumber Daya Lainnya</h2>
+        <p class="text-gray-600 max-w-3xl">Berbagai sumber daya tambahan untuk mendukung kegiatan mahasiswa</p>
+        
+        <div class="resource-grid">
+          <!-- Upload Foto Brown Day -->
+          <div class="resource-item" data-category="lainnya">
+            <div class="resource-header">
+              <i class="fas fa-camera-retro fa-2x mb-3"></i>
+              <h3 class="text-xl font-bold">Upload Foto Brown Day</h3>
+            </div>
+            <div class="resource-body">
+              <p class="resource-description">Bagikan foto-foto kenangan Anda menggunakan jaket himpunan pada hari Brown Day.</p>
+              <a href="https://forms.gle/gNBjriJCA7SRwqri8" target="_blank" class="resource-link">
+                Unggah Sekarang
+                <i class="fas fa-arrow-right"></i>
+              </a>
+              <div class="resource-tag">Kegiatan</div>
+            </div>
+          </div>
+          
+          <!-- Sejarah HMDT -->
+          <div class="resource-item" data-category="lainnya">
+            <div class="resource-header">
+              <i class="fas fa-history fa-2x mb-3"></i>
+              <h3 class="text-xl font-bold">Sejarah HMDT</h3>
+            </div>
+            <div class="resource-body">
+              <p class="resource-description">Pelajari sejarah dan perkembangan Himpunan Mahasiswa D3 Teknologi Telekomunikasi dari masa ke masa.</p>
+              <a href="../sejarah.html" class="resource-link">
+                Baca Sejarah
+                <i class="fas fa-arrow-right"></i>
+              </a>
+              <div class="resource-tag">Informasi</div>
+            </div>
+          </div>
+          
+          <!-- Hubungi Kami -->
+          <div class="resource-item" data-category="lainnya">
+            <div class="resource-header">
+              <i class="fas fa-headset fa-2x mb-3"></i>
+              <h3 class="text-xl font-bold">Hubungi Kami</h3>
+            </div>
+            <div class="resource-body">
+              <p class="resource-description">Punya pertanyaan atau butuh bantuan? Hubungi tim HMDT melalui berbagai saluran yang tersedia.</p>
+              <a href="../index.html#kontak" class="resource-link">
+                Lihat Kontak
+                <i class="fas fa-arrow-right"></i>
+              </a>
+              <div class="resource-tag">Dukungan</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="kontak" class="bg-[var(--hmdt-dark)] text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <!-- Logo & Deskripsi -->
+      <div class="flex flex-col gap-4">
+        <div class="flex items-center gap-3">
+          <img src="../img/logo-hmdt.png" alt="Logo HMDT" class="w-16 h-16 object-cover rounded-full shadow border border-[var(--hmdt-orange)]" />
+          <div class="flex flex-col leading-tight">
+            <span class="text-xl font-bold text-[var(--hmdt-orange)]">HMDT</span>
+            <p class="text-sm text-gray-300 -mt-1">Sanggup Mampu Bisa</p>
+          </div>
+        </div>
+        <p class="text-gray-300 text-sm leading-relaxed">
+          Organisasi mahasiswa di bawah naungan Program Studi D3 Teknologi Telekomunikasi, Fakultas Ilmu Terapan, Telkom University.
+        </p>
+        <div class="flex gap-3 mt-2">
+          <a href="https://instagram.com/infohmdt" class="social-icon">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.tiktok.com/@infohmdt_" class="social-icon">
+            <i class="fab fa-tiktok"></i>
+          </a>
+          <a href="http://lin.ee/uQVzvqT" class="social-icon">
+            <i class="fa-brands fa-line"></i>
+          </a>
+          <a href="https://www.youtube.com/@hmdtuniversitastelkom3275" class="social-icon">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Link Cepat -->
+      <div>
+        <h4 class="text-lg font-bold mb-5 text-[var(--hmdt-orange)]">Link Cepat</h4>
+        <ul class="space-y-3">
+          <li><a href="../index.html#home" class="text-gray-300 hover:text-white transition">Beranda</a></li>
+          <li><a href="../index.html#about" class="text-gray-300 hover:text-white transition">Tentang Kami</a></li>
+          <li><a href="../index.html#visi-misi" class="text-gray-300 hover:text-white transition">Visi & Misi</a></li>
+          <li><a href="index.html" class="text-gray-300 hover:text-white transition">Sumber Daya</a></li>
+          <li><a href="../index.html#store" class="text-gray-300 hover:text-white transition">Store</a></li>
+          <li><a href="../index.html#aspirasi" class="text-gray-300 hover:text-white transition">Form Aspirasi</a></li>
+          <li><a href="../index.html#pengurus" class="text-gray-300 hover:text-white transition">Badan Pengurus Harian</a></li>
+          <li><a href="../faq.html" class="text-gray-300 hover:text-white transition">FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- Departemen -->
+      <div>
+        <h4 class="text-lg font-bold mb-5 text-[var(--hmdt-orange)]">Departemen</h4>
+        <ul class="space-y-3">
+          <li><a href="../departemen/psdm.html" class="text-gray-300 hover:text-white transition">PSDM</a></li>
+          <li><a href="../departemen/eksternal.html" class="text-gray-300 hover:text-white transition">Eksternal</a></li>
+          <li><a href="../departemen/kominfo.html" class="text-gray-300 hover:text-white transition">Komunikasi & Informasi</a></li>
+          <li><a href="../departemen/ristek.html" class="text-gray-300 hover:text-white transition">Riset & Teknologi</a></li>
+          <li><a href="../departemen/sosmas.html" class="text-gray-300 hover:text-white transition">Sosial Masyarakat</a></li>
+          <li><a href="../departemen/orsenbud.html" class="text-gray-300 hover:text-white transition">Olahraga, Seni dan Budaya</a></li>
+          <li><a href="../departemen/kewirausahaan.html" class="text-gray-300 hover:text-white transition">Kewirausahaan</a></li>
+        </ul>
+      </div>
+
+      <!-- Kontak -->
+      <div>
+        <h4 class="text-lg font-bold mb-5 text-[var(--hmdt-orange)]">Kontak</h4>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3">
+            <i class="fas fa-map-marker-alt text-[var(--hmdt-orange)] mt-1"></i>
+            <span class="text-gray-300">Sekre FIT, Lantai 1, Gedung Selaru Telkom University, Jl. Telekomunikasi Terusan Buah Batu, Bandung</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fab fa-whatsapp text-[var(--hmdt-orange)] mt-1"></i>
+            <span class="text-gray-300"><a href="whatsapp://send?phone=6282125908508&text=">+6282125908508</a> (Eksternal)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fab fa-whatsapp text-[var(--hmdt-orange)] mt-1"></i>
+            <span class="text-gray-300"><a href="whatsapp://send?phone=6282217324307&text=">+6282217324307</a> (Media Partner)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fas fa-envelope text-[var(--hmdt-orange)] mt-1"></i>
+            <span class="text-gray-300">hmdt.telu@gmail.com</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Garis pemisah -->
+    <div class="border-t border-gray-700 mt-10 mb-6 max-w-7xl mx-auto"></div>
+
+    <!-- Copyright -->
+    <div class="text-center text-sm text-gray-400">
+      HMDT © 2025. Dikembangkan oleh Departemen Ristek dan Kominfo.
+    </div>
+  </footer>
+
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  
+  <script>
+    // Inisialisasi AOS
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
+
+    // Preloader
+    window.addEventListener('load', function() {
+      const preloader = document.getElementById('preloader');
+      setTimeout(() => {
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+          preloader.style.display = 'none';
+        }, 500);
+      }, 800);
+    });
+
+    // Navbar Mobile Toggle
+    const toggleBtn = document.getElementById('toggleMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const navbar = document.getElementById('navbar');
+
+    toggleBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Navbar Hide on Scroll
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 80) {
+        navbar.style.transform = 'translateY(-100%)';
+      } else {
+        navbar.style.transform = 'translateY(0)';
+      }
+
+      lastScrollY = currentScrollY;
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Resource Filter Functionality
+    const filterButtons = document.querySelectorAll('.filter-button');
+    const resourceItems = document.querySelectorAll('.resource-item');
+    
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        button.classList.add('active');
+        
+        const filterValue = button.getAttribute('data-filter');
+        
+        // Filter resource items
+        resourceItems.forEach(item => {
+          const categories = item.getAttribute('data-category');
+          
+          if (filterValue === 'all' || categories.includes(filterValue)) {
+            item.style.display = 'block';
+            // Add animation class for reappearing items
+            item.style.animation = 'fadeIn 0.4s ease forwards';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Initialize resources to show all
+    document.querySelector('.filter-button[data-filter="all"]').click();
+  </script>
+</body>
+</html>

@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sejarah | HMDT Tel-U</title>
+  <title>Store | HMDT Tel-U</title>
   <link rel="icon" type="image/x-icon" href="img/logo-hmdt.png">
-  <link rel="stylesheet" href="style.css">
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -95,130 +94,222 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .timeline-card {
-      position: relative;
-      padding: 2rem;
-      margin-bottom: 2rem;
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
     }
 
-    .timeline-card::before {
-      content: '';
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: var(--hmdt-orange);
+      color: white;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    .social-icon:hover {
+      background: var(--hmdt-orange-light);
+      transform: translateY(-3px);
+    }
+    
+    /* Styling untuk store */
+    .product-card {
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      background: white;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .product-image {
+      height: 260px;
+      width: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .product-card:hover .product-image {
+      transform: scale(1.05);
+    }
+    
+    .product-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: var(--hmdt-orange);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      z-index: 10;
+    }
+    
+    .product-price {
+      color: var(--hmdt-orange);
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+    
+    .product-rating {
+      color: #f59e0b;
+      font-size: 14px;
+    }
+    
+    .store-hero {
+      background: linear-gradient(135deg, #fef3c7 0%, #fffbeb 100%);
+      position: relative;
+      overflow: hidden;
+      padding: 100px 0;
+    }
+    
+    .store-pattern {
       position: absolute;
       top: 0;
       left: 0;
-      height: 100%;
-      width: 4px;
-      background: var(--hmdt-orange);
-    }
-
-    .timeline-year {
-      position: absolute;
-      top: 20px;
-      left: -20px;
-      background: var(--hmdt-orange);
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 50px;
-      font-weight: bold;
-      box-shadow: 0 4px 6px rgba(181, 109, 0, 0.2);
-    }
-
-    .timeline-content {
-      padding-left: 2rem;
-    }
-
-    .founders-table {
       width: 100%;
-      border-collapse: collapse;
-      margin: 1.5rem 0;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d88a1e' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.3;
+      z-index: 0;
     }
-
-    .founders-table th {
+    
+    .store-content {
+      position: relative;
+      z-index: 10;
+    }
+    
+    .category-btn {
+      display: inline-block;
+      padding: 8px 20px;
+      border-radius: 30px;
+      background: white;
+      color: var(--hmdt-dark);
+      font-weight: 500;
+      border: 1px solid #e2e8f0;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      margin: 0 5px 10px;
+    }
+    
+    .category-btn.active, .category-btn:hover {
       background: var(--hmdt-orange);
       color: white;
-      padding: 0.75rem;
-      text-align: left;
+      border-color: var(--hmdt-orange);
     }
-
-    .founders-table td {
-      padding: 0.75rem;
-      border-bottom: 1px solid #e2e8f0;
+    
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
     }
-
-    .founders-table tr:nth-child(even) {
-      background-color: #f8fafc;
+    
+    .page-item {
+      margin: 0 5px;
     }
-
-    .founders-table tr:hover {
-      background-color: #fff5e6;
+    
+    .page-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: white;
+      color: var(--hmdt-dark);
+      font-weight: 600;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
     }
-
-    .history-hero {
-      background: linear-gradient(135deg, rgba(181, 109, 0, 0.9) 0%, rgba(216, 138, 30, 0.85) 100%), url('img/backgrounds/bg.jpg');
-      background-size: cover;
-      background-position: center;
+    
+    .page-link:hover, .page-link.active {
+      background: var(--hmdt-orange);
+      color: white;
     }
-
-    .slogan-box {
-      border-left: 4px solid var(--hmdt-orange);
-      padding-left: 1.5rem;
-      margin: 2rem 0;
+    
+    .product-details {
+      padding: 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
     }
-
-    .slogan-text {
-      font-size: 1.5rem;
-      font-weight: bold;
-      font-style: italic;
+    
+    .add-to-cart-btn {
+      background: var(--hmdt-orange);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 15px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .add-to-cart-btn:hover {
+      background: var(--hmdt-orange-light);
+      transform: translateY(-3px);
+    }
+    
+    .add-to-cart-btn i {
+      margin-right: 8px;
+    }
+    
+    .search-container {
+      max-width: 500px;
+      margin: 0 auto 30px;
+      position: relative;
+    }
+    
+    .search-input {
+      width: 100%;
+      padding: 14px 20px 14px 50px;
+      border-radius: 50px;
+      border: 1px solid #e2e8f0;
+      font-size: 16px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+    
+    .search-input:focus {
+      outline: none;
+      border-color: var(--hmdt-orange);
+      box-shadow: 0 0 0 3px rgba(181, 109, 0, 0.1);
+    }
+    
+    .search-icon {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
       color: var(--hmdt-orange);
-    }
-
-    .history-fact-box {
-      background: #fff5e6;
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin: 1.5rem 0;
-      border-left: 4px solid var(--hmdt-orange);
-    }
-
-    .history-key {
-      font-weight: bold;
-      color: var(--hmdt-orange);
-      min-width: 150px;
-      display: inline-block;
-    }
-
-    .history-structure {
-      background: #f8fafc;
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin: 1.5rem 0;
-    }
-
-    .structure-title {
-      font-size: 1.25rem;
-      font-weight: bold;
-      color: var(--hmdt-orange);
-      margin-bottom: 1rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid var(--hmdt-orange-light);
-    }
-
-    .structure-list {
-      list-style-type: none;
-      padding: 0;
-    }
-
-    .structure-list li {
-      padding: 0.5rem 0;
-      border-bottom: 1px dashed #e2e8f0;
-    }
-
-    .structure-list li:last-child {
-      border-bottom: none;
     }
   </style>
 </head>
 <body class="overflow-x-hidden font-sans text-gray-800 bg-gray-50">
+
+  <!-- Preloader -->
+  <div id="preloader" class="fixed inset-0 z-50 flex items-center justify-center bg-white transition-opacity duration-500">
+    <div class="flex flex-col items-center">
+      <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-[var(--hmdt-orange)]"></div>
+      <div class="mt-4 text-[var(--hmdt-orange)] font-semibold">HMDT Store</div>
+    </div>
+  </div>
 
   <!-- Navbar -->
   <header id="navbar" class="bg-white/90 backdrop-blur-sm shadow-md border-b border-gray-200 sticky top-0 z-40 transition-transform duration-300 ease-in-out">
@@ -242,7 +333,7 @@
 
         <!-- Menu Desktop -->
         <nav class="hidden md:flex space-x-7 items-center">
-          <a href="index.html#home" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)]">
+          <a href="index.html" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)]">
             Beranda
             <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
           </a>
@@ -262,11 +353,11 @@
             Aspirasi
             <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
           </a>
-          <a href="index.html#store" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)] ">
+          <a href="index.html#store" class="font-semibold relative group transition duration-200 text-[var(--hmdt-orange)]">
             Store
-            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
+            <span class="absolute left-0 -bottom-1 w-full h-[2px] bg-[var(--hmdt-orange)]"></span>
           </a>
-          <a href="index.html#pengurus" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)]">
+          <a href="index.html#pengurus" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)] ">
             BPH
             <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
           </a>
@@ -283,12 +374,12 @@
 
       <!-- Menu Mobile -->
       <div id="mobileMenu" class="transition-all duration-300 ease-in-out md:hidden hidden mt-4 flex flex-col gap-1 bg-white rounded-lg shadow-lg p-4">
-        <a href="index.html#home" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Beranda</a>
+        <a href="index.html" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Beranda</a>
         <a href="index.html#about" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Tentang</a>
         <a href="index.html#visi-misi" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Visi & Misi</a>
         <a href="sumber-daya/index.html" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Sumber Daya</a>
         <a href="index.html#aspirasi" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Aspirasi</a>
-        <a href="index.html#store" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Store</a>
+        <a href="index.html#store" class="block py-3 px-4 rounded bg-[var(--hmdt-orange)] text-white transition font-medium">Store</a>
         <a href="index.html#pengurus" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">BPH</a>
         <a href="index.html#kontak" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Kontak</a>
         <a href="faq.html" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">FAQ</a>
@@ -296,204 +387,14 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="history-hero py-20 px-4 text-white">
-    <div class="max-w-4xl mx-auto text-center">
-      <h1 class="text-4xl md:text-5xl font-bold mb-6">Sejarah HMDT</h1>
-      <p class="text-xl max-w-2xl mx-auto opacity-90">
-        Perjalanan Himpunan Mahasiswa D3 Teknologi Telekomunikasi Telkom University
+  <!-- Hero Section Store -->
+  <section class="store-hero">
+    <div class="store-pattern"></div>
+    <div class="store-content max-w-7xl mx-auto px-6 py-16 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">HALAMAN INI SEDANG DALAM TAHAP PENGEMBANGAN</h1>
+      <p class="text-xl text-gray-700 max-w-2xl mx-auto mb-10">
+        Jika Anda sedang mencari produk unggulan, silakan kunjungi halaman <a href="index.html#store" style="color: #b56d00;">berikut</a>.
       </p>
-    </div>
-  </section>
-
-  <!-- Main Content -->
-  <section class="py-16 px-4 md:px-8 bg-white">
-    <div class="max-w-4xl mx-auto">
-      <!-- Key Facts -->
-      <div class="mb-16">
-        <h2 class="section-title text-3xl font-bold mb-8">Fakta Utama</h2>
-        
-        <div class="grid md:grid-cols-2 gap-6">
-          <div class="history-fact-box">
-            <p><span class="history-key">Singkatan</span>HMDT</p>
-            <p class="text-sm text-gray-600 mt-1">Dicetuskan oleh Wahyu Setiaji</p>
-          </div>
-          
-          <div class="history-fact-box">
-            <p><span class="history-key">Slogan</span>Sanggup Mampu Bisa</p>
-            <p class="text-sm text-gray-600 mt-1">Dibuat oleh Kaprodi Muhammad Ramdhani</p>
-          </div>
-          
-          <div class="history-fact-box">
-            <p><span class="history-key">Tanggal Berdiri</span>09 Mei 2014</p>
-          </div>
-          
-          <div class="history-fact-box">
-            <p><span class="history-key">Tempat Berdiri</span>Gedung N 309 (FTE)</p>
-          </div>
-        </div>
-        
-        <div class="slogan-box">
-          <p class="slogan-text">"Sanggup Mampu Bisa"</p>
-          <p class="text-gray-600">Slogan HMDT yang mencerminkan semangat dan tekad anggota himpunan</p>
-        </div>
-      </div>
-      
-      <!-- History Timeline -->
-      <div class="mb-16">
-        <h2 class="section-title text-3xl font-bold mb-8">Sejarah Terciptanya HMDT</h2>
-        
-        <div class="timeline-card">
-          <div class="timeline-year">2013</div>
-          <div class="timeline-content">
-            <h3 class="text-xl font-bold mb-3">Orientasi</h3>
-            <p class="mb-4">
-              Siapa yang tidak mengenal HMDT? HMDT merupakan Himpunan Mahasiswa D3 Teknologi Telekomunikasi, yang merupakan salah satu organisasi di bawah naungan Fakultas Ilmu Terapan di Telkom University.
-            </p>
-            
-            <h3 class="text-xl font-bold mb-3">Pencetusan Nama</h3>
-            <p>
-              Nama HMDT pertama kali dicetuskan oleh Wahyu Setiaji dari angkatan 2013. Sebelum STT/ITT berganti nama menjadi Telkom University, terdapat sebuah himpunan fakultas yang dikenal dengan nama HIMATEL, atau yang sering disebut FEK (Fakultas Elektro Komunikasi), yang memiliki satu jurusan. Pada tahun 2013, terjadi penggabungan antara jurusan S1 Teknik Telekomunikasi dan D3 Teknik Telekomunikasi, yang kemudian membentuk HMTT (Himpunan Mahasiswa Teknik Telekomunikasi).
-            </p>
-          </div>
-        </div>
-        
-        <div class="timeline-card">
-          <div class="timeline-year">2014</div>
-          <div class="timeline-content">
-            <h3 class="text-xl font-bold mb-3">Perpindahan dan Pembentukan</h3>
-            <p class="mb-4">
-              Pada tahun 2014, program D3 Teknik Telekomunikasi berpindah dari FEK (Fakultas Elektro Komunikasi) ke Politeknik Telkom. Di sinilah untuk pertama kalinya terbentuk himpunan mahasiswa, yang diprakarsai oleh Kepala Program Studi dan para pencetus dari angkatan 2012.
-            </p>
-            
-            <h3 class="text-xl font-bold mb-3">Kongres AD/ART</h3>
-            <p class="mb-4">
-              Pada tanggal 09 Mei 2014 dilaksanakanlah Kongres AD/ART yang bertempat di GEDUNG N 309 (FTE) dimana para pencetus 2012 dan 2013 hadir.
-            </p>
-            
-            <h4 class="font-bold mb-2">Pencetus Angkatan 2012:</h4>
-            <table class="founders-table">
-              <tr>
-                <td>Hebi Jaya Wahyudi</td>
-                <td>Galuh Entin Oktavia</td>
-              </tr>
-              <tr>
-                <td>Wildan Ihsan Nur Iman</td>
-                <td>Christian Mahardhika</td>
-              </tr>
-              <tr>
-                <td>Pithakhismi Wimadatu</td>
-                <td>Wanda Khansa F</td>
-              </tr>
-            </table>
-            
-            <h4 class="font-bold mb-2 mt-6">Pencetus Angkatan 2013:</h4>
-            <table class="founders-table">
-              <tr>
-                <td>Wahyu Setiaji</td>
-                <td>Risang Surya Saputra</td>
-              </tr>
-              <tr>
-                <td>Muhammad Maulana Putra</td>
-                <td>Cahya Kuncoro</td>
-              </tr>
-            </table>
-            
-            <p class="mt-6">
-              Akhirnya, saat kongres berlangsung, berbagai elemen penting terkait HMDT terbentuk, termasuk nama HMDT, tanggal dan tempat pendiriannya, slogan HMDT, serta asas kekeluargaan yang diusung. Slogan "Sanggup Mampu Bisa" dicetuskan oleh Kepala Program Studi, Muhammad Ramdhani.
-            </p>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Leadership Structure -->
-      <div class="mb-16">
-        <h2 class="section-title text-3xl font-bold mb-8">Struktur Kepemimpinan</h2>
-        
-        <div class="grid md:grid-cols-2 gap-8">
-          <!-- Ketua & Wakil -->
-          <div class="history-structure">
-            <div class="structure-title">Ketua & Wakil Ketua HMDT</div>
-            <ul class="structure-list">
-              <li><strong>2014-2015</strong><br>Ketua: Wildan Ihsan Ina<br>Wakil: Wahyu Setiaji</li>
-              <li><strong>2015-2016</strong><br>Ketua: Muhammad Adib<br>Wakil: Al Akbar & Ibrahim Adila</li>
-              <li><strong>2016-2017</strong><br>Ketua: Kurniawan Setyo Budi<br>Wakil: Giri Darmawan</li>
-              <li><strong>2017-2018</strong><br>Ketua: Puja Hadi Prabowo<br>Wakil: Eka Bayu</li>
-              <li><strong>2018-2019</strong><br>Ketua: Faisal Ali<br>Wakil: Christopher Helmi</li>
-              <li><strong>2019-2020</strong><br>Ketua: Rizky Aditya<br>Wakil: Afifah Safira</li>
-              <li><strong>2020-2021</strong><br>Ketua: Muhammad Nasrullah<br>Wakil: Fikri Ananda</li>
-              <li><strong>2021-2022</strong><br>Ketua: Bagas Alif Fimaskoro<br>Wakil: Abid Ghufran Ramadhan</li>
-              <li><strong>2022-2023</strong><br>Ketua: Arya Rahman Hakim<br>Wakil: Muhammad Tegar Kurniawan</li>
-              <li><strong>2023-2024</strong><br>Ketua: Rafly Budi Prakasa<br>Wakil: Fadel Muhammad Imbang</li>
-              <li><strong>2024-2025</strong><br>Ketua: Priyo Sembodo<br>Wakil: Muhammad Rafi Khalief</li>
-              <li><strong>2025-2026</strong><br>Ketua: Reihan Dwi Pangestu<br>Wakil: Risnanda Candra Abdurrozaq</li>
-            </ul>
-          </div>
-          
-          <!-- BPM & NEAX -->
-          <div>
-            <div class="history-structure mb-6">
-              <div class="structure-title">Struktur BPM</div>
-              <ul class="structure-list">
-                <li><strong>2014-2015</strong> Ahmad Fauzan</li>
-                <li><strong>2015-2016</strong> Cahya Kuncoro</li>
-                <li><strong>2016-2017</strong> Gusti Lambang</li>
-                <li><strong>2017-2018</strong> Andi Muhammad Hisyam</li>
-                <li><strong>2018-2019</strong> Radya Fadhil</li>
-                <li><strong>2019-2020</strong> Andi Muhammad Maulana</li>
-                <li><strong>2020-2021</strong> Ivan Jimmy Andreas</li>
-                <li><strong>2021-2022</strong> Nila Fiantania Aisyiyah</li>
-              </ul>
-            </div>
-            
-            <div class="history-structure">
-              <div class="structure-title">Struktur Ketua NEAX</div>
-              <ul class="structure-list">
-                <li><strong>NEAX PER-1</strong> Wahyu Setiaji</li>
-                <li><strong>NEAX PER-2</strong> Yogaswara Dama Rizky</li>
-                <li><strong>NEAX PER-3</strong> Reynaldo Luthfi Pamungkas</li>
-                <li><strong>NEAX PER-4</strong> Faisal Ali</li>
-                <li><strong>NEAX PER-5</strong> Alif Frauq</li>
-                <li><strong>NEAX PER-6</strong> Andi Muhammad Mallarangeng</li>
-                <li><strong>NEAX PER-7</strong> Bagas Alif Fimaskoro</li>
-                <li><strong>NEAX PER-8</strong> Arya Rahman Hakim</li>
-                <li><strong>NEAX PER-9</strong> Ahmad Ridho Sentana</li>
-                <li><strong>NEAX PER-10</strong> Priyo Sembodo</li>
-                <li><strong>NEAX PER-11</strong> Audry Stevany</li>
-                <li><strong>NEAX PER-12</strong> Aidatul Fitriya</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Legacy Section -->
-      <div>
-        <h2 class="section-title text-3xl font-bold mb-8">Warisan dan Masa Depan</h2>
-        
-        <div class="bg-gray-50 rounded-xl p-6 border border-[var(--hmdt-orange-light)]">
-          <div class="flex items-start">
-            <div class="text-4xl mr-4 text-[var(--hmdt-orange)]">
-              <i class="fas fa-quote-left"></i>
-            </div>
-            <div>
-              <p class="text-lg italic mb-4">
-                HMDT telah mengalami perkembangan signifikan, bertransformasi dari sebuah himpunan kecil menjadi organisasi mahasiswa yang solid dan berpengaruh. Setiap tahun, kami berkomitmen untuk terus meningkatkan kualitas pelayanan serta menyelenggarakan kegiatan yang bermanfaat bagi seluruh anggota.
-              </p>
-              <p>
-                Dengan semangat "Sanggup Mampu Bisa," HMDT akan terus berfungsi sebagai wadah pengembangan potensi mahasiswa D3 Teknologi Telekomunikasi dan berkontribusi secara positif bagi Telkom University.
-              </p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="mt-8 text-center">
-          <a href="index.html" class="btn-primary inline-flex items-center">
-            <i class="fas fa-home mr-2"></i>
-            Kembali ke Beranda
-          </a>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -591,6 +492,17 @@
   </footer>
 
   <script>
+    // Preloader
+    window.addEventListener('load', function() {
+      const preloader = document.getElementById('preloader');
+      setTimeout(() => {
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+          preloader.style.display = 'none';
+        }, 500);
+      }, 800);
+    });
+
     // Navbar Mobile Toggle
     const toggleBtn = document.getElementById('toggleMenu');
     const mobileMenu = document.getElementById('mobileMenu');
@@ -619,6 +531,28 @@
     document.querySelectorAll('#mobileMenu a').forEach(link => {
       link.addEventListener('click', () => {
         mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Category filter
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    categoryBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        categoryBtns.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+
+    // Add to cart animation
+    const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
+    addToCartBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        this.innerHTML = '<i class="fas fa-check"></i> Ditambahkan';
+        this.style.background = '#10b981';
+        setTimeout(() => {
+          this.innerHTML = '<i class="fas fa-shopping-cart"></i> Tambah ke Keranjang';
+          this.style.background = '';
+        }, 2000);
       });
     });
   </script>
