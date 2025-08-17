@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kabinet Samudaya | HMDT Tel-U</title>
+  <title>Badan Pengurus Harian | HMDT Tel-U</title>
   <link rel="icon" type="image/x-icon" href="img/logo-hmdt.png">
-  <link rel="stylesheet" href="style.css">
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -29,16 +28,414 @@
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <style>
+    :root {
+      --hmdt-orange: #b56d00;
+      --hmdt-orange-light: #d88a1e;
+      --hmdt-dark: #1e293b;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      background-color: #f8fafc;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+    }
+
+    #navbar {
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .section-title {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 2.5rem;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70px;
+      height: 4px;
+      background: var(--hmdt-orange);
+      border-radius: 2px;
+    }
+
+    .btn-primary {
+      background: var(--hmdt-orange);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-block;
+      box-shadow: 0 4px 6px rgba(181, 109, 0, 0.2);
+    }
+
+    .btn-primary:hover {
+      background: var(--hmdt-orange-light);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(181, 109, 0, 0.3);
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .overlay-gradient {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(30, 41, 59, 0.6) 100%);
+    }
+
+    .swiper-button-prev, .swiper-button-next {
+      background: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .swiper-button-prev::after, .swiper-button-next::after {
+      font-size: 18px;
+      color: var(--hmdt-orange);
+    }
+
+    .swiper-pagination-bullet {
+      width: 12px;
+      height: 12px;
+      background: #cbd5e1;
+      opacity: 1;
+    }
+    
+    .swiper-pagination-bullet-active {
+      background: var(--hmdt-orange);
+    }
+    
+    .bph-hero {
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(30, 41, 59, 0.7) 100%), 
+                  url('img/logo-hmdt.png') center/cover no-repeat;
+    }
+    
+    .team-member {
+      text-align: center;
+      padding: 20px;
+    }
+    
+    .member-photo {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      object-fit: cover;
+      border: 4px solid var(--hmdt-orange-light);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .team-member:hover .member-photo {
+      transform: scale(1.05);
+      border-color: var(--hmdt-orange);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .member-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--hmdt-dark);
+      margin-bottom: 5px;
+    }
+    
+    .member-position {
+      color: var(--hmdt-orange);
+      font-weight: 600;
+      margin-bottom: 15px;
+      font-size: 0.95rem;
+    }
+    
+    .department-card {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .department-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid rgba(216, 138, 30, 0.2);
+    }
+    
+    .department-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(181, 109, 0, 0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+    
+    .department-icon i {
+      font-size: 24px;
+      color: var(--hmdt-orange);
+    }
+    
+    .department-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--hmdt-dark);
+    }
+    
+    .department-members {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      flex-grow: 1;
+    }
+    
+    .department-member {
+      text-align: center;
+      padding: 15px;
+      background: rgba(181, 109, 0, 0.05);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 160px;
+    }
+    
+    .department-member:hover {
+      background: rgba(181, 109, 0, 0.1);
+      transform: translateY(-3px);
+    }
+    
+    .department-member-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin: 0 auto 10px;
+      object-fit: cover;
+      border: 2px solid var(--hmdt-orange-light);
+    }
+    
+    .department-member-name {
+      font-weight: 600;
+      color: var(--hmdt-dark);
+      margin-bottom: 3px;
+      font-size: 0.95rem;
+      line-height: 1.2;
+    }
+    
+    .department-member-position {
+      color: var(--hmdt-orange);
+      font-size: 0.85rem;
+      line-height: 1.3;
+    }
+    
+    .department-button {
+      margin-top: 25px;
+      text-align: center;
+    }
+    
+    .department-member-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background: rgba(181, 109, 0, 0.05);
+      border: 2px dashed rgba(216, 138, 30, 0.3);
+      border-radius: 8px;
+      min-height: 160px;
+      padding: 15px;
+      color: var(--hmdt-orange);
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .department-member-placeholder:hover {
+      background: rgba(181, 109, 0, 0.1);
+      transform: translateY(-3px);
+      border-color: rgba(216, 138, 30, 0.5);
+    }
+    
+    @media (max-width: 768px) {
+      .department-members {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    #moreMembersModal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    #moreMembersModal.show {
+      display: flex;
+      opacity: 1;
+    }
+    
+    .modal-content {
+      background: white;
+      border-radius: 16px;
+      max-width: 800px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      animation: modalIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+    
+    .modal-header {
+      padding: 20px 25px;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .modal-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--hmdt-orange);
+    }
+    
+    .close-modal {
+      background: #f1f5f9;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .close-modal:hover {
+      background: var(--hmdt-orange-light);
+      color: white;
+    }
+    
+    .modal-body {
+      padding: 25px;
+    }
+    
+    .modal-members-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    
+    .modal-member-card {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      background: rgba(181, 109, 0, 0.05);
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+    
+    .modal-member-card:hover {
+      background: rgba(181, 109, 0, 0.1);
+      transform: translateY(-3px);
+    }
+    
+    .modal-member-photo {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--hmdt-orange-light);
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+    
+    .modal-member-info h4 {
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: var(--hmdt-dark);
+    }
+    
+    .modal-member-info p {
+      color: var(--hmdt-orange);
+      font-size: 0.9rem;
+    }
+    
+    @keyframes modalIn {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes modalOut {
+      from {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
 <body class="overflow-x-hidden font-sans text-gray-800 bg-gray-50">
 
   <!-- Preloader -->
-  <!-- <div id="preloader" class="fixed inset-0 z-50 flex items-center justify-center bg-white transition-opacity duration-500">
+  <div id="preloader" class="fixed inset-0 z-50 flex items-center justify-center bg-white transition-opacity duration-500">
     <div class="flex flex-col items-center">
       <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-[var(--hmdt-orange)]"></div>
-      <div class="mt-4 text-[var(--hmdt-orange)] font-semibold">BPH HMDT</div>
+      <div class="mt-4 text-[var(--hmdt-orange)] font-semibold">HMDT</div>
     </div>
-  </div> -->
+  </div>
 
   <!-- Navbar -->
   <header id="navbar" class="bg-white/90 backdrop-blur-sm shadow-md border-b border-gray-200 sticky top-0 z-40 transition-transform duration-300 ease-in-out">
@@ -86,7 +483,7 @@
             Store
             <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
           </a>
-          <a href="index.html#pengurus" class="font-semibold relative group transition duration-200 text-[var(--hmdt-orange)]">
+          <a href="bph.html" class="font-semibold relative group transition duration-200 text-[var(--hmdt-orange)]">
             BPH
             <span class="absolute left-0 -bottom-1 w-full h-[2px] bg-[var(--hmdt-orange)]"></span>
           </a>
@@ -116,785 +513,477 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section id="home" class="relative min-h-[80vh] flex items-center bg-cover bg-center bg-no-repeat text-white overflow-hidden">
-    <div class="absolute inset-0 bg-[url('img/logo-kabinet.jpeg')] bg-cover bg-center"></div>
-    <div class="absolute inset-0 overlay-gradient"></div>
-    <div class="relative z-10 max-w-7xl mx-auto px-6 py-24 w-full">
-      <div class="grid md:grid-cols-2 items-center gap-12">
-
-        <!-- Teks -->
-        <div class="text-left space-y-6">
-          <h1 data-aos="fade-up" data-aos-delay="100" class="text-3xl md:text-5xl font-bold leading-tight">
-            BPH HMDT <br> <span class="text-[var(--hmdt-orange)]">Kabinet Samudaya</span>
-          </h1>
-          <p data-aos="fade-up" data-aos-delay="200" class="text-lg max-w-lg text-gray-200 leading-relaxed">
-            Badan Pengurus Harian (BPH) bertanggung jawab mengkoordinasikan seluruh kegiatan dan departemen di bawah HMDT.
-          </p>
-          <div data-aos="fade-up" data-aos-delay="300" class="flex flex-wrap gap-4 mt-6">
-            <a href="#pengurus" class="btn-primary">
-              Jelajahi
-            </a>
-          </div>
-        </div>
-
-        <!-- Foto -->
-        <div data-aos="zoom-in" data-aos-delay="400" class="hidden md:flex justify-center">
-          <div class="relative">
-            <div class="absolute -inset-4 bg-[var(--hmdt-orange)] rounded-2xl rotate-6 opacity-30"></div>
-            <div class="absolute -inset-2 bg-[var(--hmdt-orange)] rounded-2xl -rotate-3 opacity-20"></div>
-            <img src="img/logo-kabinet.jpeg" style="height: 250px;" alt="Kegiatan HMDT" class="relative w-full max-w-md h-auto rounded-2xl shadow-xl object-cover border-4 border-white">
-          </div>
-        </div>
-
+  <!-- Hero Section BPH -->
+  <section class="bph-hero relative text-white overflow-hidden">
+    <div class="relative z-10 max-w-7xl mx-auto px-6 py-16 w-full text-center">
+      <h1 data-aos="fade-up" class="text-4xl md:text-6xl font-bold mb-6">
+        BADAN PENGURUS HARIAN
+      </h1>
+      <p data-aos="fade-up" data-aos-delay="100" class="text-xl md:text-2xl max-w-3xl mx-auto mb-8">
+        Himpunan Mahasiswa D3 Teknologi Telekomunikasi
+      </p>
+      <div data-aos="fade-up" data-aos-delay="200">
+        <a href="#inti" class="btn-primary px-8 py-4 text-lg font-bold inline-flex items-center">
+          Lihat Struktur Pengurus
+          <i class="fas fa-arrow-down ml-3"></i>
+        </a>
       </div>
     </div>
-    
-    <!-- Shape Divider -->
-    <!-- <div class="absolute bottom-0 left-0 w-full overflow-hidden">
-      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" class="fill-current text-gray-50">
-        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
-        <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
-        <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
-      </svg>
-    </div> -->
   </section>
 
-  <!-- Struktur Pengurus -->
-
-  <section id="pengurus" class="py-20 px-4 md:px-8 bg-white">
+  <!-- Pengurus Inti -->
+  <section id="inti" class="py-20 px-4 md:px-8 bg-white">
     <div class="max-w-7xl mx-auto">
       <h2 class="section-title text-3xl font-bold text-center">Inti BPH</h2>
-      <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">
-        Berikut adalah tim pengurus inti HMDT periode 2025 yang bertanggung jawab dalam menjalankan roda organisasi
-      </p>
-
-      <div class="swiper pengurus-swiper max-w-6xl mx-auto px-4 pb-12 relative">
-        <div class="swiper-wrapper">
-          <!-- 1 pengurus = 1 slide -->
-          <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="img/people/inti/kahim.jpeg" alt="Reihan Dwi Pangestu" class="w-full h-full object-cover">
-                </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Reihan Dwi Pangestu</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Ketua</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2023</p>
-                </div>
+      
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+          <div class="p-6 md:p-8">
+            <div class="flex flex-col items-center text-center mb-8">
+              <img src="img/logo-kabinet.jpeg" alt="Logo HMDT" class="w-24 h-24 rounded-full border-4 border-[var(--hmdt-orange-light)] mb-4">
+              <h3 class="text-2xl font-bold text-[var(--hmdt-dark)]">Kabinet Samudaya</h3>
+              <p class="text-gray-600">Badan Pengurus Harian Periode 2025/2026</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div class="bg-gray-50 p-5 rounded-lg text-center">
+                <div class="text-4xl font-bold text-[var(--hmdt-orange)]">39</div>
+                <div class="text-gray-600 mt-1">Fungsionaris</div>
+              </div>
+              <div class="bg-gray-50 p-5 rounded-lg text-center">
+                <div class="text-4xl font-bold text-[var(--hmdt-orange)]">7</div>
+                <div class="text-gray-600 mt-1">Departemen</div>
+              </div>
+              <div class="bg-gray-50 p-5 rounded-lg text-center">
+                <div class="text-4xl font-bold text-[var(--hmdt-orange)]">20+</div>
+                <div class="text-gray-600 mt-1">Program Kerja</div>
               </div>
             </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="img/people/inti/wakahim.jpg" alt="Risnanda Candra Abdurrozaq" class="w-full h-full object-cover">
-                </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Risnanda Candra Abdurrozaq</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Wakil Ketua</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2023</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="img/people/inti/sekre-1.jpg" alt="Arimbi Dwi Syabillah" class="w-full h-full object-cover">
-                </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Arimbi Dwi Syabillah</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Sekretaris I</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2023</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="img/people/inti/sekre-2.jpg" alt="Karina Aulya Putri Laksana" class="w-full h-full object-cover">
-                </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Karina Aulya Putri Laksana</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Sekretaris II</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2023</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="img/people/inti/bendahara-1.jpg" alt="Fasya Lavina Attasya" class="w-full h-full object-cover">
-                </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Fasya Lavina Attasya</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Bendahara I</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2023</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="img/people/inti/bendahara-2.jpg" alt="Najwa Nabila Loka" class="w-full h-full object-cover">
-                </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Najwa Nabila Loka</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Bendahara II</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2023</p>
-                </div>
-              </div>
+            
+            <div class="text-center">
+              <button id="showIntiMembers" class="btn-primary px-8 py-4 text-lg font-bold inline-flex items-center">
+                <i class="fas fa-users mr-3"></i>
+                Lihat Pengurus Inti
+              </button>
             </div>
           </div>
         </div>
-
-        <!-- Tombol Navigasi -->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-pagination mt-6"></div>
       </div>
     </div>
   </section>
 
-  <!-- Dep. PSDM -->
-  <section id="psdm" class="py-20 px-4 md:px-8 bg-white">
+  <!-- Modal Pengurus Inti -->
+  <div id="intiMembersModal" class="fixed inset-0 bg-black bg-opacity-70 z-[100] hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+      <div class="p-6 border-b sticky top-0 bg-white z-10">
+        <div class="flex justify-between items-center">
+          <h3 class="text-2xl font-bold text-[var(--hmdt-orange)]">Pengurus Inti BPH</h3>
+          <button id="closeIntiModal" class="text-gray-500 hover:text-gray-700">
+            <i class="fas fa-times text-2xl"></i>
+          </button>
+        </div>
+      </div>
+      
+      <div class="p-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Ketua Umum -->
+          <div class="bg-gray-50 rounded-xl p-6 text-center">
+            <img src="img/teams/inti/kahim.jpeg" alt="Ketua Himpunan" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-[var(--hmdt-orange-light)]">
+            <h4 class="text-xl font-bold mt-4">Reihan Dwi Pangestu</h4>
+            <p class="text-[var(--hmdt-orange)] font-medium">Ketua Himpunan</p>
+            <p class="mt-3 text-gray-600">
+              Bertanggung jawab atas keseluruhan kegiatan HMDT dan menjadi perwakilan organisasi.
+            </p>
+          </div>
+          
+          <!-- Wakil Ketua -->
+          <div class="bg-gray-50 rounded-xl p-6 text-center">
+            <img src="img/teams/inti/wakahim.jpg" alt="Wakil Ketua" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-[var(--hmdt-orange-light)]">
+            <h4 class="text-xl font-bold mt-4">Risnanda C. Abdurozaq</h4>
+            <p class="text-[var(--hmdt-orange)] font-medium">Wakil Ketua</p>
+            <p class="mt-3 text-gray-600">
+              Mendampingi ketua himpunan dalam mengkoordinasikan seluruh kegiatan organisasi.
+            </p>
+          </div>
+          
+          <!-- Sekretaris I -->
+          <div class="bg-gray-50 rounded-xl p-6 text-center">
+            <img src="img/teams/inti/sekre-1.jpg" alt="Sekretaris I" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-[var(--hmdt-orange-light)]">
+            <h4 class="text-xl font-bold mt-4">Arimbi Dwi Syabillah</h4>
+            <p class="text-[var(--hmdt-orange)] font-medium">Sekretaris I</p>
+            <p class="mt-3 text-gray-600">
+              Bertanggung jawab atas administrasi dan dokumentasi kegiatan organisasi.
+            </p>
+          </div>
+          
+          <!-- Sekretaris II -->
+          <div class="bg-gray-50 rounded-xl p-6 text-center">
+            <img src="img/teams/inti/sekre-2.jpg" alt="Sekretaris II" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-[var(--hmdt-orange-light)]">
+            <h4 class="text-xl font-bold mt-4">Karina Putri Aulya Laksana</h4>
+            <p class="text-[var(--hmdt-orange)] font-medium">Sekretaris II</p>
+            <p class="mt-3 text-gray-600">
+              Membantu Sekretaris I dalam tugas administrasi dan dokumentasi.
+            </p>
+          </div>
+          
+          <!-- Bendahara I -->
+          <div class="bg-gray-50 rounded-xl p-6 text-center">
+            <img src="img/teams/inti/bendahara-1.jpg" alt="Bendahara I" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-[var(--hmdt-orange-light)]">
+            <h4 class="text-xl font-bold mt-4">Fasya Lavina Attasya</h4>
+            <p class="text-[var(--hmdt-orange)] font-medium">Bendahara I</p>
+            <p class="mt-3 text-gray-600">
+              Mengelola keuangan organisasi dan membuat laporan keuangan.
+            </p>
+          </div>
+          
+          <!-- Bendahara II -->
+          <div class="bg-gray-50 rounded-xl p-6 text-center">
+            <img src="img/teams/inti/bendahara-2.jpg" alt="Bendahara II" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-[var(--hmdt-orange-light)]">
+            <h4 class="text-xl font-bold mt-4">Najwa Nabila Loka</h4>
+            <p class="text-[var(--hmdt-orange)] font-medium">Bendahara II</p>
+            <p class="mt-3 text-gray-600">
+              Membantu Bendahara I dalam pengelolaan keuangan organisasi.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="p-6 border-t text-center">
+        <button id="closeIntiModalBottom" class="btn-primary px-6 py-3">
+          <i class="fas fa-times mr-2"></i>
+          Tutup
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Departemen -->
+  <section class="py-20 px-4 md:px-8 bg-gray-50">
     <div class="max-w-7xl mx-auto">
-      <h2 class="section-title text-3xl font-bold text-center">Dep. Pengembangan SDM</h2>
+      <h2 class="section-title text-3xl font-bold text-center">Departemen</h2>
 
-      <div class="swiper pengurus-swiper max-w-6xl mx-auto px-4 pb-12 relative">
+      <div class="swiper departmentSwiper">
         <div class="swiper-wrapper">
-          <!-- 1 pengurus = 1 slide -->
+          
+          <!-- Departemen PSDM -->
           <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="" alt="Muhammad Rifki" class="w-full h-full object-cover">
+            <div class="department-card">
+              <div class="department-header">
+                <div class="department-icon">
+                  <i class="fa-solid fa-users-gear"></i>
                 </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Muhammad Rifki</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Kepala Departemen</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2023</p>
+                <h3 class="department-title">Pengembangan SDM</h3>
+              </div>
+              
+              <div class="department-members">
+                <div class="department-member">
+                  <img src="img/teams/dept1.jpg" alt="Kadep" class="department-member-photo">
+                  <h4 class="department-member-name">Muhammad Rifki</h4>
+                  <p class="department-member-position">Kepala Departemen</p>
                 </div>
+                <div class="department-member">
+                  <img src="img/teams/dept2.jpg" alt="Staff" class="department-member-photo">
+                  <h4 class="department-member-name">Aidatul Fitriya</h4>
+                  <p class="department-member-position">Staff</p>
+                </div>
+                <div class="department-member">
+                  <img src="img/teams/dept3.jpg" alt="Staff" class="department-member-photo">
+                  <h4 class="department-member-name">⁠Cinta Aisyah Sasikirana</h4>
+                  <p class="department-member-position">Staff</p>
+                </div>
+                <div class="department-member-placeholder show-more-members" data-department="PSDM">
+                  <i class="fas fa-plus text-2xl mb-2"></i>
+                  <p>5 Anggota Lainnya</p>
+                </div>
+              </div>
+              
+              <div class="department-button">
+                <a href="departemen/psdm.html" class="btn-primary inline-flex items-center">
+                  Lihat Departemen
+                  <i class="fas fa-arrow-right ml-2"></i>
+                </a>
               </div>
             </div>
           </div>
+          
+          <!-- Departemen Eksternal -->
           <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="" alt="Aidatul Fitriya" class="w-full h-full object-cover">
+            <div class="department-card">
+              <div class="department-header">
+                <div class="department-icon">
+                  <i class="fa-solid fa-handshake"></i> 
                 </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Aidatul Fitriya</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Staff</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2024</p>
+                <h3 class="department-title">Eksternal</h3>
+              </div>
+              
+              <div class="department-members">
+                <div class="department-member">
+                  <img src="img/team/dept6.jpg" alt="Kepala Departemen" class="department-member-photo">
+                  <h4 class="department-member-name">Fairuz Ardhy</h4>
+                  <p class="department-member-position">Kepala Departemen</p>
                 </div>
+                <div class="department-member">
+                  <img src="img/team/dept7.jpg" alt="Staff" class="department-member-photo">
+                  <h4 class="department-member-name">Alfin Dafisq Qotrunnada</h4>
+                  <p class="department-member-position">Staff</p>
+                </div>
+                <div class="department-member">
+                  <img src="img/team/dept7.jpg" alt="Staff" class="department-member-photo">
+                  <h4 class="department-member-name">Nasya Fahira Setiawan</h4>
+                  <p class="department-member-position">Staff</p>
+                </div>
+                <div class="department-member">
+                  <img src="img/team/dept7.jpg" alt="Staff" class="department-member-photo">
+                  <h4 class="department-member-name">Naurah Iklil Hasanah</h4>
+                  <p class="department-member-position">Staff</p>
+                </div>
+              </div>
+              
+              <div class="department-button">
+                <a href="departemen/eksternal.html" class="btn-primary inline-flex items-center">
+                  Lihat Departemen
+                  <i class="fas fa-arrow-right ml-2"></i>
+                </a>
               </div>
             </div>
           </div>
+          
+          <!-- Departemen Kominfo -->
           <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="" alt="Cinta Aisyah Sasikirana" class="w-full h-full object-cover">
+            <div class="department-card">
+              <div class="department-header">
+                <div class="department-icon">
+                  <i class="fa-solid fa-bullhorn"></i>
                 </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Cinta Aisyah Sasikirana</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Staff</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2024</p>
+                <h3 class="department-title">Komunikasi & Informasi</h3>
+              </div>
+              
+              <div class="department-members">
+                <div class="department-member">
+                  <img src="img/team/dept10.jpg" alt="Kepala Departemen" class="department-member-photo">
+                  <h4 class="department-member-name">Hannani Syadzwana N. R.</h4>
+                  <p class="department-member-position">Kepala Departemen</p>
                 </div>
+                <div class="department-member">
+                  <img src="img/team/dept11.jpg" alt="Staff" class="department-member-photo">
+                  <h4 class="department-member-name">Divia Nuralika Namira</h4>
+                  <p class="department-member-position">Staff</p>
+                </div>
+                <div class="department-member">
+                  <img src="img/team/dept11.jpg" alt="Staff" class="department-member-photo">
+                  <h4 class="department-member-name">Muhammad Daffa Al Fikri</h4>
+                  <p class="department-member-position">Staff</p>
+                </div>
+                <div class="department-member-placeholder show-more-members" data-department="Kominfo">
+                  <i class="fas fa-plus text-2xl mb-2"></i>
+                  <p>2 Anggota Lainnya</p>
+                </div>
+              </div>
+              
+              <div class="department-button">
+                <a href="departemen/kominfo.html" class="btn-primary inline-flex items-center">
+                  Lihat Departemen
+                  <i class="fas fa-arrow-right ml-2"></i>
+                </a>
               </div>
             </div>
           </div>
+          
+          <!-- Departemen Ristek -->
           <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="" alt="Farah Diba Shaskia" class="w-full h-full object-cover">
+            <div class="department-card">
+              <div class="department-header">
+                <div class="department-icon">
+                  <i class="fa-solid fa-gears"></i>
                 </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Farah Diba Shaskia</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Staff</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2024</p>
+                <h3 class="department-title">Riset & Teknologi</h3>
+              </div>
+              
+              <div class="department-members">
+                <div class="department-member">
+                  <img src="img/team/dept15.jpg" alt="Kepala Departemen" class="department-member-photo">
+                  <h4 class="department-member-name">Fabian Rifqi Ilmany</h4>
+                  <p class="department-member-position">Kepala Departemen</p>
                 </div>
+                <div class="department-member">
+                  <img src="img/team/dept16.jpg" alt="Staff" class="department-member-photo">
+                  <h4 class="department-member-name">Aswangga Widya Baswara</h4>
+                  <p class="department-member-position">Staff</p>
+                </div>
+                <div class="department-member">
+                  <img src="img/team/dept17.jpg" alt="Staff" class="department-member-photo">
+                  <h4 class="department-member-name">M. Faridh Asri</h4>
+                  <p class="department-member-position">Staff</p>
+                </div>
+                <div class="department-member">
+                  <img src="img/team/dept18.jpg" alt="Staff" class="department-member-photo">
+                  <h4 class="department-member-name">Naufal Asyraf Habibi</h4>
+                  <p class="department-member-position">Staff</p>
+                </div>
+              </div>
+              
+              <div class="department-button">
+                <a href="departemen/ristek.html" class="btn-primary inline-flex items-center">
+                  Lihat Departemen
+                  <i class="fas fa-arrow-right ml-2"></i>
+                </a>
               </div>
             </div>
           </div>
+          
+          <!-- Departemen Sosmas -->
           <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="" alt="Farras Naufal Ramadhan" class="w-full h-full object-cover">
+            <div class="department-card">
+              <div class="department-header">
+                <div class="department-icon">
+                  <i class="fa-solid fa-people-carry-box"></i>
                 </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Farras Naufal Ramadhan</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Staff</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2024</p>
+                <h3 class="department-title">Sosial Masyarakat</h3>
+              </div>
+              
+              <div class="department-members">
+                <div class="department-member">
+                  <img src="img/team/dept19.jpg" alt="Kepala Departemen" class="department-member-photo">
+                  <h4 class="department-member-name">M. Alfachri Akbar</h4>
+                  <p class="department-member-position">Kepala Departemen</p>
                 </div>
+                <div class="department-member">
+                  <img src="img/team/dept20.jpg" alt="Staff" class="department-member-photo">
+                  <h4 class="department-member-name">Khairul Halim</h4>
+                  <p class="department-member-position">Staff</p>
+                </div>
+                <div class="department-member">
+                  <img src="img/team/dept20.jpg" alt="Staff" class="department-member-photo">
+                  <h4 class="department-member-name">Nasywa Zauja N. K.</h4>
+                  <p class="department-member-position">Staff</p>
+                </div>
+                <div class="department-member">
+                  <img src="img/team/dept20.jpg" alt="Staff" class="department-member-photo">
+                  <h4 class="department-member-name">Jemi Syaputra</h4>
+                  <p class="department-member-position">Staff</p>
+                </div>
+              </div>
+              
+              <div class="department-button">
+                <a href="departemen/sosmas.html" class="btn-primary inline-flex items-center">
+                  Lihat Departemen
+                  <i class="fas fa-arrow-right ml-2"></i>
+                </a>
               </div>
             </div>
           </div>
+          
+          <!-- Departemen Orsenbud -->
           <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="" alt="Hadi Dermawan" class="w-full h-full object-cover">
+            <div class="department-card">
+              <div class="department-header">
+                <div class="department-icon">
+                  <i class="fa-solid fa-futbol"></i>
                 </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Hadi Dermawan</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Staff</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2024</p>
+                <h3 class="department-title">Olahraga, Seni & Budaya</h3>
+              </div>
+              
+              <div class="department-members">
+                <div class="department-member">
+                  <img src="img/team/dept24.jpg" alt="Kepala Departemen" class="department-member-photo">
+                  <h4 class="department-member-name">M. Raissa Aghna</h4>
+                  <p class="department-member-position">Kepala Departemen</p>
                 </div>
+                <div class="department-member">
+                  <img src="img/teams/orsenbud/arkan.jpg" alt="Staff" class="department-member-photo">
+                  <h4 class="department-member-name">Arkan Nibras</h4>
+                  <p class="department-member-position">Staff</p>
+                </div>
+                <div class="department-member">
+                  <img src="img/team/dept25.jpg" alt="Staff" class="department-member-photo">
+                  <h4 class="department-member-name">⁠M.Zharfan Al Ghifari</h4>
+                  <p class="department-member-position">Staff</p>
+                </div>
+                <div class="department-member">
+                  <img src="img/teams/orsenbud/nazril.jpg" alt="Staff" class="department-member-photo">
+                  <h4 class="department-member-name">Nazril M. Syakib</h4>
+                  <p class="department-member-position">Staff</p>
+                </div>
+              </div>
+              
+              <div class="department-button">
+                <a href="departemen/orsenbud.html" class="btn-primary inline-flex items-center">
+                  Lihat Departemen
+                  <i class="fas fa-arrow-right ml-2"></i>
+                </a>
               </div>
             </div>
           </div>
+          
+          <!-- Departemen Kewirausahaan -->
           <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="" alt="Putu Ulan Candra Dewi" class="w-full h-full object-cover">
+            <div class="department-card">
+              <div class="department-header">
+                <div class="department-icon">
+                  <i class="fa-solid fa-chart-line"></i>
                 </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Putu Ulan Candra Dewi</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Staff</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2024</p>
+                <h3 class="department-title">Kewirausahaan</h3>
+              </div>
+              
+              <div class="department-members">
+                <div class="department-member">
+                  <img src="img/team/dept28.jpg" alt="Kepala Departemen" class="department-member-photo">
+                  <h4 class="department-member-name">Annisa Nuraeni Robbiah</h4>
+                  <p class="department-member-position">Kepala Departemen</p>
+                </div>
+                <div class="department-member">
+                  <img src="img/team/dept29.jpg" alt="Staff" class="department-member-photo">
+                  <h4 class="department-member-name">Dini Arwati Mufidah</h4>
+                  <p class="department-member-position">Staff</p>
+                </div>
+                <div class="department-member">
+                  <img src="img/team/dept29.jpg" alt="Staff" class="department-member-photo">
+                  <h4 class="department-member-name">Muhammad Fathir Fatah</h4>
+                  <p class="department-member-position">Staff</p>
+                </div>
+                <div class="department-member">
+                  <img src="img/teams/kwu/yona.jpg" alt="Staff" class="department-member-photo">
+                  <h4 class="department-member-name">Yona Putri Azzahra</h4>
+                  <p class="department-member-position">Staff</p>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="" alt="Shella Nadya Putri Sulaeman" class="w-full h-full object-cover">
-                </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Shella Nadya Putri Sulaeman</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Staff</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2024</p>
-                </div>
+              
+              <div class="department-button">
+                <a href="departemen/kewirausahaan.html" class="btn-primary inline-flex items-center">
+                  Lihat Departemen
+                  <i class="fas fa-arrow-right ml-2"></i>
+                </a>
               </div>
             </div>
           </div>
         </div>
-
-        <!-- Tombol Navigasi -->
-        <div class="swiper-button-prev"></div>
+        
+        <!-- Pagination -->
+        <div class="swiper-pagination mt-8"></div>
+        
+        <!-- Navigation -->
         <div class="swiper-button-next"></div>
-        <div class="swiper-pagination mt-6"></div>
-      </div>
-
-      <!-- Tombol Lihat Detail -->
-      <div class="mt-10 text-center">
-        <a href="departemen/psdm.html" class="btn-primary inline-flex items-center">
-          Lihat Departemen
-          <i class="fas fa-arrow-right ml-2"></i>
-        </a>
+        <div class="swiper-button-prev"></div>
       </div>
     </div>
   </section>
 
-  <!-- Dep. Eksternal -->
-  <section id="eksternal" class="py-20 px-4 md:px-8 bg-white">
-    <div class="max-w-7xl mx-auto">
-      <h2 class="section-title text-3xl font-bold text-center">Dep. Eksternal</h2>
-
-      <div class="swiper pengurus-swiper max-w-6xl mx-auto px-4 pb-12 relative">
-        <div class="swiper-wrapper">
-          <!-- 1 pengurus = 1 slide -->
-          <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="" alt="Fairuz Ardhy" class="w-full h-full object-cover">
-                </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Fairuz Ardhy</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Kepala Departemen</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2023</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="" alt="Alfin Dafisq Qotrunnada" class="w-full h-full object-cover">
-                </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Alfin Dafisq Qotrunnada</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Staff</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2024</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="" alt="Nasya Fahira Setiawan" class="w-full h-full object-cover">
-                </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Nasya Fahira Setiawan</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Staff</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2024</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="" alt="Naurah Iklil Hasanah" class="w-full h-full object-cover">
-                </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Naurah Iklil Hasanah</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Staff</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2024</p>
-                </div>
-              </div>
-            </div>
-          </div>
+  <!-- Modal Anggota Lainnya -->
+  <div id="moreMembersModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalTitle">Anggota Lainnya</h3>
+        <div class="close-modal">
+          <i class="fas fa-times"></i>
         </div>
-
-        <!-- Tombol Navigasi -->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-pagination mt-6"></div>
       </div>
-
-      <!-- Tombol Lihat Detail -->
-      <div class="mt-10 text-center">
-        <a href="departemen/eksternal.html" class="btn-primary inline-flex items-center">
-          Lihat Departemen
-          <i class="fas fa-arrow-right ml-2"></i>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Dep. Komunikasi & Informasi -->
-  <section id="kominfo" class="py-20 px-4 md:px-8 bg-white">
-    <div class="max-w-7xl mx-auto">
-      <h2 class="section-title text-3xl font-bold text-center">Dep. Komunikasi & Informasi</h2>
-
-      <div class="swiper pengurus-swiper max-w-6xl mx-auto px-4 pb-12 relative">
-        <div class="swiper-wrapper">
-          <!-- 1 pengurus = 1 slide -->
-          <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="" alt="Hannani Syadzwana Nur Ritonga" class="w-full h-full object-cover">
-                </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Hannani Syadzwana Nur Ritonga</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Kepala Departemen</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2023</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="" alt="Muhammad Daffa Al Fikri" class="w-full h-full object-cover">
-                </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Muhammad Daffa Al Fikri</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Staff</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2024</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="" alt="Tiara Nuriawati" class="w-full h-full object-cover">
-                </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Tiara Nuriawati</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Staff</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2024</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="" alt="Tiara Putri Maharani" class="w-full h-full object-cover">
-                </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Tiara Putri Maharani</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Staff</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2024</p>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="modal-body">
+        <div class="modal-members-grid" id="modalMembersGrid">
+          <!-- Anggota akan ditampilkan di sini -->
         </div>
-
-        <!-- Tombol Navigasi -->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-pagination mt-6"></div>
-      </div>
-
-      <!-- Tombol Lihat Detail -->
-      <div class="mt-10 text-center">
-        <a href="departemen/kominfo.html" class="btn-primary inline-flex items-center">
-          Lihat Departemen
-          <i class="fas fa-arrow-right ml-2"></i>
-        </a>
       </div>
     </div>
-  </section>
-
-  <!-- Dep. Ristek -->
-  <section id="ristek" class="py-20 px-4 md:px-8 bg-white">
-    <div class="max-w-7xl mx-auto">
-      <h2 class="section-title text-3xl font-bold text-center">Dep. Riset & Teknologi</h2>
-
-      <div class="swiper pengurus-swiper max-w-6xl mx-auto px-4 pb-12 relative">
-        <div class="swiper-wrapper">
-          <!-- 1 pengurus = 1 slide -->
-          <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="img/people/fabian.jpeg" alt="Fabian Rifqi Ilmany" class="w-full h-full object-cover">
-                </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Fabian Rifqi Ilmany</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Kepala Departemen</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2023</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="" alt="Aswangga Widya Baswara" class="w-full h-full object-cover">
-                </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Aswangga Widya Baswara</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Staff</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2024</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="" alt="M. Faridh Asri" class="w-full h-full object-cover">
-                </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">M. Faridh Asri</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Staff</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2024</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="" alt="Naufal Asyraf Habibi" class="w-full h-full object-cover">
-                </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Naufal Asyraf Habibi</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Staff</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2024</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tombol Navigasi -->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-pagination mt-6"></div>
-      </div>
-
-      <!-- Tombol Lihat Detail -->
-      <div class="mt-10 text-center">
-        <a href="departemen/ristek.html" class="btn-primary inline-flex items-center">
-          Lihat Departemen
-          <i class="fas fa-arrow-right ml-2"></i>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Dep. Sosial Masyarakat -->
-  <section id="sosmas" class="py-20 px-4 md:px-8 bg-white">
-    <div class="max-w-7xl mx-auto">
-      <h2 class="section-title text-3xl font-bold text-center">Dep. Sosial Masyarakat</h2>
-
-      <div class="swiper pengurus-swiper max-w-6xl mx-auto px-4 pb-12 relative">
-        <div class="swiper-wrapper">
-          <!-- 1 pengurus = 1 slide -->
-          <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="img/people/sosmas/" alt="Muhammad Alfachri Akbar" class="w-full h-full object-cover">
-                </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Muhammad Alfachri Akbar</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Kepala Departemen</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2023</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="" alt="Nasywa Zauja Noor Kamila" class="w-full h-full object-cover">
-                </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Nasywa Zauja Noor Kamila</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Staff</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2024</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="" alt="Jemi Syaputra" class="w-full h-full object-cover">
-                </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Jemi Syaputra</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Staff</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2024</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="" alt="Khairul Halim" class="w-full h-full object-cover">
-                </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Khairul Halim</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Staff</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2024</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tombol Navigasi -->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-pagination mt-6"></div>
-      </div>
-
-      <!-- Tombol Lihat Detail -->
-      <div class="mt-10 text-center">
-        <a href="departemen/sosmas.html" class="btn-primary inline-flex items-center">
-          Lihat Departemen
-          <i class="fas fa-arrow-right ml-2"></i>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Dep. Orsenbud -->
-  <section id="orsenbud" class="py-20 px-4 md:px-8 bg-white">
-    <div class="max-w-7xl mx-auto">
-      <h2 class="section-title text-3xl font-bold text-center">Dep. Olahraga, Seni dan Budaya</h2>
-
-      <div class="swiper pengurus-swiper max-w-6xl mx-auto px-4 pb-12 relative">
-        <div class="swiper-wrapper">
-          <!-- 1 pengurus = 1 slide -->
-          <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="img/people/orsenbud/" alt="M. Raissa Aghna" class="w-full h-full object-cover">
-                </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">M. Raissa Aghna</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Kepala Departemen</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2023</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="img/people/orsenbud/arkan.jpg" alt="Arkan Nibras" class="w-full h-full object-cover">
-                </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Arkan Nibras</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Staff</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2024</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="" alt="M. Zharfan Al Ghifari" class="w-full h-full object-cover">
-                </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">M. Zharfan Al Ghifari</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Staff</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2024</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="img/people/orsenbud/nazril.jpg" alt="Nazril Muhammad Syakib" class="w-full h-full object-cover">
-                </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Nazril Muhammad Syakib</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Staff</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2024</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tombol Navigasi -->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-pagination mt-6"></div>
-      </div>
-
-      <!-- Tombol Lihat Detail -->
-      <div class="mt-10 text-center">
-        <a href="departemen/orsenbud.html" class="btn-primary inline-flex items-center">
-          Lihat Departemen
-          <i class="fas fa-arrow-right ml-2"></i>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Dep. Kewirausahaan -->
-  <section id="kwu" class="py-20 px-4 md:px-8 bg-white">
-    <div class="max-w-7xl mx-auto">
-      <h2 class="section-title text-3xl font-bold text-center">Dep. Kewirausahaan</h2>
-
-      <div class="swiper pengurus-swiper max-w-6xl mx-auto px-4 pb-12 relative">
-        <div class="swiper-wrapper">
-          <!-- 1 pengurus = 1 slide -->
-          <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="img/people/kwu/" alt="Annisa Nuraeni Robbiah" class="w-full h-full object-cover">
-                </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Annisa Nuraeni Robbiah</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Kepala Departemen</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2023</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="" alt="Dini Arwati Mufidah" class="w-full h-full object-cover">
-                </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Dini Arwati Mufidah</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Staff</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2024</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="" alt="Muhammad Fathir Fatah" class="w-full h-full object-cover">
-                </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Muhammad Fathir Fatah</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Staff</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2024</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card h-full">
-              <div class="p-5">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--hmdt-orange)] mb-5">
-                  <img src="img/people/kwu/yona.jpg" alt="Yona Putri Azzahra" class="w-full h-full object-cover">
-                </div>
-                <div class="text-center">
-                  <h4 class="font-bold text-xl">Yona Putri Azzahra</h4>
-                  <p class="text-[var(--hmdt-orange)] font-medium">Staff</p>
-                  <p class="text-gray-600 mt-3">Mahasiswa Teknologi Telekomunikasi angkatan 2024</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tombol Navigasi -->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-pagination mt-6"></div>
-      </div>
-
-      <!-- Tombol Lihat Detail -->
-      <div class="mt-10 text-center">
-        <a href="departemen/kewirausahaan.html" class="btn-primary inline-flex items-center">
-          Lihat Departemen
-          <i class="fas fa-arrow-right ml-2"></i>
-        </a>
-      </div>
-    </div>
-  </section>
+  </div>
 
   <!-- Footer -->
   <footer id="kontak" class="bg-[var(--hmdt-dark)] text-white pt-16 pb-8">
@@ -994,6 +1083,171 @@
   <!-- Swiper JS -->
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   
-  <script src="script.js"></script>
+  <script>
+    // Inisialisasi AOS
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
+
+    // Preloader
+    window.addEventListener('load', function() {
+      const preloader = document.getElementById('preloader');
+      setTimeout(() => {
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+          preloader.style.display = 'none';
+        }, 500);
+      }, 800);
+    });
+
+    // Navbar Mobile Toggle
+    const toggleBtn = document.getElementById('toggleMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const navbar = document.getElementById('navbar');
+
+    toggleBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Navbar Hide on Scroll
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 80) {
+        navbar.style.transform = 'translateY(-100%)';
+      } else {
+        navbar.style.transform = 'translateY(0)';
+      }
+
+      lastScrollY = currentScrollY;
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    const departmentSwiper = new Swiper('.departmentSwiper', {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 3,
+        }
+      }
+    });
+
+    const modal = document.getElementById('moreMembersModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalMembersGrid = document.getElementById('modalMembersGrid');
+    const closeModalBtn = document.querySelector('.close-modal');
+    
+    // Data anggota tambahan untuk setiap departemen
+    const additionalMembers = {
+      PSDM: [
+        { name: "Farah Diba Shaskia", position: "Staff", photo: "img/team/dept4.jpg" },
+        { name: "Farras Naufal Ramadhan", position: "Staff", photo: "img/team/dept4.jpg" },
+        { name: "Hadi Dermawan", position: "Staff", photo: "img/team/dept4.jpg" },
+        { name: "Putu Ulan Candra Dewi", position: "Staff", photo: "img/team/dept4.jpg" },
+        { name: "Shella Nadya Putri Sulaeman", position: "Staff", photo: "img/team/dept4.jpg" }
+      ],
+      Kominfo: [
+        { name: "Tiara Nuriawati", position: "Staff", photo: "img/team/dept13.jpg" },
+        { name: "Tiara Putri Maharani", position: "Staff", photo: "img/team/dept14.jpg" }
+      ]
+    };
+
+    document.querySelectorAll('.show-more-members').forEach(button => {
+      button.addEventListener('click', function() {
+        const department = this.getAttribute('data-department');
+        
+        modalTitle.textContent = `Anggota ${department} Lainnya`;
+        
+        modalMembersGrid.innerHTML = '';
+        
+        additionalMembers[department].forEach(member => {
+          const memberCard = document.createElement('div');
+          memberCard.className = 'modal-member-card';
+          memberCard.innerHTML = `
+            <img src="${member.photo}" alt="${member.name}" class="modal-member-photo">
+            <div class="modal-member-info">
+              <h4>${member.name}</h4>
+              <p>${member.position}</p>
+            </div>
+          `;
+          modalMembersGrid.appendChild(memberCard);
+        });
+        
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    closeModalBtn.addEventListener('click', function() {
+      modal.classList.remove('show');
+      document.body.style.overflow = '';
+    });
+
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Modal untuk pengurus inti
+    const intiModal = document.getElementById('intiMembersModal');
+    const showIntiBtn = document.getElementById('showIntiMembers');
+    const closeIntiModalBtn = document.getElementById('closeIntiModal');
+    const closeIntiModalBottomBtn = document.getElementById('closeIntiModalBottom');
+
+    showIntiBtn.addEventListener('click', function() {
+      intiModal.classList.remove('hidden');
+      intiModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    });
+
+    closeIntiModalBtn.addEventListener('click', function() {
+      intiModal.classList.add('hidden');
+      intiModal.classList.remove('flex');
+      document.body.style.overflow = '';
+    });
+
+    closeIntiModalBottomBtn.addEventListener('click', function() {
+      intiModal.classList.add('hidden');
+      intiModal.classList.remove('flex');
+      document.body.style.overflow = '';
+    });
+
+    intiModal.addEventListener('click', function(e) {
+      if (e.target === intiModal) {
+        intiModal.classList.add('hidden');
+        intiModal.classList.remove('flex');
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
 </body>
 </html>
