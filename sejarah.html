@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sejarah HMDT - Himpunan Mahasiswa D3 Teknologi Telekomunikasi</title>
+  <link rel="icon" type="image/x-icon" href="img/logo-hmdt.png">
+  <link rel="stylesheet" href="style.css">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#b56d00',
+            secondary: '#d88a1e',
+            dark: '#1e293b',
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --hmdt-orange: #b56d00;
+      --hmdt-orange-light: #d88a1e;
+      --hmdt-dark: #1e293b;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      background-color: #f8fafc;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+    }
+
+    #navbar {
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .section-title {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 2.5rem;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70px;
+      height: 4px;
+      background: var(--hmdt-orange);
+      border-radius: 2px;
+    }
+
+    .btn-primary {
+      background: var(--hmdt-orange);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-block;
+      box-shadow: 0 4px 6px rgba(181, 109, 0, 0.2);
+    }
+
+    .btn-primary:hover {
+      background: var(--hmdt-orange-light);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(181, 109, 0, 0.3);
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .timeline-card {
+      position: relative;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .timeline-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 4px;
+      background: var(--hmdt-orange);
+    }
+
+    .timeline-year {
+      position: absolute;
+      top: 20px;
+      left: -20px;
+      background: var(--hmdt-orange);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-weight: bold;
+      box-shadow: 0 4px 6px rgba(181, 109, 0, 0.2);
+    }
+
+    .timeline-content {
+      padding-left: 2rem;
+    }
+
+    .founders-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+    }
+
+    .founders-table th {
+      background: var(--hmdt-orange);
+      color: white;
+      padding: 0.75rem;
+      text-align: left;
+    }
+
+    .founders-table td {
+      padding: 0.75rem;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .founders-table tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+
+    .founders-table tr:hover {
+      background-color: #fff5e6;
+    }
+
+    .history-hero {
+      background: linear-gradient(135deg, rgba(181, 109, 0, 0.9) 0%, rgba(216, 138, 30, 0.85) 100%), url('img/backgrounds/bg.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .slogan-box {
+      border-left: 4px solid var(--hmdt-orange);
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .slogan-text {
+      font-size: 1.5rem;
+      font-weight: bold;
+      font-style: italic;
+      color: var(--hmdt-orange);
+    }
+
+    .history-fact-box {
+      background: #fff5e6;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-left: 4px solid var(--hmdt-orange);
+    }
+
+    .history-key {
+      font-weight: bold;
+      color: var(--hmdt-orange);
+      min-width: 150px;
+      display: inline-block;
+    }
+
+    .history-structure {
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .structure-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: var(--hmdt-orange);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--hmdt-orange-light);
+    }
+
+    .structure-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .structure-list li {
+      padding: 0.5rem 0;
+      border-bottom: 1px dashed #e2e8f0;
+    }
+
+    .structure-list li:last-child {
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body class="overflow-x-hidden font-sans text-gray-800 bg-gray-50">
+
+  <!-- Navbar -->
+  <header id="navbar" class="bg-white/90 backdrop-blur-sm shadow-md border-b border-gray-200 sticky top-0 z-40 transition-transform duration-300 ease-in-out">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex justify-between items-center">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <img src="img/logo-hmdt.png" alt="Logo HMDT" class="w-12 h-12 rounded-full object-cover border-2 border-[var(--hmdt-orange)]" />
+          <div class="flex flex-col leading-tight">
+            <span class="text-xl font-bold text-[var(--hmdt-orange)]">Himpunan Mahasiswa</span>
+            <p class="text-sm text-gray-600 -mt-1">D3 Teknologi Telekomunikasi</p>
+          </div>
+        </div>
+
+        <!-- Hamburger -->
+        <button id="toggleMenu" class="md:hidden text-[var(--hmdt-orange)] focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+
+        <!-- Menu Desktop -->
+        <nav class="hidden md:flex space-x-7 items-center">
+          <a href="index.html#home" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)]">
+            Beranda
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="index.html#about" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)]">
+            Tentang
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="index.html#visi-misi" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)]">
+            Visi & Misi
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="index.html#features" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)] ">
+            Sumber Daya
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="index.html#aspirasi" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)] ">
+            Aspirasi
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="index.html#pengurus" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)]">
+            BPH
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="index.html#kontak" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)] ">
+            Kontak
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="faq.html" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)] ">
+            FAQ
+            <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Menu Mobile -->
+      <div id="mobileMenu" class="transition-all duration-300 ease-in-out md:hidden hidden mt-4 flex flex-col gap-1 bg-white rounded-lg shadow-lg p-4">
+        <a href="index.html#home" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Beranda</a>
+        <a href="index.html#about" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Tentang</a>
+        <a href="index.html#visi-misi" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Visi & Misi</a>
+        <a href="index.html#features" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Sumber Daya</a>
+        <a href="index.html#aspirasi" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Aspirasi</a>
+        <a href="index.html#pengurus" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">BPH</a>
+        <a href="index.html#kontak" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Kontak</a>
+        <a href="faq.html" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">FAQ</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="history-hero py-20 px-4 text-white">
+    <div class="max-w-4xl mx-auto text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">Sejarah HMDT</h1>
+      <p class="text-xl max-w-2xl mx-auto opacity-90">
+        Perjalanan Himpunan Mahasiswa D3 Teknologi Telekomunikasi Telkom University
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="py-16 px-4 md:px-8 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <!-- Key Facts -->
+      <div class="mb-16">
+        <h2 class="section-title text-3xl font-bold mb-8">Fakta Utama</h2>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="history-fact-box">
+            <p><span class="history-key">Singkatan</span>HMDT</p>
+            <p class="text-sm text-gray-600 mt-1">Dicetuskan oleh Wahyu Setiaji</p>
+          </div>
+          
+          <div class="history-fact-box">
+            <p><span class="history-key">Slogan</span>Sanggup Mampu Bisa</p>
+            <p class="text-sm text-gray-600 mt-1">Dibuat oleh Kaprodi Muhammad Ramdhani</p>
+          </div>
+          
+          <div class="history-fact-box">
+            <p><span class="history-key">Tanggal Berdiri</span>09 Mei 2014</p>
+          </div>
+          
+          <div class="history-fact-box">
+            <p><span class="history-key">Tempat Berdiri</span>Gedung N 309 (FTE)</p>
+          </div>
+        </div>
+        
+        <div class="slogan-box">
+          <p class="slogan-text">"Sanggup Mampu Bisa"</p>
+          <p class="text-gray-600">Slogan HMDT yang mencerminkan semangat dan tekad anggota himpunan</p>
+        </div>
+      </div>
+      
+      <!-- History Timeline -->
+      <div class="mb-16">
+        <h2 class="section-title text-3xl font-bold mb-8">Sejarah Terciptanya HMDT</h2>
+        
+        <div class="timeline-card">
+          <div class="timeline-year">2013</div>
+          <div class="timeline-content">
+            <h3 class="text-xl font-bold mb-3">Orientasi</h3>
+            <p class="mb-4">
+              Siapa yang tidak mengenal HMDT? HMDT merupakan Himpunan Mahasiswa D3 Teknologi Telekomunikasi, yang merupakan salah satu organisasi di bawah naungan Fakultas Ilmu Terapan di Telkom University.
+            </p>
+            
+            <h3 class="text-xl font-bold mb-3">Pencetusan Nama</h3>
+            <p>
+              Nama HMDT pertama kali dicetuskan oleh Wahyu Setiaji dari angkatan 2013. Sebelum STT/ITT berganti nama menjadi Telkom University, terdapat sebuah himpunan fakultas yang dikenal dengan nama HIMATEL, atau yang sering disebut FEK (Fakultas Elektro Komunikasi), yang memiliki satu jurusan. Pada tahun 2013, terjadi penggabungan antara jurusan S1 Teknik Telekomunikasi dan D3 Teknik Telekomunikasi, yang kemudian membentuk HMTT (Himpunan Mahasiswa Teknik Telekomunikasi).
+            </p>
+          </div>
+        </div>
+        
+        <div class="timeline-card">
+          <div class="timeline-year">2014</div>
+          <div class="timeline-content">
+            <h3 class="text-xl font-bold mb-3">Perpindahan dan Pembentukan</h3>
+            <p class="mb-4">
+              Pada tahun 2014, program D3 Teknik Telekomunikasi berpindah dari FEK (Fakultas Elektro Komunikasi) ke Politeknik Telkom. Di sinilah untuk pertama kalinya terbentuk himpunan mahasiswa, yang diprakarsai oleh Kepala Program Studi dan para pencetus dari angkatan 2012.
+            </p>
+            
+            <h3 class="text-xl font-bold mb-3">Kongres AD/ART</h3>
+            <p class="mb-4">
+              Pada tanggal 09 Mei 2014 dilaksanakanlah Kongres AD/ART yang bertempat di GEDUNG N 309 (FTE) dimana para pencetus 2012 dan 2013 hadir.
+            </p>
+            
+            <h4 class="font-bold mb-2">Pencetus Angkatan 2012:</h4>
+            <table class="founders-table">
+              <tr>
+                <td>Hebi Jaya Wahyudi</td>
+                <td>Galuh Entin Oktavia</td>
+              </tr>
+              <tr>
+                <td>Wildan Ihsan Nur Iman</td>
+                <td>Christian Mahardhika</td>
+              </tr>
+              <tr>
+                <td>Pithakhismi Wimadatu</td>
+                <td>Wanda Khansa F</td>
+              </tr>
+            </table>
+            
+            <h4 class="font-bold mb-2 mt-6">Pencetus Angkatan 2013:</h4>
+            <table class="founders-table">
+              <tr>
+                <td>Wahyu Setiaji</td>
+                <td>Risang Surya Saputra</td>
+              </tr>
+              <tr>
+                <td>Muhammad Maulana Putra</td>
+                <td>Cahya Kuncoro</td>
+              </tr>
+            </table>
+            
+            <p class="mt-6">
+              Akhirnya, saat kongres berlangsung, berbagai elemen penting terkait HMDT terbentuk, termasuk nama HMDT, tanggal dan tempat pendiriannya, slogan HMDT, serta asas kekeluargaan yang diusung. Slogan "Sanggup Mampu Bisa" dicetuskan oleh Kepala Program Studi, Muhammad Ramdhani.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Leadership Structure -->
+      <div class="mb-16">
+        <h2 class="section-title text-3xl font-bold mb-8">Struktur Kepemimpinan</h2>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Ketua & Wakil -->
+          <div class="history-structure">
+            <div class="structure-title">Ketua & Wakil Ketua HMDT</div>
+            <ul class="structure-list">
+              <li><strong>2014-2015</strong><br>Ketua: Wildan Ihsan Ina<br>Wakil: Wahyu Setiaji</li>
+              <li><strong>2015-2016</strong><br>Ketua: Muhammad Adib<br>Wakil: Al Akbar & Ibrahim Adila</li>
+              <li><strong>2016-2017</strong><br>Ketua: Kurniawan Setyo Budi<br>Wakil: Giri Darmawan</li>
+              <li><strong>2017-2018</strong><br>Ketua: Puja Hadi Prabowo<br>Wakil: Eka Bayu</li>
+              <li><strong>2018-2019</strong><br>Ketua: Faisal Ali<br>Wakil: Christopher Helmi</li>
+              <li><strong>2019-2020</strong><br>Ketua: Rizky Aditya<br>Wakil: Afifah Safira</li>
+              <li><strong>2020-2021</strong><br>Ketua: Muhammad Nasrullah<br>Wakil: Fikri Ananda</li>
+              <li><strong>2021-2022</strong><br>Ketua: Bagas Alif Fimaskoro<br>Wakil: Abid Ghufran Ramadhan</li>
+              <li><strong>2022-2023</strong><br>Ketua: Arya Rahman Hakim<br>Wakil: Muhammad Tegar Kurniawan</li>
+              <li><strong>2023-2024</strong><br>Ketua: Rafly Budi Prakasa<br>Wakil: Fadel Muhammad Imbang</li>
+              <li><strong>2024-2025</strong><br>Ketua: Priyo Sembodo<br>Wakil: Muhammad Rafi Khalief</li>
+              <li><strong>2025-2026</strong><br>Ketua: Reihan Dwi Pangestu<br>Wakil: Risnanda Candra Abdurrozaq</li>
+            </ul>
+          </div>
+          
+          <!-- BPM & NEAX -->
+          <div>
+            <div class="history-structure mb-6">
+              <div class="structure-title">Struktur BPM</div>
+              <ul class="structure-list">
+                <li><strong>2014-2015</strong> Ahmad Fauzan</li>
+                <li><strong>2015-2016</strong> Cahya Kuncoro</li>
+                <li><strong>2016-2017</strong> Gusti Lambang</li>
+                <li><strong>2017-2018</strong> Andi Muhammad Hisyam</li>
+                <li><strong>2018-2019</strong> Radya Fadhil</li>
+                <li><strong>2019-2020</strong> Andi Muhammad Maulana</li>
+                <li><strong>2020-2021</strong> Ivan Jimmy Andreas</li>
+                <li><strong>2021-2022</strong> Nila Fiantania Aisyiyah</li>
+              </ul>
+            </div>
+            
+            <div class="history-structure">
+              <div class="structure-title">Struktur Ketua NEAX</div>
+              <ul class="structure-list">
+                <li><strong>NEAX PER-1</strong> Wahyu Setiaji</li>
+                <li><strong>NEAX PER-2</strong> Yogaswara Dama Rizky</li>
+                <li><strong>NEAX PER-3</strong> Reynaldo Luthfi Pamungkas</li>
+                <li><strong>NEAX PER-4</strong> Faisal Ali</li>
+                <li><strong>NEAX PER-5</strong> Alif Frauq</li>
+                <li><strong>NEAX PER-6</strong> Andi Muhammad Mallarangeng</li>
+                <li><strong>NEAX PER-7</strong> Bagas Alif Fimaskoro</li>
+                <li><strong>NEAX PER-8</strong> Arya Rahman Hakim</li>
+                <li><strong>NEAX PER-9</strong> Ahmad Ridho Sentana</li>
+                <li><strong>NEAX PER-10</strong> Priyo Sembodo</li>
+                <li><strong>NEAX PER-11</strong> Audry Stevany</li>
+                <li><strong>NEAX PER-12</strong> Aidatul Fitriya</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Legacy Section -->
+      <div>
+        <h2 class="section-title text-3xl font-bold mb-8">Warisan dan Masa Depan</h2>
+        
+        <div class="bg-gray-50 rounded-xl p-6 border border-[var(--hmdt-orange-light)]">
+          <div class="flex items-start">
+            <div class="text-4xl mr-4 text-[var(--hmdt-orange)]">
+              <i class="fas fa-quote-left"></i>
+            </div>
+            <div>
+              <p class="text-lg italic mb-4">
+                HMDT telah mengalami perkembangan signifikan, bertransformasi dari sebuah himpunan kecil menjadi organisasi mahasiswa yang solid dan berpengaruh. Setiap tahun, kami berkomitmen untuk terus meningkatkan kualitas pelayanan serta menyelenggarakan kegiatan yang bermanfaat bagi seluruh anggota.
+              </p>
+              <p>
+                Dengan semangat "Sanggup Mampu Bisa," HMDT akan terus berfungsi sebagai wadah pengembangan potensi mahasiswa D3 Teknologi Telekomunikasi dan berkontribusi secara positif bagi Telkom University.
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mt-8 text-center">
+          <a href="index.html" class="btn-primary inline-flex items-center">
+            <i class="fas fa-home mr-2"></i>
+            Kembali ke Beranda
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="kontak" class="bg-[var(--hmdt-dark)] text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <!-- Logo & Deskripsi -->
+      <div class="flex flex-col gap-4">
+        <div class="flex items-center gap-3">
+          <img src="img/logo-hmdt.png" alt="Logo HMDT" class="w-16 h-16 object-cover rounded-full shadow border border-[var(--hmdt-orange)]" />
+          <div class="flex flex-col leading-tight">
+            <span class="text-xl font-bold text-[var(--hmdt-orange)]">HMDT</span>
+            <p class="text-sm text-gray-300 -mt-1">Sanggup Mampu Bisa</p>
+          </div>
+        </div>
+        <p class="text-gray-300 text-sm leading-relaxed">
+          Organisasi mahasiswa di bawah naungan Program Studi D3 Teknologi Telekomunikasi, Fakultas Ilmu Terapan, Telkom University.
+        </p>
+        <div class="flex gap-3 mt-2">
+          <a href="https://instagram.com/infohmdt" class="social-icon">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.tiktok.com/@infohmdt_" class="social-icon">
+            <i class="fab fa-tiktok"></i>
+          </a>
+          <a href="http://lin.ee/uQVzvqT" class="social-icon">
+            <i class="fa-brands fa-line"></i>
+          </a>
+          <a href="https://www.youtube.com/@hmdtuniversitastelkom3275" class="social-icon">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Link Cepat -->
+      <div>
+        <h4 class="text-lg font-bold mb-5 text-[var(--hmdt-orange)]">Link Cepat</h4>
+        <ul class="space-y-3">
+          <li><a href="index.html#home" class="text-gray-300 hover:text-white transition">Beranda</a></li>
+          <li><a href="index.html#about" class="text-gray-300 hover:text-white transition">Tentang Kami</a></li>
+          <li><a href="index.html#visi-misi" class="text-gray-300 hover:text-white transition">Visi & Misi</a></li>
+          <li><a href="index.html#features" class="text-gray-300 hover:text-white transition">Sumber Daya</a></li>
+          <li><a href="index.html#aspirasi" class="text-gray-300 hover:text-white transition">Form Aspirasi</a></li>
+          <li><a href="bph.html" class="text-gray-300 hover:text-white transition">Badan Pengurus Harian</a></li>
+          <li><a href="faq.html" class="text-gray-300 hover:text-white transition">FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- Departemen -->
+      <div>
+        <h4 class="text-lg font-bold mb-5 text-[var(--hmdt-orange)]">Departemen</h4>
+        <ul class="space-y-3">
+          <li><a href="departemen/psdm.html" class="text-gray-300 hover:text-white transition">PSDM</a></li>
+          <li><a href="departemen/eksternal.html" class="text-gray-300 hover:text-white transition">Eksternal</a></li>
+          <li><a href="departemen/kominfo.html" class="text-gray-300 hover:text-white transition">Komunikasi & Informasi</a></li>
+          <li><a href="departemen/ristek.html" class="text-gray-300 hover:text-white transition">Riset & Teknologi</a></li>
+          <li><a href="departemen/sosmas.html" class="text-gray-300 hover:text-white transition">Sosial Masyarakat</a></li>
+          <li><a href="departemen/orsenbud.html" class="text-gray-300 hover:text-white transition">Olahraga, Seni dan Budaya</a></li>
+          <li><a href="departemen/kewirausahaan.html" class="text-gray-300 hover:text-white transition">Kewirausahaan</a></li>
+        </ul>
+      </div>
+
+      <!-- Kontak -->
+      <div>
+        <h4 class="text-lg font-bold mb-5 text-[var(--hmdt-orange)]">Kontak</h4>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3">
+            <i class="fas fa-map-marker-alt text-[var(--hmdt-orange)] mt-1"></i>
+            <span class="text-gray-300">Sekre FIT, Lantai 1, Gedung Selaru Telkom University, Jl. Telekomunikasi Terusan Buah Batu, Bandung</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fab fa-whatsapp text-[var(--hmdt-orange)] mt-1"></i>
+            <span class="text-gray-300"><a href="whatsapp://send?phone=6282125908508&text=">+6282125908508</a> (Eksternal)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fab fa-whatsapp text-[var(--hmdt-orange)] mt-1"></i>
+            <span class="text-gray-300"><a href="whatsapp://send?phone=6282217324307&text=">+6282217324307</a> (Media Partner)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fas fa-envelope text-[var(--hmdt-orange)] mt-1"></i>
+            <span class="text-gray-300">hmdt.telu@gmail.com</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Garis pemisah -->
+    <div class="border-t border-gray-700 mt-10 mb-6 max-w-7xl mx-auto"></div>
+
+    <!-- Copyright -->
+    <div class="text-center text-sm text-gray-400">
+      HMDT © 2025. Dikembangkan oleh Departemen Ristek dan Kominfo.
+    </div>
+  </footer>
+
+  <script>
+    // Navbar Mobile Toggle
+    const toggleBtn = document.getElementById('toggleMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const navbar = document.getElementById('navbar');
+
+    toggleBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Navbar Hide on Scroll
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 80) {
+        navbar.style.transform = 'translateY(-100%)';
+      } else {
+        navbar.style.transform = 'translateY(0)';
+      }
+
+      lastScrollY = currentScrollY;
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  </script>
+</body>
+</html>
