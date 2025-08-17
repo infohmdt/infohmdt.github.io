@@ -47,41 +47,35 @@
       });
     });
 
-    // Toggle dropdown departemen di mobile
-    const mobileDepartemenBtn = document.getElementById('mobileDepartemenBtn');
-    const mobileDepartemenMenu = document.getElementById('mobileDepartemenMenu');
-
-    if (mobileDepartemenBtn && mobileDepartemenMenu) {
-      mobileDepartemenBtn.addEventListener('click', () => {
-        mobileDepartemenMenu.classList.toggle('hidden');
-        mobileDepartemenBtn.querySelector('i').classList.toggle('fa-chevron-down');
-        mobileDepartemenBtn.querySelector('i').classList.toggle('fa-chevron-up');
-      });
-    }
-
-    // Initialize Swiper
-    const swiper = new Swiper('.pengurus-swiper', {
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
+    // Initialize Partner Swiper
+    const partnerSwiper = new Swiper('.partnerSwiper', {
+      slidesPerView: 2,
+      spaceBetween: 20,
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
       },
       pagination: {
         el: '.swiper-pagination',
         clickable: true,
       },
-      loop: true,
-      spaceBetween: 30,
-      slidesPerView: 1,
-      autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
       },
       breakpoints: {
         640: {
-          slidesPerView: 2,
+          slidesPerView: 3,
+        },
+        768: {
+          slidesPerView: 4,
         },
         1024: {
-          slidesPerView: 3,
+          slidesPerView: 5,
+        },
+        1280: {
+          slidesPerView: 6,
         }
       }
     });
