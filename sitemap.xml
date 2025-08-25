@@ -2,22 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://infohmdt.github.io</loc>
-    <lastmod>2025-08-18</lastmod>
+    <lastmod>2025-08-25</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
     <loc>https://infohmdt.github.io/bph.html</loc>
-    <lastmod>2025-08-18</lastmod>
+    <lastmod>2025-08-25</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://infohmdt.github.io/sejarah.html</loc>
-    <lastmod>2025-08-18</lastmod>
+    <lastmod>2025-08-25</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://infohmdt.github.io/faq.html</loc>
+    <lastmod>2025-08-25</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://infohmdt.github.io/store.html</loc>
-    <lastmod>2025-08-18</lastmod>
+    <lastmod>2025-08-25</lastmod>
     <priority>0.80</priority>
   </url>
 </urlset>
