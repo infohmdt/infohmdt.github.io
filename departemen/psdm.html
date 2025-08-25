@@ -31,6 +31,11 @@
       --hmdt-dark: #1e293b;
     }
 
+    html, body {
+      width: 100%;
+      overflow-x: clip;
+    }
+
     html {
       scroll-behavior: smooth;
       scroll-padding-top: 80px;
@@ -104,15 +109,17 @@
     }
     
     .dept-hero {
-      background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(30, 41, 59, 0.8) 100%), url('../img/logo-kabinet.jpeg') center/cover;
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(30, 41, 59, 0.8) 100%), url('../img/backgrounds/psdm-bg.jpg') center/cover;
     }
     
     .dept-card {
-      background: white;
+      background: rgba(255, 255, 255, 0.500);
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
     }
     
     .dept-card:hover {
@@ -242,6 +249,24 @@
       margin-left: 30px;
     }
     
+    @media (max-width: 640px) {
+      .timeline::after {
+        left: 10px;
+      }
+      .timeline-item {
+        width: 100%;
+        left: 0 !important;
+        padding-left: 40px;
+        padding-right: 0;
+      }
+      .timeline-item::after {
+        left: 0;
+      }
+      .timeline-content {
+        margin: 0 0 30px 0 !important;
+      }
+    }
+
     @media (max-width: 768px) {
       .timeline::after {
         left: 31px;
@@ -294,14 +319,14 @@
         </div>
 
         <!-- Hamburger -->
-        <button id="toggleMenu" class="md:hidden text-[var(--hmdt-orange)] focus:outline-none">
+        <button id="toggleMenu" class="lg:hidden text-[var(--hmdt-orange)] focus:outline-none">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
 
         <!-- Menu Desktop -->
-        <nav class="hidden md:flex space-x-7 items-center">
+        <nav class="hidden lg:flex space-x-7 items-center">
           <a href="../index.html" class="font-semibold relative group transition duration-200 text-gray-800 hover:text-[var(--hmdt-orange)]">
             Beranda
             <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--hmdt-orange)] transition-all duration-300 group-hover:w-full"></span>
@@ -326,7 +351,7 @@
       </div>
 
       <!-- Menu Mobile -->
-      <div id="mobileMenu" class="transition-all duration-300 ease-in-out md:hidden hidden mt-4 flex flex-col gap-1 bg-white rounded-lg shadow-lg p-4">
+      <div id="mobileMenu" class="transition-all duration-300 ease-in-out lg:hidden hidden mt-4 flex flex-col gap-1 bg-white rounded-lg shadow-lg p-4">
         <a href="../index.html" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Beranda</a>
         <a href="../index.html#features" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">Sumber Daya</a>
         <a href="../bph.html" class="block py-3 px-4 rounded hover:bg-gray-100 text-gray-800 transition font-medium">BPH</a>
@@ -337,7 +362,7 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="dept-hero min-h-[70vh] flex items-center text-white">
+  <section class="dept-hero min-h-[90vh] flex items-center text-white">
     <div class="max-w-7xl mx-auto px-6 py-20 w-full">
       <div class="grid md:grid-cols-2 items-center gap-12">
         <div class="text-center md:text-left">
@@ -393,7 +418,7 @@
           </div>
         </div>
         
-        <div data-aos="fade-left" class="grid grid-cols-2 gap-6">
+        <div data-aos="fade-left" class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="dept-card p-6 text-center">
             <div class="w-16 h-16 mx-auto bg-[var(--hmdt-orange)] rounded-full flex items-center justify-center mb-4">
               <i class="fas fa-rocket text-white text-2xl"></i>
@@ -554,7 +579,7 @@
       </div>
 
       <!-- Timeline Program Kerja -->
-      <div class="timeline">
+      <div class="timeline px-4">
         <!-- Program 1 -->
         <div class="timeline-item" data-aos="fade-up">
           <div class="timeline-content">
@@ -867,7 +892,7 @@
         Dapatkan pengalaman berharga dalam mengembangkan potensi diri dan rekan mahasiswa lainnya
       </p>
       <div data-aos="fade-up" data-aos-delay="200" class="flex flex-wrap justify-center gap-4">
-        <a href="https://instagram.com/infohmdt" class="btn-primary bg-white text-[var(--hmdt-orange)] hover:bg-gray-100">
+        <a href="https://instagram.com/infohmdt" target="_blank" class="btn-primary bg-white text-[var(--hmdt-orange)] hover:bg-gray-100">
           Daftar Sekarang
         </a>
         <a href="../faq.html" class="bg-transparent border-2 border-white text-white px-6 py-2 rounded-full font-medium hover:bg-white/10 transition">
@@ -893,16 +918,16 @@
           Organisasi mahasiswa di bawah naungan Program Studi D3 Teknologi Telekomunikasi, Fakultas Ilmu Terapan, Telkom University.
         </p>
         <div class="flex gap-3 mt-2">
-          <a href="https://instagram.com/infohmdt" class="social-icon">
+          <a href="https://instagram.com/infohmdt" target="_blank" class="social-icon">
             <i class="fab fa-instagram"></i>
           </a>
-          <a href="https://www.tiktok.com/@infohmdt_" class="social-icon">
+          <a href="https://www.tiktok.com/@infohmdt_" target="_blank" class="social-icon">
             <i class="fab fa-tiktok"></i>
           </a>
-          <a href="http://lin.ee/uQVzvqT" class="social-icon">
+          <a href="http://lin.ee/uQVzvqT" target="_blank" class="social-icon">
             <i class="fa-brands fa-line"></i>
           </a>
-          <a href="https://www.youtube.com/@hmdtuniversitastelkom3275" class="social-icon">
+          <a href="https://www.youtube.com/@hmdtuniversitastelkom3275" target="_blank" class="social-icon">
             <i class="fab fa-youtube"></i>
           </a>
         </div>
